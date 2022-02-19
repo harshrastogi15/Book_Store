@@ -1,0 +1,24 @@
+{
+  "name": "all_in_one-book-saler",
+  "version": "1.0.0",
+  "description": "we are here to solve your problems.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshrastogi15/All_IN_One-Book-saler.git"
+  },
+  "author": "harsh rastogi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harshrastogi15/All_IN_One-Book-saler/issues"
+  },
+  "homepage": "https://github.com/harshrastogi15/All_IN_One-Book-saler#readme",
+  "dependencies": {
+    "express-validator": "^6.14.0",
+    "express.js": "^1.0.0",
+    "mongoose": "^6.2.2"
+  }
+}
