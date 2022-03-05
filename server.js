@@ -12,9 +12,7 @@ app.use('/api/books',require('./routes/booksdetail'));
 app.get('/',(req,res)=>{
     res.send("hello");    
 })
-app.get('/hello',(req,res)=>{
-    res.send("done");    
-})
+
 
 
 
