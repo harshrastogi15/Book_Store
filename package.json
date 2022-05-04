@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/harshrastogi15/All_IN_One-Book-saler.git"
+    "url": "git+https://github.com/harshrastogi15/Book-saler.git"
   },
   "author": "harsh rastogi",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/harshrastogi15/All_IN_One-Book-saler/issues"
+    "url": "https://github.com/harshrastogi15/Book-saler/issues"
   },
-  "homepage": "https://github.com/harshrastogi15/All_IN_One-Book-saler#readme",
+  "homepage": "https://github.com/harshrastogi15/Book-saler#readme",
   "dependencies": {
     "express-validator": "^6.14.0",
     "express.js": "^1.0.0",
