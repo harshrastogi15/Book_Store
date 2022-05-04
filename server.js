@@ -10,7 +10,7 @@ app.use('/api/books',require('./routes/booksdetail'));
 
 
 app.get('/',(req,res)=>{
-    res.send("hello");    
+    res.send("done");    
 })
 
 
