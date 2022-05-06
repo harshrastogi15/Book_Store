@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const express= require('express');
 const connect = require('./db');
+require('dotenv').config();
 connect();
 const port= process.env.PORT || 3000;
 const app=express();

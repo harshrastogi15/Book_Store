@@ -1,7 +1,10 @@
 const express = require("express");
 const bcrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
+require('dotenv').config();
 const { body, validationResult } = require("express-validator");
 const User = require("../Models/User");
+const jwtaccess = require("../middleware/authaccess");
 const router = express.Router();
 
 router.post(
@@ -32,7 +35,13 @@ router.post(
           password: hash,
           phone: req.body.phone,
         })
-          .then((user) => res.status(200).json({user,stauts:0}))
+          .then((user) => {
+            data = {
+              id: user._id
+            }
+            var authtoken = jwt.sign(data, process.env.JWT_TOKEN);
+            res.status(200).json({ stauts: 0, authtoken })
+          })
           .catch((err) => res.status(400).json({ errors: err, status: -1 }));
       });
     } catch (error) {
@@ -53,14 +62,18 @@ router.post(
     }
     const { email, password } = req.body;
     try {
-      let user = await User.findOne({ email: email});
+      let user = await User.findOne({ email: email });
       if (!user) {
         return res.status(400).json({ status: -1 })
       }
       const match = await bcrypt.compare(password, user.password);
-      if(match){
-        res.status(200).json({user,status:0});
-      }else{
+      if (match) {
+        data = {
+          id: user._id
+        }
+        var authtoken = jwt.sign(data, process.env.JWT_TOKEN);
+        res.status(200).json({ stauts: 0, authtoken });
+      } else {
         return res.status(400).json({ status: -1 });
       }
 
@@ -69,5 +82,24 @@ router.post(
     }
   }
 );
+
+router.post('/access',jwtaccess, async(req, res) => {
+  try {
+    var user = await User.findById(req.userid);
+    if(!user){
+      return res.status(400).json({ status: -1 });
+    }
+    var data = {
+      name:user.name,
+      email:user.email,
+      address:user.address,
+      phone:user.phone
+    }
+    res.json({ status: 0, data });
+  } catch (error) {
+    res.status(500).json({ errors: error, status: -2 });
+  }
+})
+
 
 module.exports = router;
