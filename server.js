@@ -4,7 +4,7 @@ const express= require('express');
 const connect = require('./db');
 require('dotenv').config();
 connect();
-const port= process.env.PORT || 3000;
+const port= process.env.PORT || 3001;
 const app=express();
 
 app.use(bodyParser.urlencoded({extended:true}));
