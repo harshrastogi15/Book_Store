@@ -7,21 +7,55 @@
     padding: 0px;
     display: flex;
     list-style: none;
-    margin: auto;
+    margin: 0px auto;
     width: 190px;
+    /* height: fit-content; */
+    align-items: center;
 }
 
 .navlinks li{
-    margin: 5%;
+    margin: 5% 10%;
+}
+
+.navlinkpath{
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    color: black;
+    text-decoration: none;
+}
+
+.navlinkpath:hover{
+    color: blue;
 }
 
 .navauth{
     display: flex;
     list-style: none;
-    margin-right: 20px;
-    width: 190px;
+    margin:0px 40px;
+    width: 200px;
+    align-items: center;
+    /* padding: 0; */
 }
 
 .navauth li{
-    margin: 10%;
+    height: fit-content;
+    margin: 5% ;
+    color: black;
+    width: fit-content;
+}
+
+.navauthpath{
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(231, 228, 228);
+    padding: 2px 8px;
+    background-color: #757575;
+    border-radius: 3px;
+}
+
+.navauthpath:hover{
+    background-color: rgb(246, 246, 250);
+    color: #888888;
 }
