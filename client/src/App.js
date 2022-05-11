@@ -15,6 +15,7 @@ function App() {
     <Router>
       <div className="App">
         <Navbar/>
+        <div style={{height:'55px', width:'100%' }}></div>
         <Routes>
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/signup' element={<Signup />} />

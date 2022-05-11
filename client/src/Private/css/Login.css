@@ -1,0 +1,53 @@
+.Lscard {
+    width: 80%;
+    margin: 30px auto;
+
+}
+
+.login {
+    width: 40%;
+    background-color: white;
+    font-size: 24px;
+}
+
+
+.float-label-field {
+    border: none;
+    outline: none;
+    position: relative;
+    margin: 0 0 20px 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.float-label-field input {
+    border: none;
+    outline: none;
+    padding: 5px 5px 8px 0px;
+    margin-left: 10px;
+    width: 80%;
+    font-size: 18px;
+    border-bottom: solid 1px #aaa7a7;
+    
+}
+
+.float-label-field label {
+    opacity: 0.5;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transition: all 0.2s ease;
+    font-size: 18px;
+}
+
+.float-label-field.float input{
+    border-bottom: solid 1px #000000;
+}
+ 
+.float-label-field.float label {
+    opacity: 1;
+    top: -8px;
+    font-size: 60%;
+    transition: all 0.2s ease;
+    font-weight: bold;
+}
