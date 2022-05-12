@@ -14,7 +14,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/books', require('./routes/booksdetail'));
 
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
 });
 
 app.listen(port, () => {
