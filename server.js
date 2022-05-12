@@ -7,15 +7,15 @@ require('dotenv').config();
 connect();
 const port = process.env.PORT || 3001;
 const app = express();
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+app.use(express.static(path.resolve(__dirname, 'client/build')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/books', require('./routes/booksdetail'));
 
-// app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
-// });
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
+});
 
 app.listen(port, () => {
     console.log(`server listen at port ${port}`);
