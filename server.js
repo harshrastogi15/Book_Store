@@ -6,7 +6,7 @@ require('dotenv').config();
 connect();
 const port= process.env.PORT || 3001;
 const app=express();
-
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.json());
 app.use('/api/auth',require('./routes/auth'));

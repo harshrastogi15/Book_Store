@@ -4,7 +4,9 @@
   "description": "we are here to solve your problems.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js",
+    "build": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -25,5 +27,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.2",
     "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": "16.15.0"
   }
 }
