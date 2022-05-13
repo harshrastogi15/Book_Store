@@ -42,10 +42,10 @@ router.post(
             var authtoken = jwt.sign(data, process.env.JWT_TOKEN);
             res.status(200).json({ stauts: 0, authtoken })
           })
-          .catch((err) => res.status(400).json({ errors: err, status: -1 }));
+          .catch((error) => res.status(400).json({ errors: error, status: -1 }));
       });
     } catch (error) {
-      res.status(500).json({ errors: err, status: -2 });
+      res.status(500).json({ errors: error, status: -2 });
     }
   }
 );

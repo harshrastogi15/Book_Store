@@ -102,3 +102,9 @@
     border-top-right-radius: 5px;
     overflow: hidden;
 }
+
+.float-label-field p{
+    color: red;
+    /* width: 100%; */
+    margin-left: 10px;
+}
