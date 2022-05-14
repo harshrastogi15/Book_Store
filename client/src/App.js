@@ -19,8 +19,11 @@ function App() {
         <Routes>
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/signup' element={<Signup />} />
+          <Route exact path='/cart' element={<Default message="Updated soon"/>} />
+          <Route exact path='/search' element={<Default message="Updated soon"/>} />
+          <Route exact path='/about' element={<Default message="Updated soon"/>} />
           <Route exact path='/' element={<Home />} />
-          <Route path='/:s' element={<Default/>} />
+          <Route path='/:s' element={<Default message="This Page is not exist"/>} />
         </Routes>
       </div>
     </Router>
