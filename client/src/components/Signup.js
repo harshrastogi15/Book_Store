@@ -18,6 +18,7 @@ function Signup() {
     password:"",
     Cpassword:""
   })
+  const [warning, updateWarning] = useState("");
   const [warningEmail, updateWarningEmail] = useState("");
   const [warningPass, updateWarningPass] = useState("");
   const [warningCPass, updateWarningCPass] = useState("");
@@ -30,6 +31,29 @@ function Signup() {
 
   const updatevalue=(e) =>{
     updateSignup({...signupDetail,[e.target.name]:e.target.value});
+  }
+
+  const onclickSign = async () => {
+    updateWarning("Loading ...")
+    await fetch(`/HarshRastogiBooksStore/api/auth/signup`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(signupDetail)
+      }
+    )
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        if(data.status!==0){
+          updateWarning("Email already exist or Invalid details")
+        }else{
+          updateWarning("")
+        }
+      })
+      .catch(() => {
+        updateWarning("Something is wrong")
+      })
   }
 
   useEffect(()=>{
@@ -46,13 +70,13 @@ function Signup() {
       updateWarningPass("")
     }
 
-    if(signupDetail.Cpassword.length > 0 && signupDetail.Cpassword != signupDetail.password){
+    if(signupDetail.Cpassword.length > 0 && signupDetail.Cpassword !== signupDetail.password){
       updateWarningCPass("Password and Confirm Password should be same")
     }else{
       updateWarningCPass("")
     }
 
-  })
+  },[signupDetail.email, signupDetail.password, signupDetail.Cpassword])
 
   return (
     <div className='Lscard' >
@@ -60,6 +84,7 @@ function Signup() {
         <div>
           <h1>Create account</h1>
           <p>Get access to our service</p>
+          <p className='warning'>{warning}</p>
         </div>
         <form>
           <fieldset className='float-label-field'>
@@ -94,7 +119,7 @@ function Signup() {
             <p className='warning'>{warningCPass}</p>
           </fieldset>
         </form>
-        <button className='signbutton'>Create</button>
+        <button className='signbutton' type='button' onClick={onclickSign}>Create</button>
         <p>Already have account? <Link to='/login'>Login</Link></p>
       </div>
       <div className='logoG'>

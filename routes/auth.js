@@ -17,7 +17,7 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array(), status: -1 });
+      return res.status(400).json({ status: -1 });
     }
 
     try {
@@ -27,7 +27,6 @@ router.post(
         return res.status(400).json({ status: -1 });
       }
       bcrypt.hash(req.body.password, 10, async function (err, hash) {
-        // Store hash in your password DB.     
         user = await User.create({
           name: req.body.name,
           email: req.body.email,
@@ -40,12 +39,12 @@ router.post(
               id: user._id
             }
             var authtoken = jwt.sign(data, process.env.JWT_TOKEN);
-            res.status(200).json({ stauts: 0, authtoken })
+            res.status(200).json({ status: 0, authtoken })
           })
-          .catch((error) => res.status(400).json({ errors: error, status: -1 }));
+          .catch((error) => res.status(400).json({ status: -1 }));
       });
     } catch (error) {
-      res.status(500).json({ errors: error, status: -2 });
+      res.status(500).json({ status: -2 });
     }
   }
 );
@@ -58,7 +57,7 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array(), status: -1 });
+      return res.status(400).json({ status: -1 });
     }
     const { email, password } = req.body;
     try {
@@ -72,13 +71,13 @@ router.post(
           id: user._id
         }
         var authtoken = jwt.sign(data, process.env.JWT_TOKEN);
-        res.status(200).json({ stauts: 0, authtoken });
+        res.status(200).json({ status: 0, authtoken });
       } else {
         return res.status(400).json({ status: -1 });
       }
 
     } catch (error) {
-      res.status(500).json({ errors: error, status: -2 });
+      res.status(500).json({ status: -2 });
     }
   }
 );

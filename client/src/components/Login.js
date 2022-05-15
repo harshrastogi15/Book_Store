@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../Private/css/LoginSign.css'
 import { Link } from 'react-router-dom'
 import GifLogo from './GifLogo'
+
 function Login() {
 
   const float = () => {
@@ -15,6 +16,7 @@ function Login() {
     email: "",
     password: ""
   })
+  const [warning, updateWarning] = useState("");
   const [warningEmail, updateWarningEmail] = useState("");
   const [warningPass, updateWarningPass] = useState("");
   const updatevalue = (event) => {
@@ -28,6 +30,29 @@ function Login() {
     return false;
   }
 
+  const onclickLogin = async () => {
+    updateWarning("Loading ...")
+    await fetch(`/HarshRastogiBooksStore/api/auth/login`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(logindetail)
+      }
+    )
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        if(data.status!==0){
+          updateWarning("Wrong Email or Password")
+        }else{
+          updateWarning("")
+        }
+      })
+      .catch(() => {
+        updateWarning("Something is wrong")
+      })
+  }
+
   useEffect(() => {
     var valide = validateemail(logindetail.email);
     if (!valide && logindetail.email.length > 0) {
@@ -36,13 +61,13 @@ function Login() {
       updateWarningEmail("")
     }
 
-    if(logindetail.password.length > 0 && logindetail.password.length<5){
+    if (logindetail.password.length > 0 && logindetail.password.length < 5) {
       updateWarningPass("There should be minimum 5 letter in password");
-    }else{
+    } else {
       updateWarningPass("")
     }
 
-  })
+  }, [logindetail.email, logindetail.password.length])
 
   return (
     <div className='Lscard' >
@@ -50,6 +75,7 @@ function Login() {
         <div>
           <h1>Login</h1>
           <p>Get access to our service</p>
+          <p className='warning'>{warning}</p>
         </div>
         <form>
           <fieldset className='float-label-field'>
@@ -63,7 +89,7 @@ function Login() {
             <p className='warning'>{warningPass}</p>
           </fieldset>
         </form>
-        <button className='loginbutton'>Login</button>
+        <button className='loginbutton' type='button' onClick={onclickLogin}>Login</button>
         <p>New to HR Book Store? <Link to='/signup'>Signup</Link></p>
       </div>
       <div className='logoG'>

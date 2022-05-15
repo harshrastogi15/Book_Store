@@ -6,7 +6,8 @@
 }
 
 
-.login ,.signup{
+.login,
+.signup {
     display: flex;
     flex-direction: column;
     border-top-left-radius: 5px;
@@ -20,23 +21,26 @@
     padding-bottom: 20px;
 }
 
-.login{
-    height: calc(100vh - 60px);
+.login {
+    height: 500px;
 }
 
-.login h1,.signup h1{
+.login h1,
+.signup h1 {
     font-size: 24px;
     width: fit-content;
     margin: auto;
 }
 
-.login p,.signup p{
+.login p,
+.signup p {
     font-size: 16px;
     width: fit-content;
     margin: auto;
 }
 
-.login form, .signup form{
+.login form,
+.signup form {
     width: 80%;
     margin: auto;
 }
@@ -50,7 +54,8 @@
     box-sizing: border-box;
 }
 
-.loginbutton,.signbutton{
+.loginbutton,
+.signbutton {
     /* height: 30px; */
     width: 30%;
     padding: 5px;
@@ -72,7 +77,7 @@
     width: 90%;
     font-size: 18px;
     border-bottom: solid 1px #aaa7a7;
-    
+
 }
 
 .float-label-field label {
@@ -84,10 +89,10 @@
     font-size: 18px;
 }
 
-.float-label-field.float input{
+.float-label-field.float input {
     border-bottom: solid 1px #000000;
 }
- 
+
 .float-label-field.float label {
     opacity: 1;
     top: -8px;
@@ -96,15 +101,18 @@
     font-weight: bold;
 }
 
-.logoG{
+.logoG {
     width: 40%;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
     overflow: hidden;
 }
 
-.float-label-field p{
+.float-label-field p {
     color: red;
     /* width: 100%; */
     margin-left: 10px;
+}
+.warning{
+    color: red;
 }
