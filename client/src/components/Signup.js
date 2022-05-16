@@ -38,7 +38,7 @@ function Signup() {
 
   const onclickSign = async () => {
     updateWarning("Loading ...")
-    await fetch(`/HarshRastogiBooksStore/api/auth/signup`,
+    await fetch(`/HarshrastogibookService/api/auth/signup`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

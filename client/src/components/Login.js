@@ -35,7 +35,7 @@ function Login() {
 
   const onclickLogin = async () => {
     updateWarning("Loading ...")
-    await fetch(`/HarshRastogiBooksStore/api/auth/login`,
+    await fetch(`/HarshrastogibookService/api/auth/login`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
