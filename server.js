@@ -12,8 +12,8 @@ app.use(express.static(path.resolve(__dirname, 'client/build')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(`/HarshRastogiBooksStore/api/auth`, require('./routes/auth'));
-app.use(`/HarshRastogiBooksStore/api/books`, require('./routes/booksdetail'));
+app.use(`/${apikey}/api/auth`, require('./routes/auth'));
+app.use(`/${apikey}/api/books`, require('./routes/booksdetail'));
 
 
 app.get('*', (req, res) => {
