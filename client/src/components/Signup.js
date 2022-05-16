@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../Private/css/LoginSign.css'
 import GifLogo from './GifLogo';
 function Signup() {
@@ -9,19 +9,22 @@ function Signup() {
       data[i].classList.add('float')
     }
   }
-  const [signupDetail,updateSignup]=useState({
-    name:"",
-    phone:"",
-    address:"",
-    pincode:"",
-    email:"",
-    password:"",
-    Cpassword:""
+  const [signupDetail, updateSignup] = useState({
+    name: "",
+    phone: "",
+    address: "",
+    pincode: "",
+    email: "",
+    password: "",
+    Cpassword: ""
   })
   const [warning, updateWarning] = useState("");
   const [warningEmail, updateWarningEmail] = useState("");
   const [warningPass, updateWarningPass] = useState("");
   const [warningCPass, updateWarningCPass] = useState("");
+
+  const navigate = useNavigate();
+
   const validateemail = (email) => {
     const pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
     var check = pattern.test(email);
@@ -29,8 +32,8 @@ function Signup() {
     return false;
   }
 
-  const updatevalue=(e) =>{
-    updateSignup({...signupDetail,[e.target.name]:e.target.value});
+  const updatevalue = (e) => {
+    updateSignup({ ...signupDetail, [e.target.name]: e.target.value });
   }
 
   const onclickSign = async () => {
@@ -45,10 +48,12 @@ function Signup() {
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        if(data.status!==0){
+        if (data.status !== 0) {
           updateWarning("Email already exist or Invalid details")
-        }else{
+        } else {
           updateWarning("")
+          localStorage.setItem('token', data.authtoken);
+          window.location.reload();
         }
       })
       .catch(() => {
@@ -56,7 +61,7 @@ function Signup() {
       })
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     var valide = validateemail(signupDetail.email);
     if (!valide && signupDetail.email.length > 0) {
       updateWarningEmail("Invalid Email");
@@ -64,19 +69,23 @@ function Signup() {
       updateWarningEmail("")
     }
 
-    if(signupDetail.password.length > 0 && signupDetail.password.length<5){
+    if (signupDetail.password.length > 0 && signupDetail.password.length < 5) {
       updateWarningPass("There should be minimum 5 letter in password");
-    }else{
+    } else {
       updateWarningPass("")
     }
 
-    if(signupDetail.Cpassword.length > 0 && signupDetail.Cpassword !== signupDetail.password){
+    if (signupDetail.Cpassword.length > 0 && signupDetail.Cpassword !== signupDetail.password) {
       updateWarningCPass("Password and Confirm Password should be same")
-    }else{
+    } else {
       updateWarningCPass("")
     }
 
-  },[signupDetail.email, signupDetail.password, signupDetail.Cpassword])
+    if (localStorage.getItem('token')) {
+      navigate('/');
+    }
+
+  }, [signupDetail.email, signupDetail.password, signupDetail.Cpassword, navigate])
 
   return (
     <div className='Lscard' >
@@ -89,33 +98,33 @@ function Signup() {
         <form>
           <fieldset className='float-label-field'>
             <label htmlFor="name">Name</label>
-            <input id="name" type='text' onFocus={float} name="name" value={signupDetail.name} onChange={e=>updatevalue(e)}/>
+            <input id="name" type='text' onFocus={float} name="name" value={signupDetail.name} onChange={e => updatevalue(e)} />
           </fieldset>
           <fieldset className='float-label-field'>
             <label htmlFor="phone">Phone</label>
-            <input id="phone" type='number' onFocus={float} name="phone" value={signupDetail.phone} onChange={e=>updatevalue(e)} />
+            <input id="phone" type='number' onFocus={float} name="phone" value={signupDetail.phone} onChange={e => updatevalue(e)} />
           </fieldset>
           <fieldset className='float-label-field'>
             <label htmlFor="address">Address</label>
-            <input id="address" type='text' onFocus={float} name="address" value={signupDetail.address} onChange={e=>updatevalue(e)}/>
+            <input id="address" type='text' onFocus={float} name="address" value={signupDetail.address} onChange={e => updatevalue(e)} />
           </fieldset>
           <fieldset className='float-label-field'>
             <label htmlFor="pincode">Pincode</label>
-            <input id="pincode" type='number' onFocus={float} name="pincode" value={signupDetail.pincode} onChange={e=>updatevalue(e)}/>
+            <input id="pincode" type='number' onFocus={float} name="pincode" value={signupDetail.pincode} onChange={e => updatevalue(e)} />
           </fieldset>
           <fieldset className='float-label-field'>
             <label htmlFor="email">Email</label>
-            <input id="email" type='Email' onFocus={float} name="email" value={signupDetail.email} onChange={e=>updatevalue(e)}/>
+            <input id="email" type='Email' onFocus={float} name="email" value={signupDetail.email} onChange={e => updatevalue(e)} />
             <p className='warning'>{warningEmail}</p>
           </fieldset>
           <fieldset className='float-label-field'>
             <label htmlFor="password">Password</label>
-            <input id="password" type='password' onFocus={float} name="password" value={signupDetail.password} onChange={e=>updatevalue(e)}/>
+            <input id="password" type='password' onFocus={float} name="password" value={signupDetail.password} onChange={e => updatevalue(e)} />
             <p className='warning'>{warningPass}</p>
           </fieldset>
           <fieldset className='float-label-field'>
             <label htmlFor="Cpassword">Confirm Password</label>
-            <input id="Cpassword" type='password' onFocus={float} name="Cpassword" value={signupDetail.Cpassword} onChange={e=>updatevalue(e)}/>
+            <input id="Cpassword" type='password' onFocus={float} name="Cpassword" value={signupDetail.Cpassword} onChange={e => updatevalue(e)} />
             <p className='warning'>{warningCPass}</p>
           </fieldset>
         </form>
@@ -123,7 +132,7 @@ function Signup() {
         <p>Already have account? <Link to='/login'>Login</Link></p>
       </div>
       <div className='logoG'>
-        <GifLogo/>
+        <GifLogo />
       </div>
     </div>
   )

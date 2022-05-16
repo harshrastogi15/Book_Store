@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../Private/css/LoginSign.css'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import GifLogo from './GifLogo'
 
 function Login() {
@@ -19,6 +19,9 @@ function Login() {
   const [warning, updateWarning] = useState("");
   const [warningEmail, updateWarningEmail] = useState("");
   const [warningPass, updateWarningPass] = useState("");
+
+  const navigate = useNavigate();
+
   const updatevalue = (event) => {
     updatelogin({ ...logindetail, [event.target.name]: event.target.value });
   };
@@ -46,6 +49,8 @@ function Login() {
           updateWarning("Wrong Email or Password")
         }else{
           updateWarning("")
+          localStorage.setItem('token',data.authtoken);
+          window.location.reload();
         }
       })
       .catch(() => {
@@ -66,8 +71,10 @@ function Login() {
     } else {
       updateWarningPass("")
     }
-
-  }, [logindetail.email, logindetail.password.length])
+    if (localStorage.getItem('token')) {
+      navigate('/');
+    }
+  }, [logindetail.email, logindetail.password.length],navigate)
 
   return (
     <div className='Lscard' >

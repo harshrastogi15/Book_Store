@@ -116,3 +116,15 @@
 .warning{
     color: red;
 }
+
+@media (max-width:650px) {
+    .logoG{
+        display: none;
+    }
+    .Lscard{
+        width: 90%;
+    }
+    .login,.signup{
+        width: 100%;
+    }
+}

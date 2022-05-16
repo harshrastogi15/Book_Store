@@ -1,0 +1,29 @@
+.sidenav{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 255px;
+    background-color: gray;
+    height: 100vh;
+    transition: 2ms ease-in-out;
+}
+
+.sidelogo{
+    background-color: #cdd8d8;
+    display: flex;
+    margin: auto;
+    /* margin-top: 20px; */
+    padding: 0;
+    /* border-radius: 10px; */
+    overflow: hidden;
+    width: fit-content;
+    height: 54px;
+}
+
+.Sidenavlinks{
+    list-style: none;
+}
+
+.sidenavauth{
+    list-style: none;
+}
