@@ -6,7 +6,8 @@ const { body, validationResult } = require("express-validator");
 const User = require("../Models/User");
 const jwtaccess = require("../middleware/authaccess");
 const router = express.Router();
-const url = process.env.URL_DB;
+
+
 router.post(
   "/signup",
   [
@@ -41,7 +42,7 @@ router.post(
             var authtoken = jwt.sign(data, process.env.JWT_TOKEN);
             res.status(200).json({ status: 0, authtoken })
           })
-          .catch((error) => res.status(400).json({ status: -1,error,url }));
+          .catch((error) => res.status(400).json({ status: -1}));
       });
     } catch (error) {
       res.status(500).json({ status: -2 });

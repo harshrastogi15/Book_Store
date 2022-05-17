@@ -44,7 +44,7 @@ function Login() {
     )
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         if(data.status!==0){
           updateWarning("Wrong Email or Password")
         }else{

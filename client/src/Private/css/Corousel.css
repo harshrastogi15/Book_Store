@@ -1,0 +1,25 @@
+
+.multiCorousel{
+    background-color: white;
+    width: 80%;
+    margin: auto;
+    height: fit-content;
+    overflow: hidden;
+    
+}
+
+.coroselwork{
+    display: inline-flex;
+    flex-wrap: nowrap;
+    /* width: 70%; */
+    margin: auto;
+    transition: 2ms ease-in-out;
+}
+
+.coroselCard{
+    width: 300px;
+    height: 300px;
+    background-color: rgb(185, 181, 181);
+    margin: 20px;
+    transition: 2ms ease-in-out;
+}
