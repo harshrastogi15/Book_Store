@@ -1,0 +1,18 @@
+.homeclass{
+    width: 94%;
+    margin: 20px auto auto auto;
+}
+
+.HomecorouselShow{
+    /* width: 80%; */
+    display: flex;
+}
+
+.Homecorouselwidth{
+    width: 75%;
+}
+
+.HomeLogoGif{
+    width: 25%;
+    margin: 10px 10px 10px 0px;
+}

@@ -24,6 +24,7 @@ function App() {
           <Route exact path='/about' element={<Default message="Updated soon"/>} />
           <Route exact path='/' element={<Home />} />
           <Route path='/:s' element={<Default message="This Page is not exist"/>} />
+          <Route path='type/:s' element={<Default message="Updated Soon"/>} />
         </Routes>
       </div>
     </Router>
