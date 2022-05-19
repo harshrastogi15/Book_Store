@@ -9,9 +9,12 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Navbar from './components/Navbar';
 import Default from './components/Default';
+import { Provider } from 'react-redux';
+import store from './store';
 
 function App() {
   return (
+      <Provider store={store}>
     <Router>
       <div className="App">
         <Navbar/>
@@ -28,6 +31,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </Provider>
   );
 }
 

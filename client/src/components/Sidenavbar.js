@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import Logo from './Logo'
+import { useSelector } from 'react-redux'
 function Sidenavbar(props) {
     const { tooglefunc,logoutfunc } = props;
-
+    const user = useSelector((state)=>state.user.name)
     return (
         <div className='sidenav' >
             <div className='sidelogo' >
@@ -25,7 +26,7 @@ function Sidenavbar(props) {
             <ul className='sidenavauth'>
                 {localStorage.getItem('token') ?
                     <div className="dropdown">
-                        <button className="dropbtn" type='button'>Harsh Rastogi</button>
+                        <button className="dropbtn" type='button'>{user.toUpperCase()}</button>
                         <div className="dropdown-content">
                             <Link to="/">Profile</Link>
                             <Link to="/login" onClick={logoutfunc}>Logout</Link>
