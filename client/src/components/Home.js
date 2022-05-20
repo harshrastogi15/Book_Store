@@ -1,22 +1,23 @@
 import React from 'react'
 import Corousel from './Corousel'
 import '../Private/css/Home.css'
-import GifLogo from './GifLogo'
+import {GifLogo2} from './GifLogo'
+import Bookcard from './Bookcard'
 
 function Home() {
 
   return (
     <div className='homeclass'>
-      <Corousel type='Play' />
+      <Corousel type='Play' delay='2000'/>
       <div className='HomecorouselShow'>
         <div className='Homecorouselwidth'>
-          <Corousel type='Game' />
+          <Corousel type='Game' delay='3000'/>
         </div>
-        <div className='HomeLogoGif'>
-          <GifLogo />
+        <div className='HomeLogoGif' >
+          <GifLogo2 />
         </div>
       </div>
-      <Corousel type='Learn' />
+      <Corousel type='Learn' delay='1500' />
     </div>
   )
 }

@@ -1,11 +1,12 @@
 import React from 'react'
-import gif from '../Private/data/LogoGif.gif'
+import gif1 from '../Private/data/LogoGif.gif'
+import gif2 from '../Private/data/LogoGif2.gif'
 
-function GifLogo() {
+export function GifLogo1() {
   const gifstyle={
     backgroundColor:'white',
     height:'100%',
-    backgroundImage:`url(${gif})`,
+    backgroundImage:`url(${gif1})`,
     backgroundSize:'100% 100%'
   }
   return (
@@ -14,4 +15,17 @@ function GifLogo() {
   )
 }
 
-export default GifLogo
+export function GifLogo2() {
+  const gifstyle={
+    backgroundColor:'white',
+    height:'100%',
+    backgroundImage:`url(${gif2})`,
+    backgroundSize:'100% 100%'
+  }
+  return (
+    <div style={gifstyle}>
+    </div>
+  )
+}
+
+// export default GifLogo

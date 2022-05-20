@@ -48,6 +48,8 @@
     /* width: 70%; */
     margin: auto;
     transition: 2ms ease-in-out;
+    align-items: center;
+    justify-content: center;
 }
 
 .corouselCard{
@@ -62,4 +64,38 @@
     font-size: 30px;
     padding: 10px;
     cursor: pointer;
+}
+
+.bookcard{
+    width: 200px;
+    height: 250px;
+    background-color: rgb(255, 255, 255);
+    margin: 10px;
+}
+
+.bookcard a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+}
+
+.bookcard .image{
+    height: 200px;
+    overflow: hidden;
+}
+
+.bookcard p{
+    margin: 0;
+    padding: 0;
+}
+
+.bookcard p:nth-child(2n){
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.bookcard p:nth-child(2n+1){
+    font-size: 12px;
 }

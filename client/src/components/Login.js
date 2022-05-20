@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../Private/css/LoginSign.css'
 import { Link,useNavigate } from 'react-router-dom'
-import GifLogo from './GifLogo'
+import {GifLogo1} from './GifLogo'
 
 function Login() {
 
@@ -100,7 +100,7 @@ function Login() {
         <p>New to HR Book Store? <Link to='/signup'>Signup</Link></p>
       </div>
       <div className='logoG'>
-        <GifLogo />
+        <GifLogo1 />
       </div>
     </div>
 

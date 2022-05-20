@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import '../Private/css/LoginSign.css'
-import GifLogo from './GifLogo';
+import {GifLogo1} from './GifLogo';
 function Signup() {
   const float = () => {
     var data = document.getElementsByClassName('float-label-field');
@@ -132,7 +132,7 @@ function Signup() {
         <p>Already have account? <Link to='/login'>Login</Link></p>
       </div>
       <div className='logoG'>
-        <GifLogo />
+        <GifLogo1 />
       </div>
     </div>
   )

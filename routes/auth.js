@@ -34,6 +34,7 @@ router.post(
           address: req.body.address,
           password: hash,
           phone: req.body.phone,
+          pincode: req.body.pincode
         })
           .then((user) => {
             data = {
@@ -42,7 +43,7 @@ router.post(
             var authtoken = jwt.sign(data, process.env.JWT_TOKEN);
             res.status(200).json({ status: 0, authtoken })
           })
-          .catch((error) => res.status(400).json({ status: -1}));
+          .catch((error) => res.status(400).json({ status: -1 }));
       });
     } catch (error) {
       res.status(500).json({ status: -2 });
@@ -83,17 +84,18 @@ router.post(
   }
 );
 
-router.post('/access',jwtaccess, async(req, res) => {
+router.post('/access', jwtaccess, async (req, res) => {
   try {
     var user = await User.findById(req.userid);
-    if(!user){
+    if (!user) {
       return res.status(400).json({ status: -1 });
     }
     var data = {
-      name:user.name,
-      email:user.email,
-      address:user.address,
-      phone:user.phone
+      name: user.name,
+      email: user.email,
+      address: user.address,
+      phone: user.phone,
+      pincode: user.pincode
     }
     res.json({ status: 0, data });
   } catch (error) {

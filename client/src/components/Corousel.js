@@ -3,9 +3,10 @@ import '../Private/css/Corousel.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight, faCircleRight } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import Bookcard from './Bookcard';
 
 function Corousel(props) {
-    const { type } = props;
+    const { type,delay } = props;
     const runningCorouselnext = () => {
         const data = document.getElementById(`corouselhandel${type}`);
         // console.log(data.children);
@@ -28,7 +29,7 @@ function Corousel(props) {
         const interval = setInterval(() => {
             runningCorouselnext();
             // console.log('created');
-        }, 1800);
+        }, Number(delay));
         return () => clearInterval(interval);
     }, [runningCorouselnext])
 
@@ -44,6 +45,10 @@ function Corousel(props) {
                 <FontAwesomeIcon className='corouselIcon' icon={faAngleLeft} onClick={runningCorouselprev} />
                 <div className='corouselBody'>
                     <div className='corouselwork' id={`corouselhandel${type}`}>
+                        <Bookcard/>
+                        <Bookcard/>
+                        <Bookcard/>
+                        <Bookcard/>
                         <div className='corouselCard'>First</div>
                         <div className='corouselCard'>Second</div>
                         <div className='corouselCard'>Third</div>
