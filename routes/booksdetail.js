@@ -1,14 +1,18 @@
 const express = require('express');
+const multer = require("multer");
 const upload = require('../middleware/uploadImage');
-const books = require('../Models/Books');
+const Books = require('../Models/Books');
 const BooksImage = require('../Models/BooksImage');
+const path = require('path');
+const fs = require('fs');
+
 const router = express.Router();
 
-router.post('/addbook', async (req, res) => {
+router.post('/addbook',upload.single('img'), async (req, res) => {
     console.log('here');
-    console.log(req.body);
+    // console.log(req.filename);
     try {
-        await books.create({
+        let book = await new Books({
             title: req.body.title,
             author: req.body.author,
             language: req.body.language,
@@ -16,21 +20,22 @@ router.post('/addbook', async (req, res) => {
             category: req.body.category,
             url: req.body.url
         })
-            .then((res) => {
-                // BooksImage.create({
-                //     name: req.body.title,
-                //     desc: res._id,
-                //     img: {
-                //         data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-                //         contentType: 'image/png'
-                //     }
-                // })
-                console.log(res);
-                res.json({ status: 0 });
+
+        await book.save(async function(err,done){
+            if(err){
+                throw err;
+            };
+            await BooksImage.create({
+                    name: req.body.name,
+                    bookId: done._id,
+                    img: {
+                        data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+                        contentType: 'image/png'
+                    }
             })
-            .catch(() => {
-                res.json({ status: -1 });
-            })
+            res.json({status:0});
+        });
+
     } catch (error) {
         res.json({ status: -2 });
     }
@@ -39,7 +44,7 @@ router.post('/addbook', async (req, res) => {
 
 router.get('/sendbooks/all', async (req, res) => {
     try {
-        var bookdata = await books.find({});
+        var bookdata = await Books.find({});
         res.json({ status: 0, bookdata });
     } catch (error) {
         res.json({ status: -2 });

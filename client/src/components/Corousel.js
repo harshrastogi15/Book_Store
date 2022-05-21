@@ -11,7 +11,7 @@ function Corousel(props) {
     const { type, delay } = props;
     const [booksData, updateData] = useState({
         load: false,
-        data: {}
+        data: []
     });
 
     const runningCorouselnext = () => {
@@ -47,11 +47,19 @@ function Corousel(props) {
         })
             .then((res) => res.json())
             .then((res) => {
-                updateData({
-                    ...booksData,
-                    load: true,
-                    data: res.bookdata
-                })
+                console.log(res);
+                if (res.status == 0) {
+                    updateData({
+                        ...booksData,
+                        load: true,
+                        data: res.bookdata
+                    })
+                }else{
+                    updateData({
+                        ...booksData,
+                        load: false,
+                    })
+                }
             })
             .catch((error) => {
                 updateData({
@@ -77,10 +85,10 @@ function Corousel(props) {
                         <div className='corouselBody'>
                             <div className='corouselwork' id={`corouselhandel${type}`}>
                                 {
-                                    booksData['data'].map((e)=>{
-                                        return <Bookcard detail={e} key={e._id}/>
+                                    booksData['data'].map((e) => {
+                                        return <Bookcard detail={e} key={e._id} />
                                     })
-                                }       
+                                }
 
                             </div>
                         </div>
