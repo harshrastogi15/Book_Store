@@ -1,12 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Private/css/Corousel.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight, faCircleRight } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import Bookcard from './Bookcard';
+import { urlbook } from '../Appurl';
 
 function Corousel(props) {
-    const { type,delay } = props;
+
+    const { type, delay } = props;
+    const [booksData, updateData] = useState({
+        load: false,
+        data: {}
+    });
+
     const runningCorouselnext = () => {
         const data = document.getElementById(`corouselhandel${type}`);
         // console.log(data.children);
@@ -33,33 +40,55 @@ function Corousel(props) {
         return () => clearInterval(interval);
     }, [runningCorouselnext])
 
+    useEffect(() => {
+        fetch(`${urlbook}/sendbooks/all`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                updateData({
+                    ...booksData,
+                    load: true,
+                    data: res.bookdata
+                })
+            })
+            .catch((error) => {
+                updateData({
+                    ...booksData,
+                    load: false,
+                })
+            })
+
+    }, []);
+
     return (
         <div className='multiCorousel'>
-            <div className='corouselTittle'>
-                <h1>{type}</h1>
-                <Link to={`/type/${type}`}>
-                    <FontAwesomeIcon className='corouselIcon' icon={faCircleRight} />
-                </Link>
-            </div>
-            <div className='corouseldesign'>
-                <FontAwesomeIcon className='corouselIcon' icon={faAngleLeft} onClick={runningCorouselprev} />
-                <div className='corouselBody'>
-                    <div className='corouselwork' id={`corouselhandel${type}`}>
-                        <Bookcard/>
-                        <Bookcard/>
-                        <Bookcard/>
-                        <Bookcard/>
-                        <div className='corouselCard'>First</div>
-                        <div className='corouselCard'>Second</div>
-                        <div className='corouselCard'>Third</div>
-                        <div className='corouselCard'>Fourth</div>
-                        <div className='corouselCard'>Five</div>
-                        <div className='corouselCard'>Six</div>
-                        <div className='corouselCard'>Seven</div>
+            {booksData['load'] ?
+                <div>
+                    <div className='corouselTittle'>
+                        <h1>{type}</h1>
+                        <Link to={`/type/${type}`}>
+                            <FontAwesomeIcon className='corouselIcon' icon={faCircleRight} />
+                        </Link>
+                    </div>
+                    <div className='corouseldesign'>
+                        <FontAwesomeIcon className='corouselIcon' icon={faAngleLeft} onClick={runningCorouselprev} />
+                        <div className='corouselBody'>
+                            <div className='corouselwork' id={`corouselhandel${type}`}>
+                                {
+                                    booksData['data'].map((e)=>{
+                                        return <Bookcard detail={e} key={e._id}/>
+                                    })
+                                }       
+
+                            </div>
+                        </div>
+                        <FontAwesomeIcon className='corouselIcon' icon={faAngleRight} onClick={runningCorouselnext} />
                     </div>
                 </div>
-                <FontAwesomeIcon className='corouselIcon' icon={faAngleRight} onClick={runningCorouselnext} />
-            </div>
+                :
+                <div></div>}
         </div>
     )
 }
