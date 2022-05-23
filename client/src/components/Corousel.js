@@ -4,10 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight, faCircleRight } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import Bookcard from './Bookcard';
+import Loader from '../loader/Loader'
 import { urlbook } from '../Appurl';
 
 function Corousel(props) {
-
+    const [Isloding, updateLoding] = useState(false);
     const { type, delay } = props;
     const [booksData, updateData] = useState({
         load: false,
@@ -40,8 +41,9 @@ function Corousel(props) {
         return () => clearInterval(interval);
     }, [runningCorouselnext])
 
-    useEffect(() => {
-        fetch(`${urlbook}/sendbooks/all`, {
+    const datafetch = async ()=>{
+        updateLoding(true);
+        await fetch(`${urlbook}/sendbooks/all`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         })
@@ -54,7 +56,7 @@ function Corousel(props) {
                         load: true,
                         data: res.bookdata
                     })
-                }else{
+                } else {
                     updateData({
                         ...booksData,
                         load: false,
@@ -67,11 +69,20 @@ function Corousel(props) {
                     load: false,
                 })
             })
+            updateLoding(false)
+    }
+
+
+    useEffect(() => {
+        datafetch();
 
     }, []);
 
     return (
         <div className='multiCorousel'>
+            {Isloding ?
+                <Loader /> : <div></div>
+            }
             {booksData['load'] ?
                 <div>
                     <div className='corouselTittle'>

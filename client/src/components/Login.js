@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../Private/css/LoginSign.css'
 import { Link,useNavigate } from 'react-router-dom'
 import {GifLogo1} from './GifLogo'
+import Loader from '../loader/Loader'
 
 function Login() {
 
@@ -11,6 +12,7 @@ function Login() {
       data[i].classList.add('float')
     }
   }
+  const [Isloding, updateLoding] = useState(false);
 
   const [logindetail, updatelogin] = useState({
     email: "",
@@ -35,6 +37,7 @@ function Login() {
 
   const onclickLogin = async () => {
     updateWarning("Loading ...")
+    updateLoding(true);
     await fetch(`/HarshrastogibookService/api/auth/login`,
       {
         method: 'POST',
@@ -56,6 +59,7 @@ function Login() {
       .catch(() => {
         updateWarning("Something is wrong")
       })
+      updateLoding(false)
   }
 
   useEffect(() => {
@@ -78,6 +82,9 @@ function Login() {
 
   return (
     <div className='Lscard' >
+      {Isloding?
+      <Loader/>:<div></div>
+      }
       <div className='login'>
         <div>
           <h1>Login</h1>

@@ -2,7 +2,6 @@ import React from 'react'
 import Corousel from './Corousel'
 import '../Private/css/Home.css'
 import {GifLogo2} from './GifLogo'
-import Bookcard from './Bookcard'
 
 function Home() {
 

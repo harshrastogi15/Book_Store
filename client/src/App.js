@@ -28,7 +28,7 @@ function App() {
           <Route exact path='/about' element={<Default message="Updated soon"/>} />
           <Route exact path='/' element={<Home />} />
           <Route exact path='/addbookdata' element={<BookAddForm/>} />
-          <Route path='/book/:s/:a' element={<Default message="This Page is not exist"/>} />
+          <Route path='/book/:name/:author/:id' element={<Default message="This Page is not exist"/>} />
           <Route path='/:s' element={<Default message="This Page is not exist"/>} />
           <Route path='type/:s' element={<Default message="Updated Soon"/>} />
         </Routes>

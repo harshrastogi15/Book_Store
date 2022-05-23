@@ -9,7 +9,7 @@ const fs = require('fs');
 const router = express.Router();
 
 router.post('/addbook', upload.single('img'), async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     // console.log(req);
     try {
         let book = await new Books({
