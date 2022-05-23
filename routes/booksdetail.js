@@ -58,4 +58,21 @@ router.get('/sendbooks/all', async (req, res) => {
     }
 })
 
+router.post('/image',async(req,res)=>{
+    // console.log(req.body);
+
+    try {
+        const image = await BooksImage.findOne({title:req.body.title,bookId:req.body.bookId});
+        if(!image){
+            return res.json({status:-1});
+        }
+
+        res.json({status:0,image:image['img']});
+    } catch (error) {
+        
+        res.json({status:-2});
+    }
+
+})
+
 module.exports = router;

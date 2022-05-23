@@ -47,8 +47,8 @@ function Corousel(props) {
         })
             .then((res) => res.json())
             .then((res) => {
-                console.log(res);
-                if (res.status == 0) {
+                // console.log(res);
+                if (res.status === 0) {
                     updateData({
                         ...booksData,
                         load: true,
