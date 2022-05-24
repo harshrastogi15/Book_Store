@@ -40,7 +40,7 @@ function BookAddForm() {
                     {/* <input type='text' id='category' name='category' /> */}
                     <select id="category" name="category">
                         <option value="Select">Select</option>
-                        <option value="Navel">Novel</option>
+                        <option value="Novel">Novel</option>
                     </select>
                 </div>
                 <div>

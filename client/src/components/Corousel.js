@@ -35,7 +35,9 @@ function Corousel(props) {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            runningCorouselnext();
+            if(booksData.load){
+                runningCorouselnext();
+            }
             // console.log('created');
         }, Number(delay));
         return () => clearInterval(interval);

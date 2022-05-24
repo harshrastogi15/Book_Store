@@ -27,6 +27,7 @@ app.use(cors())
 
 app.use(`/${apikey}/api/auth`, require('./routes/auth'));
 app.use(`/${apikey}/api/book`, require('./routes/booksdetail'));
+app.use(`/${apikey}/api/book`, require('./routes/Onebook'));
 
 
 app.get('*', (req, res) => {

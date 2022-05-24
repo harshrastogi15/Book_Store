@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../Private/css/Corousel.css'
+import {arrayBufferToBase64} from '../specialFunction/BufferToBinary'
 import {urlbook} from '../Appurl'
 import { Link } from 'react-router-dom'
 function Bookcard(props) {
@@ -13,12 +14,6 @@ function Bookcard(props) {
     })
     // console.log(_id);
 
-    const arrayBufferToBase64 =(buffer)=>{
-        var binary = '';
-        var bytes = [].slice.call(new Uint8Array(buffer));
-        bytes.forEach((b) => binary += String.fromCharCode(b));
-        return window.btoa(binary);
-    };
     
     useEffect(()=>{
         fetch(`${urlbook}/image`,{
@@ -57,7 +52,7 @@ function Bookcard(props) {
 
     return (
         <div className='bookcard'>
-            <Link to={`book/${title}/${author}/${_id}`}>
+            <Link to={`book/${_id}/${title}/${author}`}>
                 {/* {image.load?console.log(image):console.log('error')} */}
                 <div className='image'>
                     {image.load?

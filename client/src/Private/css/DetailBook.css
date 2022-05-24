@@ -1,0 +1,90 @@
+.bookdetail{
+    /* background: linear-gradient(to right, rgb(227, 226, 226), rgb(243, 240, 240)); */
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(243, 240, 240));
+    width: 80%;
+    /* height: 300px; */
+    margin: 10px auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-style: italic;
+}
+
+
+.bookdetail .aboutBook{
+    padding: 10px;
+    width: 60%;
+    display: flex;
+    border-right: 2px solid rgb(194, 194, 194);
+}
+
+.bookdetail .aboutBook .bookimage{
+    width: 40%;
+    height: 270px;
+}
+
+.bookdetail .aboutBook .bookdata{
+    width: 60%;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+.bookdetail .aboutBook .bookdata h1{
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.bookdetail .aboutBook .bookdata h2{
+    font-size: 16px;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.bookdetail .aboutBook .bookdata h3{
+    font-size: 16px;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.bookdetail .aboutBook .bookdata h4{
+    font-size: 16px;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1px;
+}
+
+.bookdetail span{
+    font-style: normal;
+    font-weight: 500;
+}
+
+.bookdetail .bookreviews{
+    width: 40%;
+    height: 100%;
+}
+
+
+@media (max-width:769px) {
+    .bookdetail{
+        width: 93%;
+    }
+}
+
+@media (max-width:593px) {
+    .bookdetail{
+       flex-wrap: wrap;
+    }
+    .bookdetail .aboutBook{
+        width: 100%;
+        border: none;
+    }
+}
