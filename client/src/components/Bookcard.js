@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Private/css/Corousel.css'
 import { arrayBufferToBase64 } from '../specialFunction/BufferToBinary'
 import { urlbook } from '../Appurl'
@@ -49,7 +49,10 @@ function Bookcard(props) {
             )
     }
 
-    fetchImage();
+    useEffect(()=>{
+        fetchImage();
+    },[])
+
 
     return (
         <div className='bookcard'>
