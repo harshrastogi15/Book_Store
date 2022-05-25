@@ -1,0 +1,46 @@
+.reviewheading {
+    padding: 0;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
+    border-bottom: 2px solid rgb(194, 194, 194);
+}
+
+.reviews {
+    height: 250px;
+    overflow: auto;
+}
+
+.viewerreview {
+    border-top: 2px solid rgb(194, 194, 194);
+}
+
+.viewerreview p {
+    padding: 0;
+    margin: 0;
+}
+
+.viewerreview .nostar {
+    color: rgb(94, 92, 92);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.viewerreview .yesstar {
+    color: rgb(255, 174, 0);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.viewerreview .writereview {
+    outline: none;
+    border: none;
+    border: 2px solid rgb(189, 189, 189);
+    width: 90%;
+    height: 70px;
+    resize: none;
+    font-style: oblique;
+    font-size: 16px;
+    /* background: linear-gradient(to right, rgb(255, 255, 255), rgb(243, 240, 240)); */
+    background-color: rgb(243, 240, 240);
+}

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import '../Private/css/DetailBook.css'
-import iurl from '../Private/data/booksimage/amnesty.jpg'
 import { urlbook } from '../Appurl'
 import Loader from '../loader/Loader'
 import { arrayBufferToBase64 } from '../specialFunction/BufferToBinary'
+
+import Review from './Review'
 
 
 function DetailBook() {
@@ -114,7 +115,7 @@ function DetailBook() {
                 </div>
             </div>
             <div className='bookreviews'>
-                <h1>Reviews</h1>
+                <Review/>
             </div>
         </div>
     )

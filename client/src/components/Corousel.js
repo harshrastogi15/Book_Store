@@ -35,7 +35,7 @@ function Corousel(props) {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if(booksData.load){
+            if (booksData.load) {
                 runningCorouselnext();
             }
             // console.log('created');
@@ -43,7 +43,7 @@ function Corousel(props) {
         return () => clearInterval(interval);
     }, [runningCorouselnext])
 
-    const datafetch = async ()=>{
+    const datafetch = async () => {
         updateLoding(true);
         await fetch(`${urlbook}/sendbooks/all`, {
             method: 'GET',
@@ -71,7 +71,7 @@ function Corousel(props) {
                     load: false,
                 })
             })
-            updateLoding(false)
+        updateLoding(false)
     }
 
 
