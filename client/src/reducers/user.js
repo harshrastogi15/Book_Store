@@ -1,7 +1,11 @@
 
 const userstate = {
     name: "user",
-    login: false
+    login: false,
+    email :"",
+    pincode: "",
+    phone : "",
+    address : ""
 }
 
 const userreducer = (state = userstate, action) => {
@@ -10,12 +14,20 @@ const userreducer = (state = userstate, action) => {
             return {
                 ...state,
                 login: true,
-                name: action.payload.products.name
+                name: action.payload.products.name,
+                email : action.payload.products.email,
+                pincode : action.payload.products.pincode,
+                address : action.payload.products.address,
+                phone : action.payload.products.phone
             }
         default: return {
             ...state,
             login: false,
-            name: "user"
+            name: "user",
+            email :"",
+            pincode :"",
+            address :"",
+            phone :"",
         }
     }
 }

@@ -115,7 +115,7 @@ function DetailBook() {
                 </div>
             </div>
             <div className='bookreviews'>
-                <Review/>
+                <Review bookid = {bookid}/>
             </div>
         </div>
     )

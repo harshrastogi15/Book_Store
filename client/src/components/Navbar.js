@@ -13,6 +13,9 @@ import { updateUser } from '../actions/user';
 function Navbar() {
   const user = useSelector((state) => state.user.name);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [togglerstate, changetooglerstate] = useState(false);
+
   async function fetchdata() {
     var userdata = {};
     await fetch(`/HarshrastogibookService/api/auth/access`, {
@@ -23,7 +26,7 @@ function Navbar() {
       }
     }).then(response => response.json())
       .then(data => { userdata = data;})
-    if(userdata.status==0){
+    if(userdata.status===0){
       dispatch(updateUser(userdata.data))
     }else{
       localStorage.removeItem('token');
@@ -33,8 +36,6 @@ function Navbar() {
     fetchdata();
   }
 
-  const navigate = useNavigate();
-  const [togglerstate, changetooglerstate] = useState(false);
 
   const logoutuser = async () => {
     await localStorage.removeItem('token');
