@@ -3,7 +3,7 @@
     margin: 0;
     font-size: 24px;
     font-weight: 400;
-    border-bottom: 2px solid rgb(194, 194, 194);
+    border-bottom: 2px solid rgb(67, 64, 64);
 }
 
 .reviews {
@@ -11,34 +11,64 @@
     overflow: auto;
 }
 
-.viewerreview {
-    border-top: 2px solid rgb(194, 194, 194);
+.reviews h1{
+    font-size: 24px;
+    font-weight: normal;
+    margin: 20px auto;
 }
 
-.viewerreview p {
+.reviews .ViewerReview{
+    border-bottom: 2px solid rgb(182, 180, 180);
+    padding-top: 15px;
+    margin-bottom: 10px;
+}
+
+.reviews .ViewerStar{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.reviews .ViewerStar p{
     padding: 0;
     margin: 0;
 }
 
-.viewerreview p:nth-child(2){
+.reviews .ViewerReviewTest{
+    font-style: normal;
+    padding: 3px 0px;
+}
+
+.UserReview {
+    border-top: 2px solid rgb(67, 64, 64);
+}
+
+.UserReview p {
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+}
+
+.UserReview p:nth-child(2){
     color: red;
     font-style: normal;
+    font-size: 16px;
     height: 25px;
 }
 
-.viewerreview .nostar {
+.UserReview .nostar {
     color: rgb(94, 92, 92);
     font-size: 24px;
     cursor: pointer;
 }
 
-.viewerreview .yesstar {
+.UserReview .yesstar {
     color: rgb(255, 174, 0);
     font-size: 24px;
     cursor: pointer;
 }
 
-.viewerreview .writereview {
+.UserReview .writereview {
     outline: none;
     border: none;
     border: 2px solid rgb(189, 189, 189);

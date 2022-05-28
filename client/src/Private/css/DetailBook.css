@@ -18,17 +18,19 @@
     padding: 10px;
     width: 60%;
     display: flex;
+    flex-wrap: wrap;
     /* border-right: 2px solid rgb(194, 194, 194); */
 }
 
 .bookdetail .aboutBook .bookimage {
-    width: 40%;
+    width: 200px;
     height: 270px;
+    padding-right: 20px;
 }
 
 .bookdetail .aboutBook .bookdata {
-    width: 60%;
-    padding-left: 20px;
+    /* width: 60%; */
+    /* padding-left: 20px; */
     padding-top: 5px;
 }
 

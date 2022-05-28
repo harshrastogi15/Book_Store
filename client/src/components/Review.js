@@ -1,18 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import '../Private/css/Review.css'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { urlreviewbook } from '../Appurl';
 
 
 function Review(props) {
-    const {bookid} = props; 
+    const { bookid } = props;
     const naviagte = useNavigate();
     const IsLogin = useSelector((state) => state.user.login);
     const [cntStar, updateStar] = useState(0);
     const [reviewdata, updatereview] = useState("");
     const [message, updatemessage] = useState("")
+    const [fetchReviewData, updatefetchReviewData] = useState([]);
 
 
     const starreview = (e) => {
@@ -47,18 +49,81 @@ function Review(props) {
         }
 
         updatemessage("");
-        console.log(bookid);
-        console.log(cntStar);
-        console.log(reviewdata);
+
+        fetch(`${urlreviewbook}/addreview`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth_token': `${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({
+                bookid,
+                star: cntStar,
+                review: reviewdata
+            })
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res);
+                if (res.status === 0) {
+                    updatemessage('Added to reviews')
+                    fetchReview();
+                    updatereview("");
+                } else {
+                    updatemessage('Sorry, Unable to add')
+                }
+            })
+            .catch();
     }
+
+    const fetchReview = () => {
+        fetch(`${urlreviewbook}/sendreview/${bookid}`)
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res);
+                if (res.status === 0) {
+                    updatefetchReviewData(res.data);
+                }
+            })
+    }
+
+    const createreviewStar = (star) => {
+        var row = [];
+        for (let index = 0; index < star; index++) {
+            row.push(<span style={{ 'color': 'rgb(255, 174, 0)' }} key={index}><FontAwesomeIcon icon={faStar} /></span>)
+        }
+        for (let index = star; index < 5; index++) {
+            row.push(<span style={{ 'color': 'rgb(94, 92, 92)' }} key={index}><FontAwesomeIcon icon={faStar} /></span>)
+        }
+        return <div id=''>
+            {row}
+        </div>
+    }
+
+    useEffect(() => {
+        fetchReview();
+    }, [])
+
 
     return (
         <div>
             <h1 className='reviewheading'>Reviews</h1>
             <div className='reviews'>
+                {/* {console.log(fetchReviewData)} */}
+                {fetchReviewData.length === 0 ? <h1> Be the first one  to give review </h1> :
+                    fetchReviewData.map((e) => {
+                        return <div className='ViewerReview' key={e.id}>
+                            <div className='ViewerStar'>
+                                <p>By: {e.username.toUpperCase()}</p>
+                                {createreviewStar(e.star)}
+                            </div>
+                            <div className='ViewerReviewTest'>{e.reviewmessage}</div>
+                        </div>
+                    })
+                }
 
             </div>
-            <div className='viewerreview'>
+            <div className='UserReview'>
                 <p>Give your review</p>
                 <p>{message}</p>
                 <div id='star'>
