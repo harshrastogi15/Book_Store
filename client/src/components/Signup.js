@@ -3,12 +3,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../Private/css/LoginSign.css'
 import {GifLogo1} from './GifLogo';
 function Signup() {
+
   const float = () => {
     var data = document.getElementsByClassName('float-label-field');
     for (var i = 0; i < data.length; i++) {
       data[i].classList.add('float')
     }
   }
+
   const [signupDetail, updateSignup] = useState({
     name: "",
     phone: "",
@@ -18,6 +20,7 @@ function Signup() {
     password: "",
     Cpassword: ""
   })
+
   const [warning, updateWarning] = useState("");
   const [warningEmail, updateWarningEmail] = useState("");
   const [warningPass, updateWarningPass] = useState("");
@@ -61,6 +64,12 @@ function Signup() {
       })
   }
 
+  const handleKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      onclickSign();
+    }
+  }
+
   useEffect(() => {
     var valide = validateemail(signupDetail.email);
     if (!valide && signupDetail.email.length > 0) {
@@ -95,7 +104,7 @@ function Signup() {
           <p>Get access to our service</p>
           <p className='warning'>{warning}</p>
         </div>
-        <form>
+        <form onKeyDown={handleKeyPress}>
           <fieldset className='float-label-field'>
             <label htmlFor="name">Name</label>
             <input id="name" type='text' onFocus={float} name="name" value={signupDetail.name} onChange={e => updatevalue(e)} />

@@ -28,7 +28,7 @@ function Sidenavbar(props) {
                     <div className="dropdown">
                         <button className="dropbtn" type='button'>{user.toUpperCase()}</button>
                         <div className="dropdown-content">
-                            <Link to="/">Profile</Link>
+                            <Link to="/user">Profile</Link>
                             <Link to="/login" onClick={logoutfunc}>Logout</Link>
                         </div>
                     </div> :

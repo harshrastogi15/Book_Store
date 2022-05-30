@@ -71,7 +71,7 @@ function Navbar() {
           <div className="dropdown">
             <button className="dropbtn" type='button'>{user.toUpperCase()}</button>
             <div className="dropdown-content">
-              <Link to="/">Profile</Link>
+              <Link to="/user">Profile</Link>
               <Link to="/login" onClick={logoutuser}>Logout</Link>
             </div>
           </div> :

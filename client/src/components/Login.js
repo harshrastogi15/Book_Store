@@ -62,6 +62,13 @@ function Login() {
       updateLoding(false)
   }
 
+  const handleKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      onclickLogin();
+    }
+  }
+
+
   useEffect(() => {
     var valide = validateemail(logindetail.email);
     if (!valide && logindetail.email.length > 0) {
@@ -91,7 +98,7 @@ function Login() {
           <p>Get access to our service</p>
           <p className='warning'>{warning}</p>
         </div>
-        <form>
+        <form onKeyDown={handleKeyPress}>
           <fieldset className='float-label-field'>
             <label htmlFor="email">Email</label>
             <input id="email" type='Email' onFocus={float} name='email' value={logindetail.email} onChange={e => updatevalue(e)} />

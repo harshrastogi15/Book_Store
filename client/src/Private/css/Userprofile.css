@@ -1,0 +1,54 @@
+.userprofile{
+    margin: 20px auto;
+    width: 80%;
+    /* height: 300px; */
+    border-radius: 10px;
+    background: linear-gradient(to right, rgb(255, 255, 255),rgb(243, 233, 233));
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.AboutUser{
+    width: 55%;
+    margin: 10px;
+}
+
+.AboutUser .UserName{
+    display: flex;
+    border-bottom: 2px solid rgb(197, 194, 194);
+    align-items: center;
+}
+
+.AboutUser .ProfileLogo{
+    width: 60px;
+    height: 60px;
+}
+.UserName p{
+    font-size: 24px;
+    padding: 0px;
+    margin: 0;
+    margin-left: 5px;
+}
+
+.AboutUser .Userdetail p{
+    font-style: oblique;
+}
+
+.AboutUser .Userdetail span{
+    font-weight: 500;
+    font-style: normal;
+}
+
+@media (max-width:678px) {
+    .userprofile{
+        width: 95%;
+    }
+}
+
+@media (max-width:618px) {
+    .AboutUser{
+        width: 90%;
+    }
+}
+
+
