@@ -5,10 +5,11 @@ import '../Private/css/Review.css'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { urlreviewbook } from '../Appurl';
+import { createreviewStar } from '../specialFunction/CreateReviewStar';
 
 
 function Review(props) {
-    const { bookid } = props;
+    const { bookid,bookname } = props;
     const naviagte = useNavigate();
     const IsLogin = useSelector((state) => state.user.login);
     const [cntStar, updateStar] = useState(0);
@@ -59,6 +60,7 @@ function Review(props) {
             body: JSON.stringify({
                 bookid,
                 star: cntStar,
+                bookname:bookname,
                 review: reviewdata
             })
         })
@@ -87,19 +89,6 @@ function Review(props) {
             })
     }
 
-    const createreviewStar = (star) => {
-        var row = [];
-        for (let index = 0; index < star; index++) {
-            row.push(<span style={{ 'color': 'rgb(255, 174, 0)' }} key={index}><FontAwesomeIcon icon={faStar} /></span>)
-        }
-        for (let index = star; index < 5; index++) {
-            row.push(<span style={{ 'color': 'rgb(94, 92, 92)' }} key={index}><FontAwesomeIcon icon={faStar} /></span>)
-        }
-        return <div id=''>
-            {row}
-        </div>
-    }
-
     useEffect(() => {
         fetchReview();
     }, [])
@@ -113,11 +102,12 @@ function Review(props) {
                 {fetchReviewData.length === 0 ? <h1> Be the first one  to give review </h1> :
                     fetchReviewData.map((e) => {
                         return <div className='ViewerReview' key={e.id}>
+                            <div className='ViewerReviewText'>{e.reviewmessage}</div>
                             <div className='ViewerStar'>
-                                <p>By: {e.username.toUpperCase()}</p>
+                                <p><span>By</span>: {e.username.toUpperCase()}</p>
+                                {/* {createreviewStar(e.star)} */}
                                 {createreviewStar(e.star)}
                             </div>
-                            <div className='ViewerReviewTest'>{e.reviewmessage}</div>
                         </div>
                     })
                 }

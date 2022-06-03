@@ -11,6 +11,12 @@
     background-color: rgba(22, 21, 21, 0.375);
 }
 
+.loadercorousel{
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+}
+
 .lds-ring {
     display: inline-block;
     position: relative;
@@ -22,8 +28,8 @@
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: 64px;
-    height: 64px;
+    width: 40px;
+    height: 40px;
     margin: 8px;
     border: 8px solid #fff;
     border-radius: 50%;

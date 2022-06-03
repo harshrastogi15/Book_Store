@@ -17,6 +17,7 @@ router.post('/addreview', jwtaccess, async (req, res) => {
             bookId: req.body.bookid,
             userId: req.userid,
             username: username,
+            bookname:req.body.bookname,
             star: req.body.star,
             review: req.body.review
         })

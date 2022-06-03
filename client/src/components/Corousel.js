@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight, faCircleRight } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import Bookcard from './Bookcard';
-import Loader from '../loader/Loader'
+// import Loader from '../loader/Loader'
 import { urlbook } from '../Appurl';
+import LoaderCorousel from '../loader/LoaderCorousel';
 
 function Corousel(props) {
     const [Isloding, updateLoding] = useState(false);
@@ -83,7 +84,7 @@ function Corousel(props) {
     return (
         <div className='multiCorousel'>
             {Isloding ?
-                <Loader /> : <div></div>
+                <LoaderCorousel /> : <div></div>
             }
             {booksData['load'] ?
                 <div>

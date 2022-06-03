@@ -1,3 +1,7 @@
+*{
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: rgba(223, 225, 228, 0.613);
     scroll-behavior: smooth;

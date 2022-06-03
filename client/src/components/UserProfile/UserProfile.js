@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import '../../Private/css/Userprofile.css'
 import Lurl from '../../Private/data/tittleLogo.png'
+import UserReview from './UserReview'
 
 
 function UserProfile() {
@@ -31,8 +32,8 @@ function UserProfile() {
                     <button type='button'>Edit</button>
                 </div>
             </div>
-            <div>
-                <h1>Comment</h1>
+            <div className='UserReviewDetail'>
+                <UserReview/>
             </div>
         </div>
 }
