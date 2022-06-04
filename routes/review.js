@@ -17,7 +17,7 @@ router.post('/addreview', jwtaccess, async (req, res) => {
             bookId: req.body.bookid,
             userId: req.userid,
             username: username,
-            bookname:req.body.bookname,
+            bookname: req.body.bookname,
             star: req.body.star,
             review: req.body.review
         })
@@ -40,14 +40,14 @@ router.get('/sendreview/:id', async (req, res) => {
         var review = await Reviews.find({ bookId: id });
         if (!review) {
             res.json({ status: -1 });
-        }   
-        var data = new Array();    
-        for( i in review){
+        }
+        var data = new Array();
+        for (i in review) {
             data.push({
-                username : review[i].username,
-                star :review[i].star,
-                reviewmessage : review[i].review,
-                id : review[i]._id
+                username: review[i].username,
+                star: review[i].star,
+                reviewmessage: review[i].review,
+                id: review[i]._id
             })
         }
         res.json({ status: 0, data });
@@ -56,5 +56,29 @@ router.get('/sendreview/:id', async (req, res) => {
     }
 })
 
+router.post('/userreview', jwtaccess, async (req, res) => {
+    try {
+        
+        var id = req.userid;
+        var review = await Reviews.find({ userId: id });
+        if (!review) {
+            res.json({ status: -1 });
+        }
+
+        var data = new Array();
+        for (i in review) {
+            data.push({
+                bookname: review[i].bookname,
+                star: review[i].star,
+                reviewmessage: review[i].review,
+                id: review[i]._id
+            })
+        }
+        res.json({status:0,data});
+
+    } catch (error) {
+        res.json({ status: -2 });
+    }
+})
 
 module.exports = router;

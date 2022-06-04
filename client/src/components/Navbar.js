@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../Private/css/Navbar.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,9 +12,9 @@ import { updateUser } from '../actions/user';
 
 function Navbar() {
   const user = useSelector((state) => state.user.name);
+  const login = useSelector(state => state.user.login)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [togglerstate, changetooglerstate] = useState(false);
 
   async function fetchdata() {
     var userdata = {};
@@ -44,11 +44,7 @@ function Navbar() {
   }
 
   const navtoggler = () => {
-    if (togglerstate)
-      changetooglerstate(false)
-    else {
-      changetooglerstate(true)
-    }
+    document.getElementById('sidenav').style.width="255px";
   }
 
   return (
@@ -56,7 +52,7 @@ function Navbar() {
       <div className='navtoggler' onClick={navtoggler}>
         <FontAwesomeIcon icon={faBars} />
       </div>
-      {togglerstate ? <Sidenavbar tooglefunc={navtoggler} logoutfunc={logoutuser} /> : <div />}
+      <Sidenavbar logoutfunc={logoutuser}/>
       <Logo />
       <ul className='navlinks'>
         <li>
@@ -67,7 +63,7 @@ function Navbar() {
       </ul>
       <CartIcon />
       <ul className='navauth'>
-        {localStorage.getItem('token') ?
+        {login ?
           <div className="dropdown">
             <button className="dropbtn" type='button'>{user.toUpperCase()}</button>
             <div className="dropdown-content">

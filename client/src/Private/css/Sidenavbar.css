@@ -1,11 +1,12 @@
-.sidenav{
+#sidenav{
     position: fixed;
     top: 0px;
     left: 0px;
-    width: 255px;
-    background-color: gray;
+    width: 0px;
+    background-color: #cdd8d8;
     height: 100vh;
-    transition: 2ms ease-in-out;
+    transition: 800ms ease-in-out;
+    overflow: hidden;
 }
 
 .sidelogo{
@@ -20,10 +21,71 @@
     height: 54px;
 }
 
+.SideNavDetail{
+    margin: 10px 30px;
+    height: calc(100vh - 170px);
+    overflow: auto;
+}
+
+.UserNameSideNav{
+    margin: 0;
+    border-bottom: 3px solid rgb(237, 237, 237);
+}
+
+.UserNameSideNav p{
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0;
+    margin: auto;
+    width: fit-content;
+    font-style: italic;
+}
+
 .Sidenavlinks{
     list-style: none;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.Sidenavlinks li{
+    width: fit-content;
+    margin: auto;
+}
+
+.Sidenavlinks li a{
+    font-size: 17px;
+    text-decoration: none;
+    color: black;
 }
 
 .sidenavauth{
     list-style: none;
+    padding: 0;
+}
+
+.sidenavauth div{
+    display: flex;
+    justify-content: center;
+}
+
+.sidenavauth div li{
+    padding: 10px;
+}
+
+.sidenavauth div li:nth-child(2){
+    font-weight: 500;
+
+}
+
+.sidenavauth div li a{
+    text-decoration: none;
+    color: black;
+}
+
+.sidenavauth p{
+    padding: 0;
+    margin: auto;
+    width: fit-content;
+    color: rgba(83, 82, 82, 0.609);
 }

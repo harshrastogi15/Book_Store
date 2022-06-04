@@ -8,7 +8,7 @@ const jwtaccess = async(req,res,next)=>{
         req.userid = decoded.id;
         next();
     } catch (error) {
-        res.status(400).json({status: -1 });
+        res.json({status: -1 });
     }
 }
 

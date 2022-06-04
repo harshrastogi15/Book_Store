@@ -6,42 +6,48 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import Logo from './Logo'
 import { useSelector } from 'react-redux'
 function Sidenavbar(props) {
-    const { tooglefunc,logoutfunc } = props;
-    const user = useSelector((state)=>state.user.name)
+    const { logoutfunc } = props;
+    const user = useSelector((state) => state.user.name)
+    const login = useSelector((state) => state.user.login)
+
+
+    const togglerfunction = () => {
+        document.getElementById('sidenav').style.width = "0px";
+    }
+
     return (
-        <div className='sidenav' >
+        <div id='sidenav' >
             <div className='sidelogo' >
                 <Logo />
-                <div className='navtoggler' onClick={tooglefunc}>
-                    <FontAwesomeIcon icon={faXmark} />
+                <div className='navtoggler' >
+                    <FontAwesomeIcon icon={faXmark} onClick={togglerfunction} />
                 </div>
             </div>
-            <ul className='Sidenavlinks'>
-                <li>
-                    <Link className='navlinkpath' to="/" onClick={tooglefunc}>Home</Link>
-                </li>
-                <li><Link className='navlinkpath' to="/search" onClick={tooglefunc}>Search</Link></li>
-                <li><Link className='navlinkpath' to="/about" onClick={tooglefunc}>About</Link></li>
-            </ul>
+            <div className='SideNavDetail'>
+                <div className='UserNameSideNav'>
+                    <p><span>hi,</span> {user.toUpperCase()}</p>
+                </div>
+                <ul className='Sidenavlinks'>
+                    <li><Link to="/" onClick={togglerfunction}>Home</Link></li>
+                    <li><Link to="/search" onClick={togglerfunction}>Search</Link></li>
+                    <li><Link to="/about" onClick={togglerfunction}>About</Link></li>
+                    <li><Link to="/user" onClick={togglerfunction}>Profile</Link></li>
+                </ul>
+            </div>
             <ul className='sidenavauth'>
-                {localStorage.getItem('token') ?
-                    <div className="dropdown">
-                        <button className="dropbtn" type='button'>{user.toUpperCase()}</button>
-                        <div className="dropdown-content">
-                            <Link to="/user">Profile</Link>
-                            <Link to="/login" onClick={logoutfunc}>Logout</Link>
-                        </div>
-                    </div> :
-                    <div className='sidenavauth'>
-                        <li>
-                            <Link className='navauthpath' to="/login" onClick={tooglefunc}>
-                                Login
-                            </Link>
-                        </li>
+                {login ?
+                    <div>
+                        <li><Link to="/login" onClick={logoutfunc}>Logout</Link></li>
+                    </div>
+                    :
+                    <div>
+                        <li><Link  to="/login" onClick={togglerfunction}>Login</Link></li>
                         <li>Or</li>
-                        <li><Link className='navauthpath' to="/signup" onClick={tooglefunc}>Signup</Link></li>
+                        <li><Link  to="/signup" onClick={togglerfunction}>Signup</Link></li>
                     </div>
                 }
+                <p>1.0.0</p>
+                <p>Copyright reserved</p>
             </ul>
         </div>
     )
