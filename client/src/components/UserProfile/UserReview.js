@@ -3,7 +3,7 @@ import '../../Private/css/Userprofile.css'
 import { createreviewStar } from '../../specialFunction/CreateReviewStar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquarePen, faTrashCan } from '@fortawesome/free-solid-svg-icons'
-import { urlreviewbook } from '../../Appurl'
+import { auth_token, urlreviewbook } from '../../Appurl'
 import LoaderCorousel from '../../loader/LoaderCorousel'
 
 function UserReview() {
@@ -19,7 +19,7 @@ function UserReview() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'auth_token': `${localStorage.getItem('token')}`
+                'auth_token': auth_token
             }
         })
             .then((res) => res.json())

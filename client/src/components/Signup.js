@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { urlauth } from '../Appurl';
 import '../Private/css/LoginSign.css'
 import {GifLogo1} from './GifLogo';
 function Signup() {
@@ -41,7 +42,7 @@ function Signup() {
 
   const onclickSign = async () => {
     updateWarning("Loading ...")
-    await fetch(`/HarshrastogibookService/api/auth/signup`,
+    await fetch(`${urlauth}/signup`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

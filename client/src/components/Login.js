@@ -3,6 +3,7 @@ import '../Private/css/LoginSign.css'
 import { Link,useNavigate } from 'react-router-dom'
 import {GifLogo1} from './GifLogo'
 import Loader from '../loader/Loader'
+import { urlauth } from '../Appurl'
 
 function Login() {
 
@@ -38,7 +39,7 @@ function Login() {
   const onclickLogin = async () => {
     updateWarning("Loading ...")
     updateLoding(true);
-    await fetch(`/HarshrastogibookService/api/auth/login`,
+    await fetch(`${urlauth}/login`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

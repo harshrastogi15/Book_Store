@@ -8,6 +8,7 @@ import CartIcon from './CartIcon';
 import Sidenavbar from './Sidenavbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '../actions/user';
+import { auth_token, urlauth } from '../Appurl';
 
 
 function Navbar() {
@@ -18,11 +19,11 @@ function Navbar() {
 
   async function fetchdata() {
     var userdata = {};
-    await fetch(`/HarshrastogibookService/api/auth/access`, {
+    await fetch(`${urlauth}/access`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'auth_token': `${localStorage.getItem('token')}`
+        'auth_token': auth_token
       }
     }).then(response => response.json())
       .then(data => { userdata = data;})

@@ -4,7 +4,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import '../Private/css/Review.css'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { urlreviewbook } from '../Appurl';
+import { auth_token, urlreviewbook } from '../Appurl';
 import { createreviewStar } from '../specialFunction/CreateReviewStar';
 
 
@@ -55,7 +55,7 @@ function Review(props) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'auth_token': `${localStorage.getItem('token')}`
+                'auth_token': auth_token
             },
             body: JSON.stringify({
                 bookid,
