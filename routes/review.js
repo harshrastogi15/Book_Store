@@ -81,4 +81,15 @@ router.post('/userreview', jwtaccess, async (req, res) => {
     }
 })
 
+router.delete('/deleteuserreview',jwtaccess,async(req,res)=>{
+    try {
+        // console.log(req.body.id);
+        await Reviews.findOneAndDelete({_id:req.body.id});
+        res.json({ status: 0 });
+    } catch (error) {
+        res.json({ status: -2 });
+    }
+})
+
+
 module.exports = router;

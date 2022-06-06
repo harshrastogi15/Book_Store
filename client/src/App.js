@@ -14,6 +14,7 @@ import store from './store';
 import BookAddForm from './components/BookAddForm';
 import DetailBook from './components/DetailBook';
 import UserProfile from './components/UserProfile/UserProfile';
+import CategoryWise from './components/CategoryWise';
 
 function App() {
   return (
@@ -29,11 +30,11 @@ function App() {
           <Route exact path='/search' element={<Default message="Updated soon"/>} />
           <Route exact path='/about' element={<Default message="Updated soon"/>} />
           <Route exact path='/user' element={<UserProfile/>} />
-          <Route exact path='/' element={<Home />} />
           <Route exact path='/addbookdata' element={<BookAddForm/>} />
+          <Route path='/category/:s' element={<CategoryWise/>} />
           <Route exact path='/book/:id/:name/:author' element={<DetailBook/>} />
+          <Route exact path='/' element={<Home />} />
           <Route path='/:s' element={<Default message="This Page is not exist"/>} />
-          <Route path='type/:s' element={<Default message="Updated Soon"/>} />
         </Routes>
       </div>
     </Router>

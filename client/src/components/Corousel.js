@@ -90,7 +90,7 @@ function Corousel(props) {
                 <div>
                     <div className='corouselTittle'>
                         <h1>{type}</h1>
-                        <Link to={`/type/${type}`}>
+                        <Link to={`/category/${type}`}>
                             <FontAwesomeIcon className='corouselIcon' icon={faCircleRight} />
                         </Link>
                     </div>

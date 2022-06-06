@@ -51,7 +51,17 @@ router.post('/addbook', upload.single('img'), async (req, res) => {
 
 router.get('/sendbooks/all', async (req, res) => {
     try {
-        var bookdata = await Books.find({});
+        var bookdata = await Books.find({}).limit(10);
+        res.json({ status: 0, bookdata });
+    } catch (error) {
+        res.json({ status: -2 });
+    }
+})
+
+router.get('/bookcategory/:specific', async (req, res) => {
+    try {
+        var cat = req.params.specific;
+        var bookdata = await Books.find({category:cat});
         res.json({ status: 0, bookdata });
     } catch (error) {
         res.json({ status: -2 });

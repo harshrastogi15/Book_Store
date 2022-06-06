@@ -7,7 +7,8 @@ function Home() {
 
   return (
     <div className='homeclass'>
-      <Corousel type='Play' delay='2000'/>
+      <Corousel type='All' delay='2000'/>
+      <Corousel type='Novel' delay='2000'/>
       <div className='HomecorouselShow'>
         <div className='Homecorouselwidth'>
           <Corousel type='Game' delay='3000'/>

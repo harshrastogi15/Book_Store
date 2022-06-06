@@ -19,7 +19,6 @@ function Review(props) {
 
 
     const starreview = (e) => {
-        // console.log(e);
         var star = document.getElementById('star');
         star = star.children;
         if (cntStar < e) {
@@ -66,7 +65,6 @@ function Review(props) {
         })
             .then((res) => res.json())
             .then((res) => {
-                console.log(res);
                 if (res.status === 0) {
                     updatemessage('Added to reviews')
                     fetchReview();
@@ -82,7 +80,6 @@ function Review(props) {
         fetch(`${urlreviewbook}/sendreview/${bookid}`)
             .then((res) => res.json())
             .then((res) => {
-                console.log(res);
                 if (res.status === 0) {
                     updatefetchReviewData(res.data);
                 }
@@ -98,7 +95,6 @@ function Review(props) {
         <div>
             <h1 className='reviewheading'>Reviews</h1>
             <div className='reviews'>
-                {/* {console.log(fetchReviewData)} */}
                 {fetchReviewData.length === 0 ? <h1> Be the first one  to give review </h1> :
                     fetchReviewData.map((e) => {
                         return <div className='ViewerReview' key={e.id}>
