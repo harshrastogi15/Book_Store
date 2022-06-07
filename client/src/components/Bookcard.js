@@ -56,7 +56,7 @@ function Bookcard(props) {
 
     return (
         <div className='bookcard'>
-            <Link to={`book/${_id}/${title}/${author}`}>
+            <Link to={`/book/${_id}/${title}/${author}`}>
                 {/* {image.load?console.log(image):console.log('error')} */}
                 <div className='image'>
                     {image.load ?

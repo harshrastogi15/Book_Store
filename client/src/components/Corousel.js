@@ -46,13 +46,12 @@ function Corousel(props) {
 
     const datafetch = async () => {
         updateLoding(true);
-        await fetch(`${urlbook}/sendbooks/all`, {
+        await fetch(`${urlbook}/sendbooks/${type}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         })
             .then((res) => res.json())
             .then((res) => {
-                // console.log(res);
                 if (res.status === 0) {
                     updateData({
                         ...booksData,
@@ -86,7 +85,9 @@ function Corousel(props) {
             {Isloding ?
                 <LoaderCorousel /> : <div></div>
             }
-            {booksData['load'] ?
+            {booksData['load'].length===0?<div></div>
+            :
+            booksData['load'] ?
                 <div>
                     <div className='corouselTittle'>
                         <h1>{type}</h1>

@@ -5,6 +5,7 @@ import Loader from '../loader/Loader'
 import { arrayBufferToBase64 } from '../specialFunction/BufferToBinary'
 
 import Review from './Review'
+import Footer from './Footer'
 
 
 function DetailBook() {
@@ -97,26 +98,29 @@ function DetailBook() {
     }, [])
 
     return (
-        <div className='bookdetail'>
-            {IsLoading ? <Loader /> : <div></div>}
-            <div className='aboutBook'>
-                <div className='bookimage'>
-                    {image.load ?
-                        <img src={`data:${image.contentType};base64,${image['img'].toString('base64')}`} alt="Server Error" width={'100%'} height={'100%'} />
-                        : <div>Loading ...</div>
-                    }
+        <div>
+            <div className='bookdetail'>
+                {IsLoading ? <Loader /> : <div></div>}
+                <div className='aboutBook'>
+                    <div className='bookimage'>
+                        {image.load ?
+                            <img src={`data:${image.contentType};base64,${image['img'].toString('base64')}`} alt="Server Error" width={'100%'} height={'100%'} />
+                            : <div>Loading ...</div>
+                        }
+                    </div>
+                    <div className='bookdata'>
+                        <h1>{booktitle}</h1>
+                        <h2>Author: <span>{bookauthor}</span></h2>
+                        <h3>Category:<span> {category}</span></h3>
+                        <h3>Language:<span> {language}</span></h3>
+                        <h4>Publish by <span>{publication}</span></h4>
+                    </div>
                 </div>
-                <div className='bookdata'>
-                    <h1>{booktitle}</h1>
-                    <h2>Author: <span>{bookauthor}</span></h2>
-                    <h3>Category:<span> {category}</span></h3>
-                    <h3>Language:<span> {language}</span></h3>
-                    <h4>Publish by <span>{publication}</span></h4>
+                <div className='bookreviews'>
+                    <Review bookid={bookid} bookname={booktitle} />
                 </div>
             </div>
-            <div className='bookreviews'>
-                <Review bookid = {bookid} bookname={booktitle}/>
-            </div>
+            <Footer />
         </div>
     )
 }

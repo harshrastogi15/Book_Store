@@ -1,0 +1,24 @@
+.BooksCategory{
+    width: 90%;
+    margin: 10px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.BooksCategory .CategoryHeading{
+    width: 100%;
+    text-align: center;
+}
+.BooksCategory .bookcard{
+    padding: 20px 10px 10px 10px;
+    background-color: rgb(223, 222, 222);
+    border-radius: 10px;
+    margin: 20px;
+    transition: 800ms ease-in-out;
+}
+
+.BooksCategory .bookcard:hover{
+    transform: scale(1.09);
+    background-color: white
+}
