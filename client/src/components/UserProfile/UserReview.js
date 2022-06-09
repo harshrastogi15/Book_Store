@@ -51,8 +51,8 @@ function UserReview() {
                     'Content-Type': 'application/json',
                     'auth_token': auth_token
                 },
-                body:JSON.stringify({
-                    id:id
+                body: JSON.stringify({
+                    id: id
                 })
             })
                 .then((res) => res.json())
@@ -60,7 +60,7 @@ function UserReview() {
                     if (res.status === 0) {
                         fetchUserReviews();
                         window.alert('Deleted Successfull');
-                    }else{
+                    } else {
                         window.alert('Unable to delete');
                     }
                 }).catch(() => {
@@ -71,7 +71,7 @@ function UserReview() {
         }
     }
 
-    const updateUserReview =async ()=>{
+    const updateUserReview = async () => {
 
     }
 
@@ -85,27 +85,28 @@ function UserReview() {
             <h1>Your reviews</h1>
             {!Isloding ? <LoaderCorousel /> :
                 UserReviewsData['load'] ?
-                    UserReviewsData['data'].map((e) => {
-                        return <div className='UserReviewAboutBook' key={e.id}>
-                            <div className='UserReviewBookname'>
-                                <p>{e.bookname}</p>
-                                {createreviewStar(e.star)}
-                            </div>
-                            <p>{e.reviewmessage}</p>
-                            <div className='IconDesignUserReview'>
-                                <div>
-                                    <FontAwesomeIcon icon={faSquarePen} onClick={()=>{updateUserReview()}}/>
+                    UserReviewsData['data'].length === 0 ?
+                        <div className='Usernoreviews'>No Reviews available</div>
+                        :
+                        UserReviewsData['data'].map((e) => {
+                            return <div className='UserReviewAboutBook' key={e.id}>
+                                <div className='UserReviewBookname'>
+                                    <p>{e.bookname}</p>
+                                    {createreviewStar(e.star)}
                                 </div>
-                                <div>
-                                    <FontAwesomeIcon icon={faTrashCan} onClick={() => { deleteUserReview(e.id) }} />
+                                <p>{e.reviewmessage}</p>
+                                <div className='IconDesignUserReview'>
+                                    <div>
+                                        <FontAwesomeIcon icon={faSquarePen} onClick={() => { updateUserReview() }} />
+                                    </div>
+                                    <div>
+                                        <FontAwesomeIcon icon={faTrashCan} onClick={() => { deleteUserReview(e.id) }} />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    })
+                        })
                     :
-                    <div>
-                        No Reviews
-                    </div>
+                    <div className='Usernoreviews'>No Reviews available</div>
             }
         </div>
     )

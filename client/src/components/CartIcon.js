@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping} from '@fortawesome/free-solid-svg-icons' 
+import { faStar} from '@fortawesome/free-solid-svg-icons' 
 import {Link} from  'react-router-dom'
 function CartIcon() {
     const cartstyle ={
@@ -29,8 +29,8 @@ function CartIcon() {
     })
   return (
     <div style={cartstyle}>
-        <Link to='/cart' >
-        <FontAwesomeIcon className='cart' onMouseEnter={toggler} onMouseLeave={toggler} icon={faCartShopping}/> 
+        <Link to='/favourite' >
+        <FontAwesomeIcon className='cart' onMouseEnter={toggler} onMouseLeave={toggler} icon={faStar}/> 
         </Link>
     </div>
   )

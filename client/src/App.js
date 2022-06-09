@@ -26,7 +26,7 @@ function App() {
         <Routes>
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/signup' element={<Signup />} />
-          <Route exact path='/cart' element={<Default message="Updated soon"/>} />
+          <Route exact path='/favourite' element={<Default message="Updated soon"/>} />
           <Route exact path='/search' element={<Default message="Updated soon"/>} />
           <Route exact path='/about' element={<Default message="Updated soon"/>} />
           <Route exact path='/user' element={<UserProfile/>} />

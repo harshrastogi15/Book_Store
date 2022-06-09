@@ -109,3 +109,7 @@
     margin: 10px;
     cursor: pointer;
 }
+
+.userReview .Usernoreviews{
+    text-align: center;
+}

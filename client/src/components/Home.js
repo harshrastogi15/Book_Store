@@ -9,11 +9,10 @@ function Home() {
   return (
     <div>
       <div className='homeclass'>
-        <Corousel type='All' delay='2000' />
-        <Corousel type='Novel' delay='2000' />
+        <Corousel type='All' delay='3050' />
         <div className='HomecorouselShow'>
           <div className='Homecorouselwidth'>
-            <Corousel type='All' delay='3000' />
+            <Corousel type='Novel' delay='3100' />
           </div>
           <div className='HomeLogoGif' >
             <GifLogo2 />
