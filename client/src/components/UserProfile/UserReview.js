@@ -13,7 +13,12 @@ function UserReview() {
         data: []
     })
     const [Isloding, updateLoading] = useState(false)
-
+    const [reviewDataUpdate, updatereviewDataUpdate] = useState({
+        bookname:'',
+        reviewmessage:'',
+        id:'',
+        star:''
+    });
 
     const fetchUserReviews = () => {
         fetch(`${urlreviewbook}/userreview`, {
@@ -71,8 +76,20 @@ function UserReview() {
         }
     }
 
-    const updateUserReview = async (e) => {
+    const updateUserReview =(e) => {
         console.log(e);
+        document.getElementById('ModelCSSReview').style.left='0';
+
+        updatereviewDataUpdate({
+            bookname:e['bookname'],
+            reviewmessage:e['reviewmessage'],
+            star:e['star'],
+            id:e['id']
+        })
+    }
+
+    const UpdateReviewFunction = (event)=>{
+        updatereviewDataUpdate({...reviewDataUpdate,reviewmessage:event.target.value})
     }
 
     useEffect(() => {
@@ -82,6 +99,16 @@ function UserReview() {
 
     return (
         <div className='userReview'>
+            <div id='ModelCSSReview'>
+                <div id='UpdateReviewModel'>
+                    <p id='updateReviewBookname'>{reviewDataUpdate['bookname']}</p>
+                    <textarea type='text' id='UpdateReviewMessage' value={reviewDataUpdate.reviewmessage} onChange={(event)=>UpdateReviewFunction(event)} />
+                    <div className='but'>
+                        <button type='button'>Update</button>
+                        <button type='button' onClick={()=>{document.getElementById('ModelCSSReview').style.left='-100%';}}>Close</button>
+                    </div>
+                </div>
+            </div>
             <h1>Your reviews</h1>
             {!Isloding ? <LoaderCorousel /> :
                 UserReviewsData['load'] ?

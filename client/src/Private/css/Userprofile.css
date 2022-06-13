@@ -1,59 +1,61 @@
-.userprofile{
+.userprofile {
     margin: 20px auto;
     width: 80%;
     /* height: 300px; */
     border-radius: 10px;
-    background: linear-gradient(to right, rgb(255, 255, 255),rgb(255, 255, 255));
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255));
     display: flex;
     flex-wrap: wrap;
 }
 
-.AboutUser{
+.AboutUser {
     width: 55%;
     margin: 10px;
 }
 
-.AboutUser .UserName{
+.AboutUser .UserName {
     display: flex;
     border-bottom: 2px solid rgb(197, 194, 194);
     align-items: center;
 }
 
-.AboutUser .ProfileLogo{
+.AboutUser .ProfileLogo {
     width: 60px;
     height: 60px;
 }
-.UserName p{
+
+.UserName p {
     font-size: 24px;
     padding: 0px;
     margin: 0;
     margin-left: 5px;
 }
 
-.AboutUser .Userdetail p{
+.AboutUser .Userdetail p {
     font-style: oblique;
 }
 
-.AboutUser .Userdetail span{
+.AboutUser .Userdetail span {
     font-weight: 500;
     font-style: normal;
 }
 
-.UserReviewDetail{
+.UserReviewDetail {
     width: 40%;
 }
 
 @media (max-width:878px) {
-    .userprofile{
+    .userprofile {
         width: 95%;
     }
 }
 
 @media (max-width:618px) {
-    .AboutUser{
+    .AboutUser {
         width: 90%;
     }
-    .UserReviewDetail{
+
+    .UserReviewDetail {
         width: 90%;
     }
 }
@@ -61,12 +63,13 @@
 
 /* UserReview */
 
-.userReview{
+.userReview {
     padding: 3px;
     margin: 20px;
     width: 90%;
 }
-.userReview h1{
+
+.userReview h1 {
     padding: 0;
     margin: 0;
     font-weight: 500;
@@ -74,42 +77,95 @@
     text-align: center;
 }
 
-.userReview .UserReviewAboutBook{
+.userReview .UserReviewAboutBook {
     border: 2px solid gray;
     border-radius: 10px;
     padding: 5px;
     margin: 10px auto;
 }
 
-.userReview .UserReviewBookname{
+.userReview .UserReviewBookname {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.userReview .UserReviewBookname p{
+.userReview .UserReviewBookname p {
     padding: 0;
     margin: 0;
     font-weight: 700;
 }
 
 
-.userReview .UserReviewAboutBook p{
+.userReview .UserReviewAboutBook p {
     padding: 0;
     margin: 0;
 }
 
-.userReview .IconDesignUserReview{
+.userReview .IconDesignUserReview {
     font-size: 20px;
     display: flex;
     justify-content: flex-end;
 }
 
-.userReview .IconDesignUserReview div{
+.userReview .IconDesignUserReview div {
     margin: 10px;
     cursor: pointer;
 }
 
-.userReview .Usernoreviews{
+.userReview .Usernoreviews {
     text-align: center;
+}
+
+
+/* Model CSS */
+/* in User Review.js */
+#ModelCSSReview{
+    position: fixed;
+    top: 0;
+    left: -100%;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 500ms ease-in-out;
+}
+
+#ModelCSSReview .but{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#ModelCSSReview .but button{
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#UpdateReviewModel{
+    background-color: #cdd8d8;
+    width: 50%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#UpdateReviewModel p{
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+#UpdateReviewModel textarea{
+    outline: none;
+    width: calc(100% - 30px);
+    height: 100px;
+    padding: 10px;
+    resize: none;
+}
+
+@media (max-width:521px) {
+    #UpdateReviewModel{
+        width: 80%;
+    }
 }
