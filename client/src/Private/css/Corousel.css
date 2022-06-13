@@ -99,3 +99,7 @@
 .bookcard p:nth-child(2n+1){
     font-size: 12px;
 }
+
+.coroselLoaderUpper{
+    height: 325px;
+}

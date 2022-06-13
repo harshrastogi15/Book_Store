@@ -83,7 +83,7 @@ function Corousel(props) {
     return (
         <div className='multiCorousel'>
             {Isloding ?
-                <LoaderCorousel /> : <div></div>
+                <div className='coroselLoaderUpper'><LoaderCorousel /></div> : <div></div>
             }
             {booksData['load'].length===0?<div></div>
             :

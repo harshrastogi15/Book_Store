@@ -18,6 +18,7 @@ function Home() {
             <GifLogo2 />
           </div>
         </div>
+        <Corousel type='Story' delay='3200' />
       </div>
       <Footer />
     </div>

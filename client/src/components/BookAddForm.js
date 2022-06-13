@@ -41,6 +41,7 @@ function BookAddForm() {
                     <select id="category" name="category">
                         <option value="Select">Select</option>
                         <option value="Novel">Novel</option>
+                        <option value="Story">Story</option>
                     </select>
                 </div>
                 <div>

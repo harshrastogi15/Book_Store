@@ -1,12 +1,16 @@
-#sidenav{
+#sidenavdisplay{
     position: fixed;
     top: 0px;
     left: 0px;
     width: 0px;
+    overflow: hidden;
+    transition: 800ms ease-in-out;
+}
+
+#sidenav{
+    width: 255px;
     background-color: #cdd8d8;
     height: 100vh;
-    transition: 800ms ease-in-out;
-    overflow: hidden;
 }
 
 .sidelogo{

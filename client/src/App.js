@@ -18,26 +18,26 @@ import CategoryWise from './components/CategoryWise';
 
 function App() {
   return (
-      <Provider store={store}>
-    <Router>
-      <div className="App">
-        <Navbar/>
-        <div style={{height:'55px', width:'100%' }}></div>
-        <Routes>
-          <Route exact path='/login' element={<Login />} />
-          <Route exact path='/signup' element={<Signup />} />
-          <Route exact path='/favourite' element={<Default message="Updated soon"/>} />
-          <Route exact path='/search' element={<Default message="Updated soon"/>} />
-          <Route exact path='/about' element={<Default message="Updated soon"/>} />
-          <Route exact path='/user' element={<UserProfile/>} />
-          <Route exact path='/addbookdata' element={<BookAddForm/>} />
-          <Route path='/category/:s' element={<CategoryWise/>} />
-          <Route exact path='/book/:id/:name/:author' element={<DetailBook/>} />
-          <Route exact path='/' element={<Home />} />
-          <Route path='/:s' element={<Default message="This Page is not exist"/>} />
-        </Routes>
-      </div>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <div style={{ height: '55px', width: '100%' }}></div>
+          <Routes>
+            <Route exact path='/login' element={<Login />} />
+            <Route exact path='/signup' element={<Signup />} />
+            <Route exact path='/favourite' element={<Default message="Updated soon" />} />
+            <Route exact path='/search' element={<Default message="Updated soon" />} />
+            <Route exact path='/about' element={<Default message="Updated soon" />} />
+            <Route exact path='/user' element={<UserProfile />} />
+            <Route exact path='/addbookdata' element={<BookAddForm />} />
+            <Route path='/category/:s' element={<CategoryWise />} />
+            <Route exact path='/book/:id/:name/:author' element={<DetailBook />} />
+            <Route exact path='/' element={<Home />} />
+            <Route path='/:s' element={<Default message="This Page is not exist" />} />
+          </Routes>
+        </div>
+      </Router>
     </Provider>
   );
 }

@@ -45,7 +45,7 @@ function Navbar() {
   }
 
   const navtoggler = () => {
-    document.getElementById('sidenav').style.width="255px";
+    document.getElementById('sidenavdisplay').style.width="100%";
   }
 
   return (

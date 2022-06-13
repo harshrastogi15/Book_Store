@@ -71,8 +71,8 @@ function UserReview() {
         }
     }
 
-    const updateUserReview = async () => {
-
+    const updateUserReview = async (e) => {
+        console.log(e);
     }
 
     useEffect(() => {
@@ -97,7 +97,7 @@ function UserReview() {
                                 <p>{e.reviewmessage}</p>
                                 <div className='IconDesignUserReview'>
                                     <div>
-                                        <FontAwesomeIcon icon={faSquarePen} onClick={() => { updateUserReview() }} />
+                                        <FontAwesomeIcon icon={faSquarePen} onClick={() => { updateUserReview(e) }} />
                                     </div>
                                     <div>
                                         <FontAwesomeIcon icon={faTrashCan} onClick={() => { deleteUserReview(e.id) }} />
