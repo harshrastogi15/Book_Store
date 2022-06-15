@@ -84,7 +84,19 @@ router.post('/userreview', jwtaccess, async (req, res) => {
 router.delete('/deleteuserreview',jwtaccess,async(req,res)=>{
     try {
         // console.log(req.body.id);
-        await Reviews.findOneAndDelete({_id:req.body.id});
+        await Reviews.findOneAndDelete({_id:req.body.id,userId:req.userid});
+        res.json({ status: 0 });
+    } catch (error) {
+        res.json({ status: -2 });
+    }
+})
+
+router.post('/updateUserReview',jwtaccess,async(req,res)=>{
+    try {
+        await Reviews.findOneAndUpdate({_id:req.body.id,userId:req.userid},{
+            review:req.body.reviewmessage,
+            star : req.body.star
+        })
         res.json({ status: 0 });
     } catch (error) {
         res.json({ status: -2 });
