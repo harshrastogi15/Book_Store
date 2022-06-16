@@ -1,0 +1,46 @@
+.searchfile {
+    width: 80%;
+    margin: auto;
+}
+
+.searchfield {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchfield .select{
+    width: 80%;
+    padding: 5px 10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.searchfield  select {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    color: rgb(106, 104, 104);
+}
+
+.searchfield input {
+    outline: none;
+    border: none;
+    width: 80%;
+    margin: 10px;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: rgb(106, 104, 104);
+}
+
+@media (max-width:415px) {
+    .searchfile {
+        width: 97%;
+    }
+}

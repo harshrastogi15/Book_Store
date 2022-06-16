@@ -15,6 +15,7 @@ import BookAddForm from './components/BookAddForm';
 import DetailBook from './components/DetailBook';
 import UserProfile from './components/UserProfile/UserProfile';
 import CategoryWise from './components/CategoryWise';
+import Search from './components/Search';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/signup' element={<Signup />} />
             <Route exact path='/favourite' element={<Default message="Updated soon" />} />
-            <Route exact path='/search' element={<Default message="Updated soon" />} />
+            <Route exact path='/search' element={<Search/>} />
             <Route exact path='/about' element={<Default message="Updated soon" />} />
             <Route exact path='/user' element={<UserProfile />} />
             <Route exact path='/addbookdata' element={<BookAddForm />} />
