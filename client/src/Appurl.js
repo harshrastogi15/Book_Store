@@ -6,4 +6,6 @@ export const urlbook = `/${API_KEY}/api/book`;
 
 export const urlreviewbook = `/${API_KEY}/api/review`; 
 
+export const urlSearch = `/${API_KEY}/api/search`;
+
 export const auth_token = `${localStorage.getItem('token')}`

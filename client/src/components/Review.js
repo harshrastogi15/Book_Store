@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import '../Private/css/Review.css'
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { auth_token, urlreviewbook } from '../Appurl';
 import { createreviewStar } from '../specialFunction/CreateReviewStar';
 
 
 function Review(props) {
-    const { bookid,bookname } = props;
+    const { bookid, bookname } = props;
     const naviagte = useNavigate();
     const IsLogin = useSelector((state) => state.user.login);
     const [cntStar, updateStar] = useState(0);
@@ -59,7 +59,7 @@ function Review(props) {
             body: JSON.stringify({
                 bookid,
                 star: cntStar,
-                bookname:bookname,
+                bookname: bookname,
                 review: reviewdata
             })
         })
@@ -121,6 +121,9 @@ function Review(props) {
                 </div>
                 <textarea className='writereview' value={reviewdata} onChange={(e) => updatereview(e.target.value)} />
                 <button type='button' onClick={sendResponseReview} > Add </button>
+                <p>
+                    <Link to='/user'>See all of you review here</Link>
+                </p>
             </div>
         </div>
     )

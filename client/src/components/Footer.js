@@ -17,6 +17,7 @@ function Footer() {
         <div className='footerSecA'>
           <Link to='/category/All'>All books</Link>
           <Link to='/category/Novel'>Novel</Link>
+          <Link to='/category/Story'>Story</Link>
         </div>
         <div className='footerSecA'>
         </div>

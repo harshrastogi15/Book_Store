@@ -4,11 +4,13 @@ import Bookcard from './Bookcard';
 import '../Private/css/CategoryWise.css'
 import LoaderCorousel from '../loader/LoaderCorousel';
 import Footer from './Footer';
+import { useLocation } from 'react-router-dom';
 
 function CategoryWise() {
-  const url = window.location.pathname;
-  const patharr = url.split('/');
-  const type = patharr[2];
+  let url = window.location.pathname;
+  let patharr = url.split('/');
+  let type = patharr[2];
+  const location = useLocation();
 
   const [booksData, updateBookData] = useState({
     load: false,
@@ -36,8 +38,11 @@ function CategoryWise() {
   }
 
   useEffect(() => {
+    url = location.pathname;
+    let patharr = url.split('/');
+    let type = patharr[2];
     fetchBooks();
-  }, [])
+  }, [location])
 
 
   return (
@@ -54,7 +59,7 @@ function CategoryWise() {
           :
           <LoaderCorousel />}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   )
 }

@@ -3,12 +3,15 @@
     width: calc(100% - 20px);
     padding: 10px 10px 5px 10px;
     bottom: 0;
+    margin-top: 50px;
 }
 
 .footer .footerSection{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 80%;
+    margin: auto;
 }
 
 .footerSection .footerSecA{
@@ -16,7 +19,7 @@
     margin: 5px 10px;
     display: flex;
     flex-direction: column; 
-    text-align: center;
+    /* text-align: center; */
 }
 
 .footerSection .footerSecA a{
@@ -74,7 +77,12 @@
 
 @media (max-width:760px) {
 
+    .footer .footerSection{
+        width: 90%;
+    }
+
     .footerSection .footerSecA{
+        text-align: center;
         width: calc(99%/2 - 20px);
     }
 

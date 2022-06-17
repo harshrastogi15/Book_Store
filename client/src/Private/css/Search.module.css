@@ -1,6 +1,7 @@
 .searchfile {
     width: 80%;
     margin: auto;
+    transition: 2s ease-in-out;
 }
 
 .searchfield {
@@ -8,6 +9,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 70vh;
+    /* height: fit-content; */
+    transition: 2s ease-in-out;
 }
 
 .searchfield .select{
@@ -37,6 +42,16 @@
     padding: 5px 10px;
     border-radius: 5px;
     color: rgb(106, 104, 104);
+}
+
+.searchfield button{
+    padding: 10px 50px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: gray;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 @media (max-width:415px) {

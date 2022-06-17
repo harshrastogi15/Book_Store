@@ -40,6 +40,16 @@
     font-style: normal;
 }
 
+.AboutUser button{
+    color: white;
+    border: none;
+    background-color: gray;
+    padding: 7px 70px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
 .UserReviewDetail {
     width: 40%;
 }

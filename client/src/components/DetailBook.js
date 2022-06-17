@@ -6,15 +6,18 @@ import { arrayBufferToBase64 } from '../specialFunction/BufferToBinary'
 
 import Review from './Review'
 import Footer from './Footer'
+import Corousel from './Corousel'
+import { useLocation } from 'react-router-dom'
 
 
 function DetailBook() {
-    let url = window.location.pathname
+    let location = useLocation();
+    let url = location.pathname
     url = url.replace(/%20/g, " ")
     let arrdata = url.split("/")
-    const bookid = arrdata[2];
-    const booktitle = arrdata[3];
-    const bookauthor = arrdata[4];
+    let bookid = arrdata[2];
+    let booktitle = arrdata[3];
+    let bookauthor = arrdata[4];
     const [category, updatecategory] = useState("");
     const [language, updatelanuage] = useState("");
     const [publication, updatepublication] = useState("");
@@ -94,8 +97,14 @@ function DetailBook() {
 
 
     useEffect(() => {
+        url = location.pathname
+        url = url.replace(/%20/g, " ")
+        arrdata = url.split("/")
+        bookid = arrdata[2];
+        booktitle = arrdata[3];
+        bookauthor = arrdata[4];
         fetchBookDetail();
-    }, [])
+    }, [location])
 
     return (
         <div>
@@ -120,6 +129,7 @@ function DetailBook() {
                     <Review bookid={bookid} bookname={booktitle} />
                 </div>
             </div>
+            {IsLoading ? <div></div> : <Corousel type={category.length==0 ? 'All': category} delay='3200' />}
             <Footer />
         </div>
     )
