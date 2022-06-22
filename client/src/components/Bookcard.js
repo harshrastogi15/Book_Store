@@ -50,7 +50,9 @@ function Bookcard(props) {
     }
 
     useEffect(()=>{
-        fetchImage();
+        return()=>{
+            fetchImage();
+        }
     },[])
 
 

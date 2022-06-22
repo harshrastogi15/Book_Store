@@ -30,6 +30,7 @@ app.use(`/${apikey}/api/book`, require('./routes/booksdetail'));
 app.use(`/${apikey}/api/book`, require('./routes/Onebook'));
 app.use(`/${apikey}/api/review`, require('./routes/review'));
 app.use(`/${apikey}/api/search`, require('./routes/Search'));
+app.use(`/${apikey}/api/favourite`, require('./routes/FavouriteData'));
 
 
 app.get('*', (req, res) => {

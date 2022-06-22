@@ -122,7 +122,7 @@ function Review(props) {
                 <textarea className='writereview' value={reviewdata} onChange={(e) => updatereview(e.target.value)} />
                 <button type='button' onClick={sendResponseReview} > Add </button>
                 <p>
-                    <Link to='/user'>See all of you review here</Link>
+                    <Link to='/user'>See all of your review here</Link>
                 </p>
             </div>
         </div>

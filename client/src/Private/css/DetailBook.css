@@ -64,6 +64,19 @@
     margin: 0;
     margin-bottom: 1px;
 }
+.bookdetail .aboutBook .bookdata p {
+    color: rgb(9, 9, 44);
+    padding: 0;
+    margin: 0;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    width: fit-content;
+    text-decoration: underline;
+    text-rendering: optimizeSpeed;
+    font-style: italic;
+}
 
 .bookdetail span {
     font-style: normal;

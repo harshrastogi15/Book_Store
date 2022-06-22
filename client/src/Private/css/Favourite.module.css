@@ -1,0 +1,40 @@
+.favourite {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.favourite h1 {
+    font-size: 24px;
+    font-weight: 600;
+    font-style: oblique;
+}
+
+.Favbookdata {
+    display: flex;
+}
+
+.FavBookImage {
+    width: 30%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.Favbookdetail {
+    margin-left: 10px;
+    text-align: justify;
+}
+
+.Favbookdetail h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.Favbookdetail h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: normal;
+}

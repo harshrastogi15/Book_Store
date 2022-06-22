@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../Private/css/Navbar.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -33,10 +33,6 @@ function Navbar() {
       localStorage.removeItem('token');
     }
   }
-  if(localStorage.getItem('token')){
-    fetchdata();
-  }
-
 
   const logoutuser = async () => {
     await localStorage.removeItem('token');
@@ -47,6 +43,14 @@ function Navbar() {
   const navtoggler = () => {
     document.getElementById('sidenavdisplay').style.width="100%";
   }
+
+  useEffect(()=>{
+    return()=>{
+      if(localStorage.getItem('token')){
+        fetchdata();
+      }
+    }
+  },[])
 
   return (
     <div className='navbar'>

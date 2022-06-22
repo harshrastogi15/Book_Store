@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../Private/css/DetailBook.css'
-import { urlbook } from '../Appurl'
+import { auth_token, urlbook, urlFavourite } from '../Appurl'
 import Loader from '../loader/Loader'
 import { arrayBufferToBase64 } from '../specialFunction/BufferToBinary'
 
@@ -33,6 +33,12 @@ function DetailBook() {
     // console.log(bookauthor);
 
     const fetchBookDetail = async () => {
+        url = location.pathname
+        url = url.replace(/%20/g, " ")
+        arrdata = url.split("/")
+        bookid = arrdata[2];
+        booktitle = arrdata[3];
+        bookauthor = arrdata[4];
         updateLoading(true);
         await fetch(`${urlbook}/onebook/id`, {
             method: 'POST',
@@ -95,14 +101,29 @@ function DetailBook() {
             )
     }
 
+    const addFavourite = ()=>{
+        fetch(`${urlFavourite}/add`,{
+            method:'POST',
+            headers:{
+                'content-type': 'application/json',
+                auth_token:`${auth_token}`
+            },
+            body :JSON.stringify({
+                bookid:bookid,
+                bookname:booktitle,
+                author:bookauthor
+            })
+        })
+        .then((res)=>res.json())
+        .then((res)=>{
+            console.log(res);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    }
 
     useEffect(() => {
-        url = location.pathname
-        url = url.replace(/%20/g, " ")
-        arrdata = url.split("/")
-        bookid = arrdata[2];
-        booktitle = arrdata[3];
-        bookauthor = arrdata[4];
         fetchBookDetail();
     }, [location])
 
@@ -123,13 +144,14 @@ function DetailBook() {
                         <h3>Category:<span> {category}</span></h3>
                         <h3>Language:<span> {language}</span></h3>
                         <h4>Publish by <span>{publication}</span></h4>
+                        <p onClick={addFavourite}>Add to favourite</p>
                     </div>
                 </div>
                 <div className='bookreviews'>
                     <Review bookid={bookid} bookname={booktitle} />
                 </div>
             </div>
-            {IsLoading ? <div></div> : <Corousel type={category.length==0 ? 'All': category} delay='3200' />}
+            {IsLoading ? <div></div> : <Corousel type={category.length===0 ? 'All': category} delay='3200' />}
             <Footer />
         </div>
     )

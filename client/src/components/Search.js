@@ -80,7 +80,7 @@ function Search() {
             <div className='BooksCategory'>
                 {booksData['load'] ?
                     booksData['data'].length === 0 ?
-                        <div style={{height:'200px'}}>
+                        <div style={{ height: '200px' }}>
                             No book Available
                         </div>
                         :

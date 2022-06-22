@@ -18,6 +18,9 @@ function CategoryWise() {
   })
 
   const fetchBooks = () => {
+    url = location.pathname;
+    patharr = url.split('/');
+    type = patharr[2];
     fetch(`${urlbook}/bookcategory/${type}`, {
       method: 'GET',
       headers: { 'content-type': 'application/json' }
@@ -38,9 +41,6 @@ function CategoryWise() {
   }
 
   useEffect(() => {
-    url = location.pathname;
-    let patharr = url.split('/');
-    let type = patharr[2];
     fetchBooks();
   }, [location])
 
