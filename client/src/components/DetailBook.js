@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react'
 import '../Private/css/DetailBook.css'
 import { auth_token, urlbook, urlFavourite } from '../Appurl'
 import Loader from '../loader/Loader'
-import { arrayBufferToBase64 } from '../specialFunction/BufferToBinary'
-
 import Review from './Review'
 import Footer from './Footer'
 import Corousel from './Corousel'
 import { useLocation } from 'react-router-dom'
+import FetchImage from '../specialFunction/FetchImage'
 
 
 function DetailBook() {
@@ -22,11 +21,6 @@ function DetailBook() {
     const [language, updatelanuage] = useState("");
     const [publication, updatepublication] = useState("");
     const [IsLoading, updateLoading] = useState(false);
-    const [image, getimage] = useState({
-        load: false,
-        contentType: "",
-        img: {}
-    })
     // console.log(url);
     // console.log(bookid);
     // console.log(booktitle);
@@ -62,44 +56,8 @@ function DetailBook() {
 
             })
         updateLoading(false);
-        fetchbookImage();
     }
 
-    const fetchbookImage = () => {
-        fetch(`${urlbook}/image`, {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({
-                title: booktitle,
-                bookId: bookid
-            })
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                // console.log(res);
-                if (res['status'] === 0) {
-                    getimage({
-                        ...image,
-                        load: true,
-                        contentType: "res.image.contentType",
-                        img: arrayBufferToBase64(res.image.data.data)
-                    })
-                } else {
-                    getimage({
-                        ...image,
-                        load: false,
-                    })
-                }
-            })
-            .catch(
-                (error) => {
-                    getimage({
-                        ...image,
-                        load: false,
-                    })
-                }
-            )
-    }
 
     const addFavourite = ()=>{
         fetch(`${urlFavourite}/add`,{
@@ -133,10 +91,7 @@ function DetailBook() {
                 {IsLoading ? <Loader /> : <div></div>}
                 <div className='aboutBook'>
                     <div className='bookimage'>
-                        {image.load ?
-                            <img src={`data:${image.contentType};base64,${image['img'].toString('base64')}`} alt="Server Error" width={'100%'} height={'100%'} />
-                            : <div>Loading ...</div>
-                        }
+                        <FetchImage title={booktitle} id={bookid}/>
                     </div>
                     <div className='bookdata'>
                         <h1>{booktitle}</h1>

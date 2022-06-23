@@ -37,8 +37,17 @@ router.post('/add', jwtaccess, async (req, res) => {
 router.get('/send', jwtaccess, async (req, res) => {
     try {
         var id = req.userid;
-        let fav = await Favourite.findOne({ userId: id });
-        return res.json({ status: 0, data:fav});
+        let fav = await Favourite.find({ userId: id });
+        var data= new Array();
+        for(i in fav){
+            data.push({
+                title:fav[i].bookname,
+                author:fav[i].bookauthor,
+                bookid:fav[i].bookId,
+                id:fav[i]._id
+            })
+        }
+        return res.json({ status: 0, data});
     } catch (error) {
         res.json({ status: -2 });
     }

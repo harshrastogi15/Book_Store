@@ -10,31 +10,64 @@
     font-style: oblique;
 }
 
+
 .Favbookdata {
     display: flex;
+    /* flex-wrap: wrap; */
+    overflow: hidden;
+    width: 100%;
+    margin: 25px auto;
 }
 
 .FavBookImage {
-    width: 30%;
-    height: 250px;
+    width: 25%;
+    height: 200px;
     overflow: hidden;
 }
 
 .Favbookdetail {
-    margin-left: 10px;
-    text-align: justify;
+    width: 70%;
+    padding-left: 10px;
+    text-align: start;
 }
 
 .Favbookdetail h1 {
     margin: 0;
     padding: 0;
-    font-size: 24px;
+    width: fit-content;
+    font-size: 20px;
     font-weight: normal;
 }
 
 .Favbookdetail h2 {
     margin: 0;
     padding: 0;
-    font-size: 24px;
+    width: fit-content;
+    font-size: 18px;
     font-weight: normal;
+}
+
+.Favbookdetail a{
+    color: black;
+    font-style: italic;
+}
+
+@media (max-width:629px) {
+    .FavBookImage {
+        width: 45%;
+    }
+    
+    .Favbookdetail {
+        width: 50%;
+    }
+}
+
+@media (max-width:322px) {
+    .FavBookImage {
+        width: 50%;
+    }
+    
+    .Favbookdetail {
+        width: 45%;
+    }
 }
