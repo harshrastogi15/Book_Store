@@ -33,9 +33,7 @@ function Favourite() {
 
 
     useEffect(() => {
-        return () => {
-            fetchFavouriteData();
-        }
+        fetchFavouriteData();
     }, [])
 
 
@@ -57,10 +55,10 @@ function Favourite() {
                                 </div>
                             </div>
                         })
-                        : <div style={{'height':'50vh'}}></div>}
+                        : <div style={{ 'height': '50vh' }}></div>}
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     )
 }

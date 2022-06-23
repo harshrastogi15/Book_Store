@@ -45,11 +45,9 @@ function Navbar() {
   }
 
   useEffect(()=>{
-    return()=>{
       if(localStorage.getItem('token')){
         fetchdata();
       }
-    }
   },[])
 
   return (
