@@ -53,4 +53,14 @@ router.get('/send', jwtaccess, async (req, res) => {
     }
 })
 
+router.post('/delete',jwtaccess,async(req,res)=>{
+    try {
+        var userid = req.userid;
+        await Favourite.findOneAndRemove({_id:req.body.id,userId:userid});
+        res.json({ status: 0 });
+    } catch (error) {
+        res.json({ status: -2 });
+    }
+})
+
 module.exports = router;

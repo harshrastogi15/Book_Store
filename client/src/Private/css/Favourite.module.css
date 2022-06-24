@@ -23,20 +23,23 @@
     width: 25%;
     height: 200px;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 .Favbookdetail {
     width: 70%;
     padding-left: 10px;
     text-align: start;
+    position: relative;
 }
 
 .Favbookdetail h1 {
     margin: 0;
     padding: 0;
     width: fit-content;
-    font-size: 20px;
-    font-weight: normal;
+    font-size: 22px;
+    font-weight: 500;
+    font-style: normal;
 }
 
 .Favbookdetail h2 {
@@ -50,8 +53,17 @@
 .Favbookdetail a{
     color: black;
     font-style: italic;
+    position: absolute;
+    bottom: 0;
 }
 
+.Favbookdetail p{
+    text-decoration: underline;
+    font-style: italic;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
 @media (max-width:629px) {
     .FavBookImage {
         width: 45%;

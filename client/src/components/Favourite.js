@@ -5,6 +5,7 @@ import iurl from '../Private/data/booksimage/amnesty.jpg'
 import { Link } from 'react-router-dom'
 import FetchImage from '../specialFunction/FetchImage'
 import Footer from './Footer'
+import LoaderCorousel from '../loader/LoaderCorousel'
 
 function Favourite() {
     const [favbookdata, updateFavBookData] = useState({
@@ -32,6 +33,26 @@ function Favourite() {
     }
 
 
+    const deleteFavBook = (id) => {
+        fetch(`${urlFavourite}/delete`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'auth_token': `${auth_token}`
+            },
+            body: JSON.stringify({
+                id: id
+            })
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.status === 0) {
+                    fetchFavouriteData();
+                }
+            })
+            .catch(() => { })
+    }
+
     useEffect(() => {
         fetchFavouriteData();
     }, [])
@@ -43,19 +64,28 @@ function Favourite() {
                 <h1>Your Favourite Books</h1>
                 <div className={style.favbook}>
                     {favbookdata['load']
-                        ? favbookdata['data'].map((e) => {
-                            return <div className={style.Favbookdata} key={e.id}>
-                                <div className={style.FavBookImage}>
-                                    <FetchImage title={e.title} id={e.bookid} />
+                        ? favbookdata['data'].length === 0 ?
+                            <div style={{ 'height': '50vh' }}>
+                                <p>No book is available on your favorite list</p>
+                            </div> :
+                            favbookdata['data'].map((e) => {
+                                return <div className={style.Favbookdata} key={e.id}>
+                                    <div className={style.FavBookImage}>
+                                        <Link to={`/book/${e.bookid}/${e.title}/${e.author}`}>
+                                            <FetchImage title={e.title} id={e.bookid} />
+                                        </Link>
+                                    </div>
+                                    <div className={style.Favbookdetail}>
+                                        <h1>{e.title}</h1>
+                                        <h2>{e.author}</h2>
+                                        <Link to={`/book/${e.bookid}/${e.title}/${e.author}`}>Read More</Link>
+                                        <p onClick={() => deleteFavBook(e.id)}>Remove from favourite</p>
+                                    </div>
                                 </div>
-                                <div className={style.Favbookdetail}>
-                                    <h1>{e.title}</h1>
-                                    <h2>{e.author}</h2>
-                                    <Link to={`/book/${e.bookid}/${e.title}/${e.author}`}>Read More</Link>
-                                </div>
-                            </div>
-                        })
-                        : <div style={{ 'height': '50vh' }}></div>}
+                            })
+                        : <div style={{ 'height': '50vh' }}>
+                            <LoaderCorousel />
+                        </div>}
                 </div>
             </div>
             <Footer />
