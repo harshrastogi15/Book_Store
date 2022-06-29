@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { auth_token, urlreviewbook } from '../Appurl';
 import { createreviewStar } from '../specialFunction/CreateReviewStar';
+import { callMessage } from './Alert/CallMessage';
 
 
 function Review(props) {
@@ -67,13 +68,17 @@ function Review(props) {
             .then((res) => {
                 if (res.status === 0) {
                     updatemessage('Added to reviews')
+                    callMessage('Successful','Added to reviews');
                     fetchReview();
                     updatereview("");
                 } else {
                     updatemessage('Sorry, Unable to add')
+                    callMessage('Server Error','Unable to Add your reviews');
                 }
             })
-            .catch();
+            .catch(()=>{
+                callMessage('Server Error','Unable to Add your reviews');
+            });
     }
 
     const fetchReview = () => {
@@ -83,6 +88,8 @@ function Review(props) {
                 if (res.status === 0) {
                     updatefetchReviewData(res.data);
                 }
+            }).catch(()=>{
+                callMessage('Server Error','Unable to fetch detail');
             })
     }
 

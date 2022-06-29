@@ -130,7 +130,7 @@
 
 /* Model CSS */
 /* in User Review.js */
-#ModelCSSReview, #ModelCSSMessage{
+#ModelCSSReview{
     position: fixed;
     top: 0;
     left: -100%;
@@ -162,7 +162,7 @@
     font-weight: 600;
 }
 
-#UpdateReviewModel, #ShowmessageModel{
+#UpdateReviewModel{
     background-color: #cdd8d8;
     width: 50%;
     padding: 20px;
@@ -198,30 +198,9 @@
     cursor: pointer;
 }
 
-#ShowmessageModel{
-    text-align: center;
-}
-
-#ShowmessageModel p{
-    width: fit-content;
-    margin: auto;
-}
-
-#ShowmessageModel button{
-    margin: 20px auto 5px auto;
-    padding: 5px 10px;
-    font-weight: 400;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-}
-
-#ShowmessageModel button:hover{
-    font-weight: 600;
-}
 
 @media (max-width:521px) {
-    #UpdateReviewModel, #ShowmessageModel{
+    #UpdateReviewModel{
         width: 80%;
     }
 }

@@ -17,13 +17,14 @@ import UserProfile from './components/UserProfile/UserProfile';
 import CategoryWise from './components/CategoryWise';
 import Search from './components/Search';
 import Favourite from './components/Favourite';
-
+import Message from './components/Alert/Message';
 function App() {
   return (
     <Provider store={store}>
       <Router>
         <div className="App">
           <Navbar />
+          <Message/>
           <div style={{ height: '55px', width: '100%' }}></div>
           <Routes>
             <Route exact path='/login' element={<Login />} />

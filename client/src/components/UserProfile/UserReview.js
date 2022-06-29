@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquarePen, faTrashCan, faStar } from '@fortawesome/free-solid-svg-icons'
 import { auth_token, urlreviewbook } from '../../Appurl'
 import LoaderCorousel from '../../loader/LoaderCorousel'
+import { callMessage } from '../Alert/CallMessage'
 
 function UserReview() {
 
@@ -20,7 +21,6 @@ function UserReview() {
         star: ''
     });
     const [cntStar, updateStar] = useState(0);
-    const [message, updatemessage] = useState('No message');
 
     const fetchUserReviews = () => {
         fetch(`${urlreviewbook}/userreview`, {
@@ -66,19 +66,13 @@ function UserReview() {
                 .then((res) => res.json())
                 .then((res) => {
                     if (res.status === 0) {
+                        callMessage('Successful', 'Deleted');
                         fetchUserReviews();
-                        // window.alert('Deleted Successfull');
-                        updatemessage('Deleted Successfully');
-                        document.getElementById('ModelCSSMessage').style.left = '0';
                     } else {
-                        // window.alert('Unable to delete');
-                        updatemessage('Unable to Delete');
-                        document.getElementById('ModelCSSMessage').style.left = '0';
+                        callMessage('Error', 'Unable to delete');
                     }
                 }).catch(() => {
-                    // window.alert('Unable to delete');
-                    updatemessage('Unable to connect');
-                    document.getElementById('ModelCSSMessage').style.left = '0';
+                    callMessage('Server Error', 'Unable to connect');
                 })
 
 
@@ -136,16 +130,12 @@ function UserReview() {
             .then((res) => {
                 if (res.status === 0) {
                     fetchUserReviews();
-                    updatemessage('Update Successfully');
-                    document.getElementById('ModelCSSMessage').style.left = '0';
-                    document.getElementById('ModelCSSReview').style.left = '-100%';
+                    callMessage('Successful', 'Updated');
                 } else {
-                    updatemessage('Unable to update');
-                    document.getElementById('ModelCSSMessage').style.left = '0';
+                    callMessage('Error', 'Unable to update');
                 }
             }).catch(() => {
-                updatemessage('Unable to connect');
-                document.getElementById('ModelCSSMessage').style.left = '0';
+                callMessage('Server Error', 'Unable to connect');
             })
     }
 
@@ -171,12 +161,6 @@ function UserReview() {
                         <button type='button' onClick={() => UpdateReviewBackend()}>Update</button>
                         <button type='button' onClick={() => { document.getElementById('ModelCSSReview').style.left = '-100%'; }}>Close</button>
                     </div>
-                </div>
-            </div>
-            <div id='ModelCSSMessage'>
-                <div id='ShowmessageModel'>
-                    <p>{message}</p>
-                    <button type='button' onClick={() => { document.getElementById('ModelCSSMessage').style.left = '-100%'; }}>Close</button>
                 </div>
             </div>
             <h1>Your reviews</h1>

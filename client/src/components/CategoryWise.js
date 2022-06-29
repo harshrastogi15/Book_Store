@@ -5,6 +5,7 @@ import '../Private/css/CategoryWise.css'
 import LoaderCorousel from '../loader/LoaderCorousel';
 import Footer from './Footer';
 import { useLocation } from 'react-router-dom';
+import { callMessage } from './Alert/CallMessage';
 
 function CategoryWise() {
   let url = window.location.pathname;
@@ -33,10 +34,12 @@ function CategoryWise() {
             load: true,
             data: res.bookdata
           })
+        } else {
+          callMessage('Server Error', 'Unable to fetch detail');
         }
       })
       .catch(() => {
-        console.log('error');
+        callMessage('Server Error', 'Unable to fetch detail');
       })
   }
 

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import FetchImage from '../specialFunction/FetchImage'
 import Footer from './Footer'
 import LoaderCorousel from '../loader/LoaderCorousel'
+import { callMessage } from './Alert/CallMessage'
 
 function Favourite() {
     const [favbookdata, updateFavBookData] = useState({
@@ -29,6 +30,7 @@ function Favourite() {
                 }
             })
             .catch(err => {
+                callMessage('Server Error','Unable to fetch detail');
             })
     }
 
@@ -47,10 +49,15 @@ function Favourite() {
             .then((res) => res.json())
             .then((res) => {
                 if (res.status === 0) {
+                    callMessage('Successful','Deleted');
                     fetchFavouriteData();
+                }else{
+                    callMessage('Error','Unable to delete');
                 }
             })
-            .catch(() => { })
+            .catch(() => {
+                callMessage('Server Error','Unable to fetch detail');
+            })
     }
 
     useEffect(() => {

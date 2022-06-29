@@ -1,0 +1,40 @@
+.messageShow{
+    position: fixed;
+    z-index: 11;    
+    top: 56px;
+    width:100%;
+    display: none;
+    /* height: 30px; */
+}
+
+.messageInner{
+    margin: auto;
+    background-color: #a1a6a6;
+    width: 98%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+
+}
+
+.messageInner p{
+    padding-left: 6px;
+    padding-right: 6px;
+    margin: auto;
+    width: fit-content;
+    font-size: 18px;
+}
+
+.messageInner p span{  
+    font-weight: 500;
+    margin: auto 5px auto auto;
+}
+
+.messageIcon{
+    font-size: 24px;
+    margin: 5px 10px;
+    width: fit-content;
+    height: fit-content;
+    padding: 0px;
+    cursor: pointer;
+}

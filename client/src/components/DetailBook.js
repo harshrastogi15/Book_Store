@@ -7,6 +7,7 @@ import Footer from './Footer'
 import Corousel from './Corousel'
 import { useLocation } from 'react-router-dom'
 import FetchImage from '../specialFunction/FetchImage'
+import { callMessage } from './Alert/CallMessage'
 
 
 function DetailBook() {
@@ -50,10 +51,12 @@ function DetailBook() {
                     updatelanuage(res.data.language);
                     updatecategory(res.data.category);
                     updatepublication(res.data.publication)
+                }else{
+                    callMessage('Server Error','Unable to fetch detail');
                 }
             })
             .catch((err) => {
-
+                callMessage('Server Error','Unable to fetch detail');
             })
         updateLoading(false);
     }
@@ -75,9 +78,16 @@ function DetailBook() {
         .then((res)=>res.json())
         .then((res)=>{
             console.log(res);
+            if(res.status===0){
+                callMessage('Successful','Book has been added to your favorite list');
+            }else if(res.status===1){
+                callMessage('Oops','Book is already on your favorite list');
+            }else{
+                callMessage('Something is wrong','Unable to add this book to your favorite list');
+            }
         })
         .catch((err)=>{
-            console.log(err);
+            callMessage('Server Error','Unable to add this book to your favorite list');
         })
     }
 
