@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../Private/css/DetailBook.css'
+import style from '../Private/css/DetailBook.module.css'
 import { auth_token, urlbook, urlFavourite } from '../Appurl'
 import Loader from '../loader/Loader'
 import Review from './Review'
@@ -97,22 +97,22 @@ function DetailBook() {
 
     return (
         <div>
-            <div className='bookdetail'>
+            <div className={style.bookdetail}>
                 {IsLoading ? <Loader /> : <div></div>}
-                <div className='aboutBook'>
-                    <div className='bookimage'>
+                <div className={style.aboutBook}>
+                    <div className={style.bookimage}>
                         <FetchImage title={booktitle} id={bookid}/>
                     </div>
-                    <div className='bookdata'>
+                    <div className={style.bookdata}>
                         <h1>{booktitle}</h1>
                         <h2>Author: <span>{bookauthor}</span></h2>
                         <h3>Category:<span> {category}</span></h3>
                         <h3>Language:<span> {language}</span></h3>
                         <h4>Publish by <span>{publication}</span></h4>
-                        <p onClick={addFavourite}>Add to favourite</p>
+                        <button type='button' onClick={addFavourite}>Add to favourite</button>
                     </div>
                 </div>
-                <div className='bookreviews'>
+                <div className={style.bookreviews}>
                     <Review bookid={bookid} bookname={booktitle} />
                 </div>
             </div>

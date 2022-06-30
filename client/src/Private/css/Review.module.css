@@ -17,30 +17,33 @@
     margin: 20px auto;
 }
 
-.reviews .ViewerReview{
+.ViewerReview{
     border-bottom: 2px solid rgb(182, 180, 180);
     padding-top: 15px;
     margin-bottom: 10px;
 }
 
-.reviews .ViewerStar{
+.ViewerStar{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-.reviews .ViewerStar p{
+.ViewerStar p{
     padding: 0;
     margin: 0;
-    font-size: 16px;
-}
-
-.reviews .ViewerStar span{
     font-size: 14px;
-    font-weight: normal;
+    font-style: normal;
 }
 
-.reviews .ViewerReviewText{
+.ViewerStar span{
+    font-size: 13px;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.652);
+    font-style: oblique;
+}
+
+.ViewerReviewText{
     font-style: normal;
     padding: 3px 0px;
     font-weight: 500;
@@ -76,7 +79,7 @@
     cursor: pointer;
 }
 
-.UserReview .writereview {
+.writereview {
     outline: none;
     border: none;
     border: 2px solid rgb(189, 189, 189);

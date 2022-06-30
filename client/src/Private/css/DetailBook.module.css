@@ -64,18 +64,20 @@
     margin: 0;
     margin-bottom: 1px;
 }
-.bookdetail .aboutBook .bookdata p {
+.bookdetail .aboutBook .bookdata button {
     color: rgb(9, 9, 44);
+    background-color: white;
     padding: 0;
     margin: 0;
     margin-top: 5px;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 800;
     cursor: pointer;
     width: fit-content;
     text-decoration: underline;
     text-rendering: optimizeSpeed;
     font-style: italic;
+    border: none;
 }
 
 .bookdetail span {

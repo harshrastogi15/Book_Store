@@ -10,10 +10,11 @@
 .messageInner{
     margin: auto;
     background-color: #a1a6a6;
-    width: 98%;
+    width: calc(98% - 6px);
     border-radius: 4px;
     display: flex;
     align-items: center;
+    padding: 3px;
 
 }
 

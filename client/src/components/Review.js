@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import '../Private/css/Review.css'
+import style from '../Private/css/Review.module.css'
 import { useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { auth_token, urlreviewbook } from '../Appurl';
@@ -24,12 +24,12 @@ function Review(props) {
         star = star.children;
         if (cntStar < e) {
             for (var i = 0; i < e; i++) {
-                star[i].className = 'yesstar'
+                star[i].className = style.yesstar
             }
             updateStar(e);
         } else {
             for (i = 4; i >= e - 1; i--) {
-                star[i].className = 'nostar'
+                star[i].className = style.nostar
             }
             updateStar(e - 1);
         }
@@ -100,33 +100,32 @@ function Review(props) {
 
     return (
         <div>
-            <h1 className='reviewheading'>Reviews</h1>
-            <div className='reviews'>
+            <h1 className={style.reviewheading}>Reviews</h1>
+            <div className={style.reviews}>
                 {fetchReviewData.length === 0 ? <h1> Be the first one  to give review </h1> :
                     fetchReviewData.map((e) => {
-                        return <div className='ViewerReview' key={e.id}>
-                            <div className='ViewerReviewText'>{e.reviewmessage}</div>
-                            <div className='ViewerStar'>
-                                <p><span>By</span>: {e.username.toUpperCase()}</p>
+                        return <div className={style.ViewerReview} key={e.id}>
+                            <div className={style.ViewerReviewText}>{e.reviewmessage}</div>
+                            <div className={style.ViewerStar}>
+                                <p><span>By</span> {e.username}</p>
                                 {/* {createreviewStar(e.star)} */}
                                 {createreviewStar(e.star)}
                             </div>
                         </div>
                     })
                 }
-
             </div>
-            <div className='UserReview'>
+            <div className={style.UserReview}>
                 <p>Give your review</p>
                 <p>{message}</p>
                 <div id='star'>
-                    <span className='nostar' onClick={() => starreview(1)}><FontAwesomeIcon icon={faStar} /></span>
-                    <span className='nostar' onClick={() => starreview(2)} ><FontAwesomeIcon icon={faStar} /></span>
-                    <span className='nostar' onClick={() => starreview(3)} ><FontAwesomeIcon icon={faStar} /></span>
-                    <span className='nostar' onClick={() => starreview(4)} ><FontAwesomeIcon icon={faStar} /></span>
-                    <span className='nostar' onClick={() => starreview(5)}  ><FontAwesomeIcon icon={faStar} /></span>
+                    <span className={style.nostar} onClick={() => starreview(1)}><FontAwesomeIcon icon={faStar} /></span>
+                    <span className={style.nostar} onClick={() => starreview(2)} ><FontAwesomeIcon icon={faStar} /></span>
+                    <span className={style.nostar} onClick={() => starreview(3)} ><FontAwesomeIcon icon={faStar} /></span>
+                    <span className={style.nostar} onClick={() => starreview(4)} ><FontAwesomeIcon icon={faStar} /></span>
+                    <span className={style.nostar} onClick={() => starreview(5)}  ><FontAwesomeIcon icon={faStar} /></span>
                 </div>
-                <textarea className='writereview' value={reviewdata} onChange={(e) => updatereview(e.target.value)} />
+                <textarea className={style.writereview} value={reviewdata} onChange={(e) => updatereview(e.target.value)} />
                 <button type='button' onClick={sendResponseReview} > Add </button>
                 <p>
                     <Link to='/user'>See all of your review here</Link>
