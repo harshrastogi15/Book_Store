@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { auth_token, urlFavourite } from '../Appurl'
 import style from '../Private/css/Favourite.module.css'
-import iurl from '../Private/data/booksimage/amnesty.jpg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import FetchImage from '../specialFunction/FetchImage'
 import Footer from './Footer'
 import LoaderCorousel from '../loader/LoaderCorousel'
 import { callMessage } from './Alert/CallMessage'
+import { useSelector } from 'react-redux'
 
 function Favourite() {
     const [favbookdata, updateFavBookData] = useState({
         load: false,
         data: []
     });
+    const login = useSelector((state) => state.user.login);
+    const navigate = useNavigate();
+    useEffect(()=>{
+        if(!login){
+            navigate('/login')
+        }
+    },[login,navigate])
 
     const fetchFavouriteData = () => {
         fetch(`${urlFavourite}/send`, {

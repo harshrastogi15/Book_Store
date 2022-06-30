@@ -99,11 +99,11 @@
 .SocialFooter a{
     font-size: 24px;
     margin: 3px 25px 10px 25px;
-    color: black;
+    color: rgba(0, 0, 0, 0.577);
     transition: 500ms ease-in-out;
 }
 
 .SocialFooter a:hover{
     transform: scale(1.2);
-    color: rgba(0, 0, 0, 0.577);
+    color: rgba(0, 0, 0, 0.777);
 }

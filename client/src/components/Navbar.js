@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import '../Private/css/Navbar.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Logo from './Logo';
@@ -12,8 +12,9 @@ import { auth_token, urlauth } from '../Appurl';
 
 
 function Navbar() {
+  let location = useLocation();
   const user = useSelector((state) => state.user.name);
-  const login = useSelector(state => state.user.login)
+  const login = useSelector(state => state.user.login);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -26,10 +27,10 @@ function Navbar() {
         'auth_token': auth_token
       }
     }).then(response => response.json())
-      .then(data => { userdata = data;})
-    if(userdata.status===0){
+      .then(data => { userdata = data; })
+    if (userdata.status === 0) {
       dispatch(updateUser(userdata.data))
-    }else{
+    } else {
       localStorage.removeItem('token');
     }
   }
@@ -41,21 +42,26 @@ function Navbar() {
   }
 
   const navtoggler = () => {
-    document.getElementById('sidenavdisplay').style.width="100%";
+    document.getElementById('sidenavdisplay').style.width = "100%";
   }
 
-  useEffect(()=>{
-      if(localStorage.getItem('token')){
-        fetchdata();
-      }
-  },[])
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      fetchdata();
+    }
+  }, [])
+
+  useEffect(() => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, [location])
 
   return (
     <div className='navbar'>
       <div className='navtoggler' onClick={navtoggler}>
         <FontAwesomeIcon icon={faBars} />
       </div>
-      <Sidenavbar logoutfunc={logoutuser}/>
+      <Sidenavbar logoutfunc={logoutuser} />
       <Logo />
       <ul className='navlinks'>
         <li>

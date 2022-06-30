@@ -1,0 +1,93 @@
+/* Book INFO */
+.Bookinfo{
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 20px;
+}
+
+.InfoLogoGIF{
+    width: 30%;
+    height: 80vh;
+}
+
+.BookinfoForm{
+    width: 40%;
+    margin: auto;
+    background-color: white;
+    height: 80vh;
+    text-align: center;
+}
+
+.BookinfoForm h1{
+    font-size: 24px;
+    font-weight: 400;
+    font-family: cursive;
+}
+
+.BookinfoForm h2{
+    width: 80%;
+    margin: auto;
+    padding: 0px;
+    margin-top: 20px;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 400;
+    font-family: cursive;
+}
+
+.BookinfoForm button{
+    width: 30%;
+    padding: 5px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #757575;
+    border-radius: 5px;
+    color: white;
+}
+
+.BookinfoFormDesign input{
+    width: 80%;
+    padding: 5px 2px 0px 2px;
+    margin: 10px auto 20px auto;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.505);
+    font-size: 16px;
+}
+.BookinfoFormDesign input:focus{
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+@media (max-width:617px) {
+    .InfoLogoGIF:nth-child(1){
+        display: none;
+    }
+
+    .BookinfoForm{
+        width: 70%;
+    }
+}
+
+@media (max-width:536px) {
+    .Bookinfo{
+        flex-wrap: wrap;
+    }
+
+    .InfoLogoGIF:nth-child(1){
+        display: block;
+        width: 100%;
+        height: 200px;
+    }
+    .InfoLogoGIF:nth-child(3){
+        display: none;
+    }
+
+    .BookinfoForm{
+        width: 100%;
+        height: fit-content;
+    }
+}

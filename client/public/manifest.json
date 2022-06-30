@@ -1,7 +1,7 @@
 {
   "short_name": "HR BOOK",
   "name": "HR BOOK STORE",
-  "icons": [
+  "icons": [ 
     {
       "src": "tittleLogo.png",
       "sizes": "64x64 32x32 24x24 16x16",

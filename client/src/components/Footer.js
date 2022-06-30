@@ -3,7 +3,7 @@ import style from '../Private/css/Footer.module.css'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '@fortawesome/free-brands-svg-icons'
-import { faGithub, faInstagram, faLinkedin, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faInstagram, faLinkedin} from '@fortawesome/free-brands-svg-icons'
 
 function Footer() {
   return (
@@ -30,7 +30,7 @@ function Footer() {
               If you have any book details that are not available
               on our platform. you can inform us
             </p>
-            <Link to='/mail' >Click Here</Link>
+            <Link to='/sendInfo' >Click Here</Link>
           </div>
         </div>
         <div className={style.copyright}>
@@ -39,13 +39,13 @@ function Footer() {
         </div>
       </div>
       <div className={style.SocialFooter}>
-        <a href='https://github.com/harshrastogi15' target='_blank'>
+        <a href='https://github.com/harshrastogi15' rel="noreferrer" target='_blank'>
           <FontAwesomeIcon icon={faGithub} />
         </a>
-        <a href='https://www.linkedin.com/in/harsh-rastogi-114962200' target='_blank'>
+        <a href='https://www.linkedin.com/in/harsh-rastogi-114962200' rel="noreferrer" target='_blank'>
           <FontAwesomeIcon icon={faLinkedin} />
         </a>
-        <a href='https://www.instagram.com/harsh_rastogi15/' target='_blank'>
+        <a href='https://www.instagram.com/harsh_rastogi15/' rel="noreferrer" target='_blank'>
           <FontAwesomeIcon icon={faInstagram} />
         </a>
       </div>
