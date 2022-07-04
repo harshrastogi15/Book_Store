@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import '../../Private/css/Userprofile.css'
+import style from '../../Private/css/Userprofile.module.css'
 import Lurl from '../../Private/data/tittleLogo.png'
 import UserReview from './UserReview'
 
@@ -23,15 +23,15 @@ function UserProfile() {
         }
     },[login,navigate])
 
-    return <div className='userprofile'>
-            <div className='AboutUser'>
-                <div className='UserName'>
-                    <div className='ProfileLogo'>
+    return <div className={style.userprofile}>
+            <div className={style.AboutUser}>
+                <div className={style.UserName}>
+                    <div className={style.ProfileLogo}>
                         <img src={Lurl} alt="ServerError" width='100%' height='100%' />
                     </div>
                     <p>{name}</p>
                 </div>
-                <div className='Userdetail'>
+                <div className={style.Userdetail}>
                     <p> Email : <span>{email}</span></p>
                     <p> Phone : <span>{phone}</span></p>
                     <p> PinCode : <span>{pincode}</span></p>
@@ -41,7 +41,7 @@ function UserProfile() {
                     <button type='button'>Edit</button>
                 </div>
             </div>
-            <div className='UserReviewDetail'>
+            <div className={style.UserReviewDetail}>
                 <UserReview/>
             </div>
         </div>

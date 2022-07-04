@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../../Private/css/Userprofile.css'
+import style from '../../Private/css/Userprofile.module.css'
 import { createreviewStar } from '../../specialFunction/CreateReviewStar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquarePen, faTrashCan, faStar } from '@fortawesome/free-solid-svg-icons'
@@ -80,7 +80,7 @@ function UserReview() {
     }
 
     const updateUserReview = (e) => {
-        document.getElementById('ModelCSSReview').style.left = '0';
+        document.getElementById(style.ModelCSSReview).style.left = '0';
         starreview(e['star']);
         updatereviewDataUpdate({
             bookname: e['bookname'],
@@ -99,12 +99,12 @@ function UserReview() {
         star = star.children;
         if (cntStar < e) {
             for (var i = 0; i < e; i++) {
-                star[i].className = 'yesstar'
+                star[i].className = style.yesstar
             }
             updateStar(e);
         } else {
             for (i = 4; i >= e - 1; i--) {
-                star[i].className = 'nostar'
+                star[i].className = style.nostar
             }
             updateStar(e - 1);
         }
@@ -145,21 +145,21 @@ function UserReview() {
 
 
     return (
-        <div className='userReviewSide'>
-            <div id='ModelCSSReview'>
-                <div id='UpdateReviewModel'>
-                    <p id='updateReviewBookname'>{reviewDataUpdate['bookname']}</p>
+        <div className={style.userReviewSide}>
+            <div id={style.ModelCSSReview}>
+                <div id={style.UpdateReviewModel}>
+                    <p id={style.updateReviewBookname}>{reviewDataUpdate['bookname']}</p>
                     <div id='star'>
-                        <span className='nostar' onClick={() => starreview(1)}><FontAwesomeIcon icon={faStar} /></span>
-                        <span className='nostar' onClick={() => starreview(2)} ><FontAwesomeIcon icon={faStar} /></span>
-                        <span className='nostar' onClick={() => starreview(3)} ><FontAwesomeIcon icon={faStar} /></span>
-                        <span className='nostar' onClick={() => starreview(4)} ><FontAwesomeIcon icon={faStar} /></span>
-                        <span className='nostar' onClick={() => starreview(5)}  ><FontAwesomeIcon icon={faStar} /></span>
+                        <span className={style.nostar} onClick={() => starreview(1)}><FontAwesomeIcon icon={faStar} /></span>
+                        <span className={style.nostar} onClick={() => starreview(2)} ><FontAwesomeIcon icon={faStar} /></span>
+                        <span className={style.nostar} onClick={() => starreview(3)} ><FontAwesomeIcon icon={faStar} /></span>
+                        <span className={style.nostar} onClick={() => starreview(4)} ><FontAwesomeIcon icon={faStar} /></span>
+                        <span className={style.nostar} onClick={() => starreview(5)}  ><FontAwesomeIcon icon={faStar} /></span>
                     </div>
                     <textarea type='text' id='UpdateReviewMessage' value={reviewDataUpdate.reviewmessage} onChange={(event) => UpdateReviewFunction(event)} />
-                    <div className='but'>
+                    <div className={style.but}>
                         <button type='button' onClick={() => UpdateReviewBackend()}>Update</button>
-                        <button type='button' onClick={() => { document.getElementById('ModelCSSReview').style.left = '-100%'; }}>Close</button>
+                        <button type='button' onClick={() => { document.getElementById(style.ModelCSSReview).style.left = '-100%'; }}>Close</button>
                     </div>
                 </div>
             </div>
@@ -167,16 +167,16 @@ function UserReview() {
             {!Isloding ? <LoaderCorousel /> :
                 UserReviewsData['load'] ?
                     UserReviewsData['data'].length === 0 ?
-                        <div className='Usernoreviews'>No Reviews available</div>
+                        <div className={style.Usernoreviews}>No Reviews available</div>
                         :
                         UserReviewsData['data'].map((e) => {
-                            return <div className='UserReviewAboutBook' key={e.id}>
-                                <div className='UserReviewBookname'>
+                            return <div className={style.UserReviewAboutBook} key={e.id}>
+                                <div className={style.UserReviewBookname}>
                                     <p>{e.bookname}</p>
                                     {createreviewStar(e.star)}
                                 </div>
                                 <p>{e.reviewmessage}</p>
-                                <div className='IconDesignUserReview'>
+                                <div className={style.IconDesignUserReview}>
                                     <div>
                                         <FontAwesomeIcon icon={faSquarePen} onClick={() => { updateUserReview(e) }} />
                                     </div>
@@ -187,7 +187,7 @@ function UserReview() {
                             </div>
                         })
                     :
-                    <div className='Usernoreviews'>No Reviews available</div>
+                    <div className={style.Usernoreviews}>No Reviews available</div>
             }
         </div>
     )
