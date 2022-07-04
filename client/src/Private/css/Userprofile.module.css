@@ -205,3 +205,68 @@
         width: 80%;
     }
 }
+
+/* User Data Update */
+
+.userDataUpdate{
+    width: 300px;
+    margin: auto;
+    margin-top: 40px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.userDataUpdate h1{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.userDataUpdate .inputField{
+    margin: auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.userDataUpdate .inputField label{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.userDataUpdate .inputField input{
+    width: calc(100% - 8px);
+    padding: 5px 3px 0px 3px;
+    font-size: 16px;
+    margin: 5px auto 20px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid gray;
+    border-left: 2px solid gray;
+}
+
+.userDataUpdate .inputField button{
+    color: white;
+    border: none;
+    background-color: gray;
+    padding: 7px 70px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px auto 20px;
+}
+
+.userDataUpdate .bottom{
+    text-align: right;
+}
+
+.userDataUpdate .bottom button{
+    background: none;
+    border: none;
+    color: blue;
+    padding: 10px 8px;
+    cursor: pointer;
+    font-style: italic;
+    text-decoration: underline;
+}
