@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import style from '../../Private/css/Userprofile.module.css'
 import Lurl from '../../Private/data/tittleLogo.png'
 import UserReview from './UserReview'
+import {Link} from 'react-router-dom'
 
 
 function UserProfile() {
@@ -38,7 +39,9 @@ function UserProfile() {
                     <p> Address : <span>{address}</span></p>
                 </div>
                 <div>
+                    <Link to='/user/update'>
                     <button type='button'>Edit</button>
+                    </Link>
                 </div>
             </div>
             <div className={style.UserReviewDetail}>

@@ -19,6 +19,7 @@ import Search from './components/Search';
 import Favourite from './components/Favourite';
 import Message from './components/Alert/Message';
 import BookInfo from './components/Information/BookInfo';
+import UpdateUserData from './components/UserProfile/UpdateUserData';
 
 function App() {
 
@@ -35,11 +36,12 @@ function App() {
             <Route exact path='/favourite' element={<Favourite/>} />
             <Route exact path='/search' element={<Search/>} />
             <Route exact path='/about' element={<Default message="Updated soon" />} />
-            <Route exact path='/user' element={<UserProfile />} />
             <Route exact path='/addbookdata' element={<BookAddForm />} />
+            <Route exact path='/sendInfo' element={<BookInfo/>} />
+            <Route exact path='/user' element={<UserProfile />} />
+            <Route exact path='/user/update' element={<UpdateUserData/>} />
             <Route path='/category/:s' element={<CategoryWise />} />
             <Route exact path='/book/:id/:name/:author' element={<DetailBook />} />
-            <Route exact path='/sendInfo' element={<BookInfo/>} />
             <Route exact path='/' element={<Home />} />
             <Route path='/:s' element={<Default message="This Page is not exist" />} />
           </Routes>

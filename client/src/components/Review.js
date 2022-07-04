@@ -3,13 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import style from '../Private/css/Review.module.css'
 import { useSelector } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { auth_token, urlreviewbook } from '../Appurl';
 import { createreviewStar } from '../specialFunction/CreateReviewStar';
 import { callMessage } from './Alert/CallMessage';
 
 
 function Review(props) {
+    const location = useLocation();
     const { bookid, bookname } = props;
     const naviagte = useNavigate();
     const IsLogin = useSelector((state) => state.user.login);
@@ -95,7 +96,7 @@ function Review(props) {
 
     useEffect(() => {
         fetchReview();
-    }, [])
+    }, [location])
 
 
     return (
