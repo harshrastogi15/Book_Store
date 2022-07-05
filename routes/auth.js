@@ -109,7 +109,7 @@ router.post('/update',[body("phone").isLength({ min: 10 })], jwtaccess, async (r
     if (!errors.isEmpty()) {
       return res.json({ status: -1 });
     }
-    var user = await User.findOneAndUpdate(req.userid, {
+    var user = await User.findOneAndUpdate({_id:req.userid}, {
       name: req.body.name,
       address: req.body.address,
       phone: req.body.phone,
