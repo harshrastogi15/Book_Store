@@ -99,9 +99,26 @@ router.post('/access', jwtaccess, async (req, res) => {
     }
     res.json({ status: 0, data });
   } catch (error) {
-    res.status(500).json({ errors: error, status: -2 });
+    res.status(500).json({ status: -2 });
   }
 })
 
+router.post('/update',[body("phone").isLength({ min: 10 })], jwtaccess, async (req, res) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.json({ status: -1 });
+    }
+    var user = await User.findOneAndUpdate(req.userid, {
+      name: req.body.name,
+      address: req.body.address,
+      phone: req.body.phone,
+      pincode: req.body.pincode
+    });
+    res.json({ status: 0 });
+  } catch (error) {
+    res.json({ status: -2 });
+  }
+})
 
 module.exports = router;

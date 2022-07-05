@@ -214,6 +214,7 @@
     margin-top: 40px;
     background-color: white;
     border-radius: 10px;
+    padding-top: 10px;
 }
 
 .userDataUpdate h1{
@@ -252,7 +253,7 @@
     background-color: gray;
     padding: 7px 70px;
     border-radius: 5px;
-    cursor: pointer;
+    cursor: not-allowed;
     font-size: 16px;
     margin: 10px auto 20px;
 }

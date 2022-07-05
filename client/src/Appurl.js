@@ -10,4 +10,6 @@ export const urlSearch = `/${API_KEY}/api/search`;
 
 export const urlFavourite = `/${API_KEY}/api/favourite`;
 
+export const urlBookInfo = `/${API_KEY}/api/bookinfo`;
+
 export const auth_token = `${localStorage.getItem('token')}`

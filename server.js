@@ -31,6 +31,7 @@ app.use(`/${apikey}/api/book`, require('./routes/Onebook'));
 app.use(`/${apikey}/api/review`, require('./routes/review'));
 app.use(`/${apikey}/api/search`, require('./routes/Search'));
 app.use(`/${apikey}/api/favourite`, require('./routes/FavouriteData'));
+app.use(`/${apikey}/api/bookinfo`, require('./routes/BookInfo'));
 
 
 app.get('*', (req, res) => {

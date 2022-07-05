@@ -32,6 +32,7 @@ function Navbar() {
       dispatch(updateUser(userdata.data))
     } else {
       localStorage.removeItem('token');
+      window.location.reload();
     }
   }
 

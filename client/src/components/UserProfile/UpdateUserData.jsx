@@ -1,26 +1,28 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUser } from '../../actions/user';
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { auth_token, urlauth } from '../../Appurl'
 import style from '../../Private/css/Userprofile.module.css'
+import { callMessage } from '../Alert/CallMessage';
 
 function UpdateUserData() {
     const navigate = useNavigate();
     const name = useSelector(state => state.user.name)
-    const email = useSelector(state => state.user.email)
     const phone = useSelector(state => state.user.phone)
     const pincode = useSelector(state => state.user.pincode)
     const address = useSelector(state => state.user.address)
     const login = useSelector(state => state.user.login)
+    const dispatch = useDispatch();
 
     const [userdata, updateUserdata] = useState({
         name: "",
         phone: "",
         address: "",
-        pincode: "",
-        email: ""
+        pincode: ""
     })
 
     const updateFunction = (event) => {
@@ -30,33 +32,84 @@ function UpdateUserData() {
         })
     }
 
+    const sendUpdatedData = () => {
+        fetch(`${urlauth}/update`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'auth_token': `${auth_token}`
+            },
+            body: JSON.stringify({
+                name: userdata.name,
+                address: userdata.address,
+                phone: userdata.phone,
+                pincode: userdata.pincode
+            })
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.status === 0) {
+                    fetchdata();
+                    callMessage('Success','Updated successfully');
+                    navigate('/user');
+
+                }else{
+                    callMessage('Error','Unable to update');
+                }
+            })
+            .catch(() => {
+                callMessage('Server Error','Unable to connect');
+            })
+    }
+
+    async function fetchdata() {
+        var userdata = {};
+        await fetch(`${urlauth}/access`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth_token': auth_token
+            }
+        }).then(response => response.json())
+            .then(data => { userdata = data; })
+        if (userdata.status === 0) {
+            dispatch(updateUser(userdata.data))
+        } else {
+            localStorage.removeItem('token');
+            window.location.reload();
+        }
+    }
+
     useEffect(() => {
-        if (login == false) {
+        if (login === false) {
             navigate('/login')
         }
         updateUserdata({
-            ...userdata,
             name: name,
             phone: phone,
             address: address,
-            pincode: pincode,
-            email: email
+            pincode: pincode
         })
-    }, [name, email, phone, address, pincode, login])
+    }, [name, phone, address, pincode, login, navigate])
 
-    useEffect(() => {
-        // console.log(userdata);
-    }, [userdata])
+    useEffect(()=>{
+        var button = document.getElementById('Updatebutton');
+        if(userdata.name!==name || userdata.phone!==phone || userdata.address!==address || userdata.pincode!==pincode){
+            button.disabled=false;
+            button.style.cursor='pointer'
+        }else{
+            button.disabled=true;
+            button.style.cursor='not-allowed'
+        }
+    },[userdata])
+
+
     return (
         <div className={style.userDataUpdate}>
             <h1>Update your details</h1>
             <div className={style.inputField}>
                 <label htmlFor='name'>Name</label>
                 <input type='text' id='name' name='name' value={userdata['name']} onChange={updateFunction} />
-            </div>
-            <div className={style.inputField}>
-                <label htmlFor='email'>Email</label>
-                <input type='text' id='email' name='email' value={userdata['email']} onChange={updateFunction} />
             </div>
             <div className={style.inputField}>
                 <label htmlFor='phone'>Ph.No.</label>
@@ -71,7 +124,7 @@ function UpdateUserData() {
                 <input type='text' id='address' name='address' value={userdata['address']} onChange={updateFunction} />
             </div>
             <div className={style.inputField}>
-                <button type='button'>Update</button>
+                <button type='button' id='Updatebutton' onClick={sendUpdatedData}>Update</button>
             </div>
             <div className={style.bottom}>
                 <Link to='/'>
