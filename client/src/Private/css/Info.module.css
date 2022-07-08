@@ -3,25 +3,44 @@
     display: flex;
     flex-wrap: nowrap;
     margin: 20px;
+    /* width: fit-content; */
+    height: fit-content;
 }
 
 .InfoLogoGIF{
     width: 30%;
-    height: 80vh;
 }
 
 .BookinfoForm{
     width: 40%;
     margin: auto;
     background-color: white;
-    height: 80vh;
+    height: fit-content;
     text-align: center;
+}
+
+.BookinfoForm p{
+    font-size: 16px;
+    padding: 10px;
+    font-weight: 500;
+    font-style: italic;
 }
 
 .BookinfoForm h1{
     font-size: 24px;
     font-weight: 400;
     font-family: cursive;
+    padding: 0;
+    margin: 0;
+}
+
+.BookinfoForm h3{
+    font-size: 16px;
+    font-weight: 400;
+    /* font-family: cursive; */
+    color: red;
+    padding: 0;
+    margin: 0;
 }
 
 .BookinfoForm h2{
@@ -52,7 +71,7 @@
 .BookinfoFormDesign input{
     width: 80%;
     padding: 5px 2px 0px 2px;
-    margin: 10px auto 20px auto;
+    margin: 30px auto 0px auto;
     border: none;
     outline: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.505);
@@ -60,6 +79,16 @@
 }
 .BookinfoFormDesign input:focus{
     border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+.BookinfoFormDesign p{
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    width: 80%;
+    padding: 5px 0px 0px 0px;
+    margin: auto;
+    color: red;
 }
 
 @media (max-width:617px) {
