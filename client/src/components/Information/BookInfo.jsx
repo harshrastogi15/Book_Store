@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { urlBookInfo } from '../../Appurl'
 import style from '../../Private/css/Info.module.css'
 import Footer from '../Footer'
 import { GifLogo1, GifLogo2 } from '../GifLogo'
@@ -17,6 +18,7 @@ function BookInfo() {
     })
     const [emailMessage, updateEmailMessage] = useState("");
     const [bookMessage, updateBookMessage] = useState("");
+    const [NameMessage, updateNameMessage] = useState("");
 
     const updateDataFunction = (event) => {
         updateData({
@@ -38,13 +40,45 @@ function BookInfo() {
     }
 
     const sendData = () => {
-        if(data.bookauthor.length === 0 || data.bookname.length ===0){
+        if (data.bookauthor.length === 0 || data.bookname.length === 0) {
             updateBookMessage('Please write Book Name and Author Name');
+            if (data.name.length === 0) {
+                updateNameMessage('Write name');
+                return;
+            } else {
+                updateNameMessage('');
+            }
             return;
-        }else{
+        } else {
             updateBookMessage('');
         }
-        
+        if (data.name.length === 0) {
+            updateNameMessage('Write name');
+            return;
+        } else {
+            updateNameMessage('');
+        }
+
+        fetch(`${urlBookInfo}/addBookinfo`, {
+            method:'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                email:  data.email,
+                bookname:  data.bookname,
+                bookauthor:  data.bookauthor,
+                name: data.name
+            })
+        })
+            .then((res) => res.json())
+            .then((res) => { 
+                console.log(res);
+            }) 
+            .catch((error) => {
+                console.log(error)
+            })
+
     }
 
     useEffect(() => {
@@ -78,7 +112,7 @@ function BookInfo() {
                     </p>
                     <h1>Fill Book Detail</h1>
                     <h3>{bookMessage}</h3>
-                    <form onKeyDown={(e)=>handleKeyPress(e)}>
+                    <form onKeyDown={(e) => handleKeyPress(e)}>
                         <div className={style.BookinfoFormDesign}>
                             <input type='text' placeholder='Enter Book Name' name='bookname' value={data['bookname']} onChange={(e) => updateDataFunction(e)} />
                         </div>
@@ -88,6 +122,7 @@ function BookInfo() {
                         <h2>Personal Detail</h2>
                         <div className={style.BookinfoFormDesign}>
                             <input type='text' placeholder='Enter Name' name='name' value={data['name']} onChange={(e) => updateDataFunction(e)} />
+                            <p>{NameMessage}</p>
                         </div>
                         <div className={style.BookinfoFormDesign}>
                             <input type='text' placeholder='Enter Email' name='email' value={data['email']} onChange={(e) => updateDataFunction(e)} />
