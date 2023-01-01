@@ -6,6 +6,8 @@ const { body, validationResult } = require("express-validator");
 const User = require("../Models/User");
 const jwtaccess = require("../middleware/authaccess");
 const router = express.Router();
+const createotp = require('../middleware/otpgenerate');
+const {sendOTP} = require('../middleware/mail');
 
 
 router.post(
@@ -51,6 +53,19 @@ router.post(
   }
 );
 
+router.post('/sendOtp', [body("email").isEmail()], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.json({ status: -1 });
+  }
+
+  try {
+    res.json({ status: 0 });
+  } catch (error) {
+    res.status(500).json({ status: -2 });
+  }
+
+})
 
 
 router.post(
@@ -103,13 +118,13 @@ router.post('/access', jwtaccess, async (req, res) => {
   }
 })
 
-router.post('/update',[body("phone").isLength({ min: 10 })], jwtaccess, async (req, res) => {
+router.post('/update', [body("phone").isLength({ min: 10 })], jwtaccess, async (req, res) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.json({ status: -1 });
     }
-    var user = await User.findOneAndUpdate({_id:req.userid}, {
+    var user = await User.findOneAndUpdate({ _id: req.userid }, {
       name: req.body.name,
       address: req.body.address,
       phone: req.body.phone,
