@@ -1,10 +1,21 @@
 {
     "version": 2,
-    "name": "hr-book-store",
     "builds": [
-      { "src": "server.js", "use": "@vercel/node" }
+      {
+        "src": "./server.js",  
+        "use": "@vercel/node"
+      },
+      {
+        "src": "./client/build",   
+        "use": "@vercel/static"
+      }
     ],
-    "routes": [
-      { "src": "/(.*)", "dest": "/" }
+    
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "server.js"
+        }
     ]
-  }
+}
+
