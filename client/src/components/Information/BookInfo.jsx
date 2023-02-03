@@ -2,8 +2,10 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { urlBookInfo } from '../../Appurl'
 import style from '../../Private/css/Info.module.css'
+import { callMessage } from '../Alert/CallMessage'
 import Footer from '../Footer'
 import { GifLogo1, GifLogo2 } from '../GifLogo'
 function BookInfo() {
@@ -19,7 +21,7 @@ function BookInfo() {
     const [emailMessage, updateEmailMessage] = useState("");
     const [bookMessage, updateBookMessage] = useState("");
     const [NameMessage, updateNameMessage] = useState("");
-
+    const navigate = useNavigate();
     const updateDataFunction = (event) => {
         updateData({
             ...data,
@@ -73,10 +75,17 @@ function BookInfo() {
         })
             .then((res) => res.json())
             .then((res) => { 
-                console.log(res);
+                // console.log(res);
+                if(res.status==0){
+                    callMessage('Success', 'We successfully get your suggestion.');
+                    navigate('/');
+                }else{
+                    callMessage('Error', 'Unable to send');
+                }
             }) 
             .catch((error) => {
-                console.log(error)
+                // console.log(error)
+                callMessage('Error', 'Unable to send');
             })
 
     }
