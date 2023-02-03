@@ -5,10 +5,10 @@ import {
   Routes
 } from "react-router-dom";
 import Home from './components/Home';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import Navbar from './components/Navbar';
-import Default from './components/Default';
+import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
+import Navbar from './components/Navbar/Navbar';
+import Default from './components/Defaults/Default';
 import { Provider } from 'react-redux';
 import store from './store';
 import BookAddForm from './components/BookAddForm';

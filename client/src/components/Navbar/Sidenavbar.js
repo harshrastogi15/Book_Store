@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import '../Private/css/Sidenavbar.css'
+import '../../Private/css/Sidenavbar.css'
 import { Link } from 'react-router-dom'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import Logo from './Logo'
+import Logo from '../Logo'
 import { useSelector } from 'react-redux'
 
 

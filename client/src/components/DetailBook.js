@@ -91,8 +91,14 @@ function DetailBook() {
         })
     }
 
+    // const getimage = ()=>{
+    //     let html = <FetchImage title={booktitle} id={bookid}/>;
+    //     console.log(html);
+    // }
+
     useEffect(() => {
         fetchBookDetail();
+        // getimage();
     }, [location])
 
     return (

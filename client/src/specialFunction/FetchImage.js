@@ -46,7 +46,7 @@ export default function FetchImage(props) {
 
     useEffect(() => {
         fetchImage();
-    }, [])
+    }, [title,id])
 
     return (
         <>

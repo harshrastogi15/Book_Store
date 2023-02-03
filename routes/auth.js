@@ -58,7 +58,8 @@ router.post('/sendOtp', [body("email").isEmail()], async (req, res) => {
   if (!errors.isEmpty()) {
     return res.json({ status: -1 });
   }
-
+  // console.log(req.body)
+  // await sendOTP(req.body.email,"123445")
   try {
     res.json({ status: 0 });
   } catch (error) {
