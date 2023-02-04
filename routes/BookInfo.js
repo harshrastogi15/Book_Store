@@ -1,4 +1,5 @@
 const express = require('express');
+const { UserBookInfoAdd } = require('../middleware/mail');
 const Books = require('../Models/Books');
 const Userbookinfo = require('../Models/UserBookInfo');
 const router = express.Router();
@@ -17,6 +18,7 @@ router.post('/addBookinfo', async (req, res) => {
             bookauthor: req.body.bookauthor
         })
             .then(() => {
+                UserBookInfoAdd(req.body.email, req.body.name, req.body.bookname, req.body.bookauthor)
                 res.json({ status: 0 });
             })
             .catch(() => {

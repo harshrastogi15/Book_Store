@@ -114,25 +114,27 @@ async function sendOTP(Useremail,otp) {
 }
 
 async function UserBookInfoAdd(email,name,bookname,bookauthor) {  
-    var email = ``;
+    var email = email;
     var heading = `
     Hello, ${name}.
-    Welcome to the HR book Store.
     `
     var message = `
-                    We will get your suggestion about</br>
-                    Book Name : ${bookname} </br>
-                    Author Name : ${bookauthor} </br>
-                    </br></br>
-                    we will update this as soon as possible.
+                    <p style="margin:0;padding:0;">Welcome to the HR book Store.</p>
+                    <p style="margin:0;padding:0;">We got your suggestion about</p>
+                    <p style="margin:0;padding:0;">Book Name : ${bookname} </p>
+                    <p style="margin:0;padding:0;">Author Name : ${bookauthor} </p>
+                    <p style="margin:0;padding:0;">
+                    we will update this as soon as possible.</p>
                 `;
     
     var footerMessage = `Thanks for informing us.`;
+
+    var belowMessage = `This is a system generated email. Don't reply to this mail`;
     
     const result = await transporter.sendMail({
         from: process.env.EMAIL,
         to: email,
-        subject: 'no-reply__HR_BookStore ',
+        subject: 'Thanks for your suggestion | HR Book Store',
         html: `
             <div style="width: 80%; margin: auto;">
                 <div style="width: 100%; max-width: 300px; height: 120px; margin: auto;">
@@ -142,22 +144,24 @@ async function UserBookInfoAdd(email,name,bookname,bookauthor) {
                 <h6 style="font-size: 14px; padding: 0; margin: 0; margin-top: 50px; text-align: left;">
                     ${heading}
                 </h6>
-                <div style="font-size: 14px; padding: 0; margin: 0; margin-top: 50px; text-align: left;>${message}</div>
+                <div style="font-size: 14px; padding: 0; margin: 0; margin-top: 10px; ">${message}</div>
                 <p>${footerMessage}</p>
                 <p style="font-size: 14px; padding: 0; margin: 0; margin-top: 50px; text-align: left;">
                     Regards
                 </p>
-                <h1 style="font-size: 16px; padding: 0; margin: 0; margin-top: 5px; text-align: left;">Harsh Rastogi,</h1>
-                <h3 style="font-size: 14px; padding: 0; margin: 0; text-align: left;">
+                <h1 style="font-size: 14px; padding: 0; margin: 0; margin-top: 5px; text-align: left;">Harsh Rastogi,</h1>
+                <h3 style="font-size: 14px; padding: 0; margin: 0; font-weight:normal; text-align: left;">
                     Admin,
                 </h3>
-                <h3 style="font-size: 14px; padding: 0; margin: 0; margin-bottom: 50px; text-align: left;">
+                <h3 style="font-size: 14px; padding: 0; margin: 0; font-weight:normal; margin-bottom: 50px; text-align: left;">
                     <a href="https://harshrastogi15.github.io/Personal/">Profile</a>
                 </h3>
                 <h3 style="font-size: 14px; padding: 0; margin: 0; margin-top: 10px; margin-bottom: 10px; text-align: center;">
-                    Please Visit : ${linksOfWebsite}
+                    ${linksOfWebsite}
                 </h3>
             </div>
+            <hr>
+            <div style="font-size: 12px; padding: 0; margin: 0; font-weight:normal; margin-top:20px; margin-bottom: 10px; text-align: left;" >${belowMessage}</div>
         `,
         attachments: [
             {
@@ -184,4 +188,4 @@ async function UserBookInfoAdd(email,name,bookname,bookauthor) {
 
 
 
-module.exports = {sendOTP};
+module.exports = {sendOTP,UserBookInfoAdd};
