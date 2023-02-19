@@ -168,7 +168,7 @@ async function UserBookInfoAdd(email,name,bookname,bookauthor) {
         attachments: [
             {
                 filename: "logo.png",
-                path: __dirname + "Logocomp.png",
+                path: __dirname + "/Logocomp.png",
                 cid: "logo",
             },
         ]
