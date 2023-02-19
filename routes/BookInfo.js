@@ -21,8 +21,8 @@ router.post('/addBookinfo', async (req, res) => {
                 await UserBookInfoAdd(req.body.email, req.body.name, req.body.bookname, req.body.bookauthor)
                 res.json({ status: 0 });
             })
-            .catch(() => {
-                res.json({ status: -1 });
+            .catch((error) => {
+                res.json({ status: -1,error:error });
             })
 
     } catch (error) {

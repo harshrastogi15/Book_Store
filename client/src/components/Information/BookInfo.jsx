@@ -80,6 +80,7 @@ function BookInfo() {
                     callMessage('Success', 'We successfully get your suggestion.');
                     navigate('/');
                 }else{
+                    console.log(res.error);
                     callMessage('Error', 'Unable to send');
                 }
             }) 
