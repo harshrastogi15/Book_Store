@@ -17,8 +17,8 @@ router.post('/addBookinfo', async (req, res) => {
             bookname: req.body.bookname,
             bookauthor: req.body.bookauthor
         })
-            .then(() => {
-                UserBookInfoAdd(req.body.email, req.body.name, req.body.bookname, req.body.bookauthor)
+            .then(async () => {
+                await UserBookInfoAdd(req.body.email, req.body.name, req.body.bookname, req.body.bookauthor)
                 res.json({ status: 0 });
             })
             .catch(() => {
