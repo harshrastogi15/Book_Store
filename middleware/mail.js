@@ -137,10 +137,10 @@ async function UserBookInfoAdd(email,name,bookname,bookauthor) {
         from: process.env.EMAIL,
         to: email,
         subject: 'Thanks for your suggestion | HR Book Store',
-        // <img src='cid:logo' height="100%" width="100%">
         html: `
             <div style="width: 80%; margin: auto;">
                 <div style="width: 100%; max-width: 300px; height: 120px; margin: auto;">
+                    <img src='cid:logo' height="100%" width="100%">
                 </div>
                 <h1 style="font-size: 24px; text-align: center;">HR BOOK STORE</h1>
                 <h6 style="font-size: 14px; padding: 0; margin: 0; margin-top: 50px; text-align: left;">
@@ -164,16 +164,15 @@ async function UserBookInfoAdd(email,name,bookname,bookauthor) {
             </div>
             <hr>
             <div style="font-size: 12px; padding: 0; margin: 0; font-weight:normal; margin-top:20px; margin-bottom: 10px; text-align: left;" >${belowMessage}</div>
-        `
+        `,
+        attachments: [
+            {
+                filename: "logo.png",
+                path: "Logocomp.png",
+                cid: "logo",
+            },
+        ]
     });
-    // ,
-    // attachments: [
-    //     {
-    //         filename: "logo.png",
-    //         path: "Logocomp.png",
-    //         cid: "logo",
-    //     },
-    // ]
     // console.log(JSON.stringify(result, null, 4));
 }
 
