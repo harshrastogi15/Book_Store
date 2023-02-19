@@ -6,7 +6,7 @@ const linksOfWebsite = process.env.Website_Link;
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
-    port: 465,
+    port: 587,
     secure: true,
     auth: {
         user: process.env.EMAIL,
