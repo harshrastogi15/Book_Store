@@ -62,28 +62,28 @@ function BookInfo() {
         }
 
         fetch(`${urlBookInfo}/addBookinfo`, {
-            method:'POST',
+            method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify({
-                email:  data.email,
-                bookname:  data.bookname,
-                bookauthor:  data.bookauthor,
+                email: data.email,
+                bookname: data.bookname,
+                bookauthor: data.bookauthor,
                 name: data.name
             })
         })
             .then((res) => res.json())
-            .then((res) => { 
+            .then((res) => {
                 // console.log(res);
-                if(res.status==0){
+                if (res.status == 0) {
                     callMessage('Success', 'We successfully get your suggestion.');
                     navigate('/');
-                }else{
+                } else {
                     console.log(res.error);
                     callMessage('Error', 'Unable to send');
                 }
-            }) 
+            })
             .catch((error) => {
                 // console.log(error)
                 callMessage('Error', 'Unable to send');
