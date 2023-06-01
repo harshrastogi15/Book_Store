@@ -5,8 +5,7 @@
     margin: 10px auto;
     height: fit-content;
     box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
-    /* overflow: hidden; */
-    
+    border-radius: 10px;
 }
 
 .corouselTittle{
@@ -21,12 +20,10 @@
 }
 
 .multiCorousel h1{
-    
     font-size: 30px;
     font-weight: 500;
     margin: 0;
     margin-left: 10px;
-    
 }
 
 .corouseldesign{

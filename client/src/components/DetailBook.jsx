@@ -4,7 +4,7 @@ import {auth_token, urlbook, urlFavourite} from '../Appurl';
 import Loader from '../loader/Loader';
 import Review from './Review';
 import Footer from './Footer';
-import Corousel from './Corousel';
+import Corousel from './Corousel/Corousel';
 import {useLocation} from 'react-router-dom';
 import FetchImage from '../specialFunction/FetchImage';
 import {callMessage} from './Alert/CallMessage';
