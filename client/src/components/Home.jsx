@@ -1,19 +1,19 @@
 import React from 'react';
 import Corousel from './Corousel/Corousel';
-import '../Private/css/Home.css';
+import style from '../Private/css/Home.module.css';
 import {GifLogo2} from './GifLogo';
 import Footer from './Footer';
 
 function Home() {
   return (
     <div>
-      <div className='homeclass'>
+      <div className={style.homeclass}>
         <Corousel type='All' delay='3050' />
-        <div className='HomecorouselShow'>
-          <div className='Homecorouselwidth'>
+        <div className={style.HomecorouselShow}>
+          <div className={style.Homecorouselwidth}>
             <Corousel type='Novel' delay='3100' />
           </div>
-          <div className='HomeLogoGif' >
+          <div className={style.HomeLogoGif} >
             <GifLogo2 />
           </div>
         </div>
