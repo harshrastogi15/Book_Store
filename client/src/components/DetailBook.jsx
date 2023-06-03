@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import style from '../Private/css/DetailBook.module.css';
-import {auth_token, urlbook, urlFavourite} from '../Appurl';
+import {authToken, urlbook, urlFavourite} from '../Appurl';
 import Loader from '../loader/Loader';
 import Review from './Review';
 import Footer from './Footer';
@@ -67,7 +67,7 @@ function DetailBook() {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'auth_token': `${auth_token}`,
+        'auth_token': `${authToken}`,
       },
       body: JSON.stringify({
         bookid: bookid,

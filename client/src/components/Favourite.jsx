@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {auth_token, urlFavourite} from '../Appurl';
+import {authToken, urlFavourite} from '../Appurl';
 import style from '../Private/css/Favourite.module.css';
 import {Link, useNavigate} from 'react-router-dom';
 import FetchImage from '../specialFunction/FetchImage';
@@ -24,7 +24,7 @@ function Favourite() {
   const fetchFavouriteData = () => {
     fetch(`${urlFavourite}/send`, {
       headers: {
-        auth_token: auth_token,
+        auth_token: authToken,
       },
     }).then((res) => res.json())
         .then((res) => {
@@ -47,7 +47,7 @@ function Favourite() {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'auth_token': `${auth_token}`,
+        'auth_token': `${authToken}`,
       },
       body: JSON.stringify({
         id: id,

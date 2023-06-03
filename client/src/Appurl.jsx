@@ -12,4 +12,4 @@ export const urlFavourite = `/${API_KEY}/api/favourite`;
 
 export const urlBookInfo = `/${API_KEY}/api/bookinfo`;
 
-export const auth_token = `${localStorage.getItem('token')}`;
+export const authToken = `${localStorage.getItem('token')}`;

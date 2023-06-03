@@ -3,12 +3,12 @@ import style from '../../Private/css/Userprofile.module.css';
 import {createreviewStar} from '../../specialFunction/CreateReviewStar';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSquarePen, faTrashCan, faStar} from '@fortawesome/free-solid-svg-icons';
-import {auth_token, urlreviewbook} from '../../Appurl';
+import {authToken, urlreviewbook} from '../../Appurl';
 import LoaderCorousel from '../../loader/LoaderCorousel';
 import {callMessage} from '../Alert/CallMessage';
 
 function UserReview() {
-  const [UserReviewsData, UpdateUserReviewsData] = useState({
+  const [UserReviewsData, updateUserReviewsData] = useState({
     load: false,
     data: [],
   });
@@ -26,13 +26,13 @@ function UserReview() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'auth_token': auth_token,
+        'auth_token': authToken,
       },
     })
         .then((res) => res.json())
         .then((res) => {
           if (res.status === 0) {
-            UpdateUserReviewsData({
+            updateUserReviewsData({
               ...UserReviewsData,
               load: true,
               data: res.data,
@@ -56,7 +56,7 @@ function UserReview() {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          'auth_token': auth_token,
+          'auth_token': authToken,
         },
         body: JSON.stringify({
           id: id,
@@ -87,7 +87,7 @@ function UserReview() {
     });
   };
 
-  const UpdateReviewFunction = (event) => {
+  const updateReviewFunction = (event) => {
     updatereviewDataUpdate({...reviewDataUpdate, reviewmessage: event.target.value});
   };
 
@@ -95,7 +95,7 @@ function UserReview() {
     let star = document.getElementById('star');
     star = star.children;
     if (cntStar < e) {
-      for (var i = 0; i < e; i++) {
+      for (let i = 0; i < e; i++) {
         star[i].className = style.yesstar;
       }
       updateStar(e);
@@ -107,14 +107,14 @@ function UserReview() {
     }
   };
 
-  const UpdateReviewBackend = () => {
+  const updateReviewBackend = () => {
     reviewDataUpdate['star'] = cntStar;
 
     fetch(`${urlreviewbook}/updateUserReview`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'auth_token': auth_token,
+        'auth_token': authToken,
       },
       body: JSON.stringify({
         bookname: reviewDataUpdate['bookname'],
@@ -153,9 +153,9 @@ function UserReview() {
             <span className={style.nostar} onClick={() => starreview(4)} ><FontAwesomeIcon icon={faStar} /></span>
             <span className={style.nostar} onClick={() => starreview(5)} ><FontAwesomeIcon icon={faStar} /></span>
           </div>
-          <textarea type='text' id='UpdateReviewMessage' value={reviewDataUpdate.reviewmessage} onChange={(event) => UpdateReviewFunction(event)} />
+          <textarea type='text' id='UpdateReviewMessage' value={reviewDataUpdate.reviewmessage} onChange={(event) => updateReviewFunction(event)} />
           <div className={style.but}>
-            <button type='button' onClick={() => UpdateReviewBackend()}>Update</button>
+            <button type='button' onClick={() => updateReviewBackend()}>Update</button>
             <button type='button' onClick={() => {
               document.getElementById(style.ModelCSSReview).style.left = '-100%';
             }}>Close</button>

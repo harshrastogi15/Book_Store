@@ -4,7 +4,7 @@ import {faStar} from '@fortawesome/free-solid-svg-icons';
 import style from '../Private/css/Review.module.css';
 import {useSelector} from 'react-redux';
 import {useNavigate, Link, useLocation} from 'react-router-dom';
-import {auth_token, urlreviewbook} from '../Appurl';
+import {authToken, urlreviewbook} from '../Appurl';
 import {createreviewStar} from '../specialFunction/CreateReviewStar';
 import {callMessage} from './Alert/CallMessage';
 
@@ -24,7 +24,7 @@ function Review(props) {
     let star = document.getElementById('star');
     star = star.children;
     if (cntStar < e) {
-      for (var i = 0; i < e; i++) {
+      for (let i = 0; i < e; i++) {
         star[i].className = style.yesstar;
       }
       updateStar(e);
@@ -56,7 +56,7 @@ function Review(props) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'auth_token': auth_token,
+        'auth_token': authToken,
       },
       body: JSON.stringify({
         bookid,

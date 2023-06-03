@@ -8,7 +8,7 @@ import CartIcon from '../Cart/CartIcon';
 import Sidenavbar from './Sidenavbar';
 import {useDispatch, useSelector} from 'react-redux';
 import {updateUser} from '../../actions/user';
-import {auth_token, urlauth} from '../../Appurl';
+import {authToken, urlauth} from '../../Appurl';
 
 
 function Navbar() {
@@ -24,7 +24,7 @@ function Navbar() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'auth_token': auth_token,
+        'auth_token': authToken,
       },
     }).then((response) => response.json())
         .then((data) => {

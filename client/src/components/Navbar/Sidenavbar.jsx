@@ -11,29 +11,29 @@ function Sidenavbar(props) {
   const {logoutfunc} = props;
   const user = useSelector((state) => state.user.name);
   const login = useSelector((state) => state.user.login);
-  const [mouseevent, UpdateEvent] = useState(-1);
+  const [mouseevent, updateEvent] = useState(-1);
 
 
   const togglerfunction = () => {
     document.getElementById('sidenavdisplay').style.width = '0px';
   };
 
-  const Enter_leave = (event, e) => {
+  const enterLeave = (event, e) => {
     // console.log(event.touches[0].clientX)
     if (e === 0) {
       const x = event.touches[0].clientX;
-      UpdateEvent(x);
+      updateEvent(x);
     } else {
       const x = event.changedTouches[0].clientX;
       if (mouseevent > x) {
         document.getElementById('sidenavdisplay').style.width = '0px';
       }
-      UpdateEvent(-1);
+      updateEvent(-1);
     }
   };
 
   return (
-    <div id='sidenavdisplay' onTouchStart={(e) => Enter_leave(e, 0)} onTouchEnd={(e) => Enter_leave(e, 1)}>
+    <div id='sidenavdisplay' onTouchStart={(e) => enterLeave(e, 0)} onTouchEnd={(e) => enterLeave(e, 1)}>
       <div id='sidenav' >
         <div className='sidelogo' >
           <Logo />

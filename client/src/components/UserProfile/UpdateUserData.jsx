@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {updateUser} from '../../actions/user';
 import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
-import {auth_token, urlauth} from '../../Appurl';
+import {authToken, urlauth} from '../../Appurl';
 import style from '../../Private/css/Userprofile.module.css';
 import {callMessage} from '../Alert/CallMessage';
 
@@ -37,7 +37,7 @@ function UpdateUserData() {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'auth_token': `${auth_token}`,
+        'auth_token': `${authToken}`,
       },
       body: JSON.stringify({
         name: userdata.name,
@@ -67,7 +67,7 @@ function UpdateUserData() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'auth_token': auth_token,
+        'auth_token': authToken,
       },
     }).then((response) => response.json())
         .then((data) => {
