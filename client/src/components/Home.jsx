@@ -1,8 +1,8 @@
 import React from 'react';
 import Corousel from './Corousel/Corousel';
 import style from '../Private/css/Home.module.css';
-import {GifLogo2} from './GifLogo';
-import Footer from './Footer';
+import {GifLogo2} from './Logo/GifLogo';
+import Footer from './Footer/Footer';
 
 function Home() {
   return (

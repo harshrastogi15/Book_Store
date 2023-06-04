@@ -6,8 +6,8 @@ import {useNavigate} from 'react-router-dom';
 import {urlBookInfo} from '../../Appurl';
 import style from '../../Private/css/Info.module.css';
 import {callMessage} from '../Alert/CallMessage';
-import Footer from '../Footer';
-import {GifLogo1, GifLogo2} from '../GifLogo';
+import Footer from '../Footer/Footer';
+import {GifLogo1, GifLogo2} from '../Logo/GifLogo';
 function BookInfo() {
   const email = useSelector((state) => state.user.email);
   const user = useSelector((state) => state.user.name);

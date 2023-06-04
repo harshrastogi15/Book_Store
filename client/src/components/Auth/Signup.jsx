@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {urlauth} from '../../Appurl';
 import '../../Private/css/LoginSign.css';
-import {GifLogo1} from '../GifLogo';
+import {GifLogo1} from '../Logo/GifLogo';
 function Signup() {
   const float = () => {
     const data = document.getElementsByClassName('float-label-field');

@@ -3,7 +3,7 @@ import {authToken, urlFavourite} from '../Appurl';
 import style from '../Private/css/Favourite.module.css';
 import {Link, useNavigate} from 'react-router-dom';
 import FetchImage from '../specialFunction/FetchImage';
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 import LoaderCorousel from '../loader/LoaderCorousel';
 import {callMessage} from './Alert/CallMessage';
 import {useSelector} from 'react-redux';

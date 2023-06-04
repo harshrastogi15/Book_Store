@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../Private/css/Footer.module.css';
+import style from './Footer.module.css';
 import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import '@fortawesome/free-brands-svg-icons';
@@ -33,21 +33,23 @@ function Footer() {
             <Link to='/sendInfo' >Click Here</Link>
           </div>
         </div>
-        <div className={style.copyright}>
-          <a rel="noreferrer" href='https://harshrastogi15.github.io/Personal/' target='_blank'>Harsh Rastogi</a>
-          <p>Copyright reserved </p>
+        <div className={style.footerCopyright}>
+          <div className={style.copyright}>
+            <a rel="noreferrer" href='https://harshrastogi15.github.io/Personal/' target='_blank'>Harsh Rastogi</a>
+            <p>Copyright reserved </p>
+          </div>
+          <div className={style.SocialFooter}>
+            <a href='https://github.com/harshrastogi15' rel="noreferrer" target='_blank'>
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+            <a href='https://www.linkedin.com/in/harsh-rastogi-114962200' rel="noreferrer" target='_blank'>
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+            <a href='https://www.instagram.com/harsh_rastogi15/' rel="noreferrer" target='_blank'>
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
+          </div>
         </div>
-      </div>
-      <div className={style.SocialFooter}>
-        <a href='https://github.com/harshrastogi15' rel="noreferrer" target='_blank'>
-          <FontAwesomeIcon icon={faGithub} />
-        </a>
-        <a href='https://www.linkedin.com/in/harsh-rastogi-114962200' rel="noreferrer" target='_blank'>
-          <FontAwesomeIcon icon={faLinkedin} />
-        </a>
-        <a href='https://www.instagram.com/harsh_rastogi15/' rel="noreferrer" target='_blank'>
-          <FontAwesomeIcon icon={faInstagram} />
-        </a>
       </div>
     </div>
   );

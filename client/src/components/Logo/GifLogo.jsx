@@ -1,6 +1,6 @@
 import React from 'react';
-import gif1 from '../Private/data/LogoGif.gif';
-import gif2 from '../Private/data/LogoGif2.gif';
+import gif1 from '../../Private/data/LogoGif.gif';
+import gif2 from '../../Private/data/LogoGif2.gif';
 
 export function GifLogo1() {
   const gifstyle={

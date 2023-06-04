@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import '../../Private/css/LoginSign.css';
 import {Link, useNavigate} from 'react-router-dom';
-import {GifLogo1} from '../GifLogo';
+import {GifLogo1} from '../Logo/GifLogo';
 import Loader from '../../loader/Loader';
 import {urlauth} from '../../Appurl';
 

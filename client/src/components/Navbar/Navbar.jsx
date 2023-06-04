@@ -3,7 +3,7 @@ import '../../Private/css/Navbar.css';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
-import Logo from '../Logo';
+import Logo from '../Logo/Logo';
 import CartIcon from '../Cart/CartIcon';
 import Sidenavbar from './Sidenavbar';
 import {useDispatch, useSelector} from 'react-redux';

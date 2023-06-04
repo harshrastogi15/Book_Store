@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import logo from '../Private/data/LogoColcomp.png';
-import '../Private/css/Logo.css';
+import logo from '../../Private/data/LogoColcomp.png';
+import './Logo.module.css';
 function Logo() {
   return (
     <div className='logo'>

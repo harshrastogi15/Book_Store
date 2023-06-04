@@ -1,0 +1,44 @@
+.about{
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.about h3{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+    font-size: 28px;
+}
+
+.aboutDiv{
+    text-align: justify;
+    margin: 30px auto;
+    padding: 10px;
+}
+
+.aboutDiv h4{
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.aboutDiv p,.aboutDiv ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 16px;
+}
+
+.aboutLine{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+@media (max-width:473px) {
+    .aboutDiv h4{
+        text-align: center;
+        margin: auto;
+    }
+}

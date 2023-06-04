@@ -3,7 +3,7 @@ import {urlbook} from '../Appurl';
 import Bookcard from './Bookcard';
 import '../Private/css/CategoryWise.css';
 import LoaderCorousel from '../loader/LoaderCorousel';
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 import {useLocation} from 'react-router-dom';
 import {callMessage} from './Alert/CallMessage';
 

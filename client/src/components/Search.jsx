@@ -3,7 +3,7 @@ import {urlSearch} from '../Appurl';
 import LoaderCorousel from '../loader/LoaderCorousel';
 import styles from '../Private/css/Search.module.css';
 import Bookcard from './Bookcard';
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 
 function Search() {
   const [searchdata, updateSearchData] = useState({

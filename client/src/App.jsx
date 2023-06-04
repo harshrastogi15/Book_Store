@@ -21,6 +21,7 @@ import Favourite from './components/Favourite';
 import Message from './components/Alert/Message';
 import BookInfo from './components/Information/BookInfo';
 import UpdateUserData from './components/UserProfile/UpdateUserData';
+import About from './components/About/About';
 
 function App() {
   return <Provider store={store}>
@@ -34,7 +35,7 @@ function App() {
           <Route exact path='/signup' element={<Signup />} />
           <Route exact path='/favourite' element={<Favourite />} />
           <Route exact path='/search' element={<Search />} />
-          <Route exact path='/about' element={<Default message="Updated soon" />} />
+          <Route exact path='/about' element={<About/>} />
           <Route exact path='/addbookdata' element={<BookAddForm />} />
           <Route exact path='/sendInfo' element={<BookInfo />} />
           <Route exact path='/user' element={<UserProfile />} />
