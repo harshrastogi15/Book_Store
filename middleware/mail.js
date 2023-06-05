@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-async function send() {  
+async function send() {
     var email = ``;
     var heading = `
     Welcome to the HR book Store.
@@ -23,7 +23,7 @@ async function send() {
                     Please help other users by providing your review about books
                 `;
     var footerMessage = `Thanks for joining us.`;
-    
+
     const result = await transporter.sendMail({
         from: process.env.EMAIL,
         to: email,
@@ -73,7 +73,7 @@ async function sendOTP(Useremail,otp) {
     var message = `Your verification code : ${otp}
                 `;
     var footerMessage = `Otp is valid for 3 min `;
-    
+
     const result = await transporter.sendMail({
         from: process.env.EMAIL,
         to: email,
@@ -115,7 +115,7 @@ async function sendOTP(Useremail,otp) {
     // console.log(JSON.stringify(result, null, 4));
 }
 
-async function UserBookInfoAdd(email,name,bookname,bookauthor) {  
+async function UserBookInfoAdd(email,name,bookname,bookauthor) {
     var email = email;
     var heading = `
     Hello, ${name}.
@@ -128,11 +128,11 @@ async function UserBookInfoAdd(email,name,bookname,bookauthor) {
                     <p style="margin:0;padding:0;">
                     we will update this as soon as possible.</p>
                 `;
-    
+
     var footerMessage = `Thanks for informing us.`;
 
     var belowMessage = `This is a system generated email. Don't reply to this mail`;
-    
+
     const result = await transporter.sendMail({
         from: process.env.EMAIL,
         to: email,

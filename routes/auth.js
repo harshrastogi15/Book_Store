@@ -6,9 +6,9 @@ const { body, validationResult } = require("express-validator");
 const User = require("../Models/User");
 const jwtaccess = require("../middleware/authaccess");
 const router = express.Router();
-const createotp = require('../middleware/otpgenerate');
+const createOtp = require('../middleware/generateOTP');
 const {sendOTP} = require('../middleware/mail');
-
+const cache = require('../cache/cache')
 
 router.post(
   "/signup",
@@ -53,17 +53,38 @@ router.post(
   }
 );
 
-router.post('/sendOtp', [body("email").isEmail()], async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.json({ status: -1 });
-  }
-  // console.log(req.body)
-  // await sendOTP(req.body.email,"123445")
+router.post('/sendOtp', async (req, res) => {
   try {
+    let key = `${req.body.email}_OTP`;
+    let OTP = createOtp();
+    console.log(OTP);
+    cache.set(key,OTP,420);
     res.json({ status: 0 });
   } catch (error) {
     res.status(500).json({ status: -2 });
+  }
+
+})
+
+router.post('/verify', async (req, res) => {
+
+  try {
+    let key = `${req.body.email}_OTP`;
+    if(cache.has(key)){
+      const OTP = cache.get(key);
+      console.log(cache.get(key));
+      if(OTP === req.body.otp){
+
+        res.json({ status: 0, message : 'OTP matched' });
+      }else{
+
+        res.json({ status: -1, message : 'OTP mismatched' });
+      }
+    }else{
+      res.json({ status: -1, message : 'OTP mismatched' });
+    }
+  } catch (error) {
+    res.status(500).json({ status: -2, error });
   }
 
 })
