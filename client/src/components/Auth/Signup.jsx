@@ -15,7 +15,6 @@ function Signup() {
     name: '',
     phone: '',
     address: '',
-    pincode: '',
     email: '',
     password: '',
     Cpassword: '',
@@ -117,10 +116,6 @@ function Signup() {
           <fieldset className='float-label-field'>
             <label htmlFor="address">Address</label>
             <input id="address" type='text' onFocus={float} name="address" value={signupDetail.address} onChange={(e) => updatevalue(e)} />
-          </fieldset>
-          <fieldset className='float-label-field'>
-            <label htmlFor="pincode">Pincode</label>
-            <input id="pincode" type='number' onFocus={float} name="pincode" value={signupDetail.pincode} onChange={(e) => updatevalue(e)} />
           </fieldset>
           <fieldset className='float-label-field'>
             <label htmlFor="email">Email</label>

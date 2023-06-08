@@ -36,7 +36,6 @@ router.post(
           address: req.body.address,
           password: hash,
           phone: req.body.phone,
-          pincode: req.body.pincode
         })
           .then((user) => {
             data = {
@@ -137,7 +136,6 @@ router.post('/access', jwtaccess, async (req, res) => {
       email: user.email,
       address: user.address,
       phone: user.phone,
-      pincode: user.pincode
     }
     res.json({ status: 0, data });
   } catch (error) {
@@ -155,7 +153,6 @@ router.post('/update', [body("phone").isLength({ min: 10 })], jwtaccess, async (
       name: req.body.name,
       address: req.body.address,
       phone: req.body.phone,
-      pincode: req.body.pincode
     });
     res.json({ status: 0 });
   } catch (error) {

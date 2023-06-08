@@ -11,7 +11,6 @@ function UserProfile() {
   const name = useSelector((state) => state.user.name);
   const email = useSelector((state) => state.user.email);
   const phone = useSelector((state) => state.user.phone);
-  const pincode = useSelector((state) => state.user.pincode);
   const address = useSelector((state) => state.user.address);
   const login = useSelector((state) => state.user.login);
 
@@ -34,7 +33,6 @@ function UserProfile() {
       <div className={style.Userdetail}>
         <p> Email : <span>{email}</span></p>
         <p> Phone : <span>{phone}</span></p>
-        <p> PinCode : <span>{pincode}</span></p>
         <p> Address : <span>{address}</span></p>
       </div>
       <div>
