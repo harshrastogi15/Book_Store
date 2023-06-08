@@ -22,6 +22,7 @@ import Message from './components/Alert/Message';
 import BookInfo from './components/Information/BookInfo';
 import UpdateUserData from './components/UserProfile/UpdateUserData';
 import About from './components/About/About';
+import Verification from './components/Auth/Verification';
 
 function App() {
   return <Provider store={store}>
@@ -42,8 +43,9 @@ function App() {
           <Route exact path='/user/update' element={<UpdateUserData />} />
           <Route path='/category/:s' element={<CategoryWise />} />
           <Route exact path='/book/:id/:name/:author' element={<DetailBook />} />
+          <Route exact path='/email/verify' element={<Verification />} />
           <Route exact path='/' element={<Home />} />
-          <Route path='/:s' element={<Default message="This Page is not exist" />} />
+          <Route path='/*' element={<Default message="This Page is not exist" />} />
         </Routes>
       </div>
     </Router>

@@ -72,7 +72,7 @@ async function sendOTP(Useremail,otp) {
     `
     var message = `Your verification code : ${otp}
                 `;
-    var footerMessage = `Otp is valid for 3 min `;
+    var footerMessage = `OTP is valid for 5 min `;
 
     const result = await transporter.sendMail({
         from: process.env.EMAIL,
@@ -100,7 +100,7 @@ async function sendOTP(Useremail,otp) {
                     <a href="https://harshrastogi15.github.io/Personal/">Profile</a>
                 </h3>
                 <h3 style="font-size: 14px; padding: 0; margin: 0; margin-top: 10px; margin-bottom: 10px; text-align: center;">
-                    Please Visit : https://hrbookstore.herokuapp.com/
+                    Please Visit : ${linksOfWebsite}
                 </h3>
             </div>
         `,
@@ -131,7 +131,7 @@ async function UserBookInfoAdd(email,name,bookname,bookauthor) {
 
     var footerMessage = `Thanks for informing us.`;
 
-    var belowMessage = `This is a system generated email. Don't reply to this mail`;
+    var belowMessage = `Don't reply to this mail`;
 
     const result = await transporter.sendMail({
         from: process.env.EMAIL,
@@ -162,8 +162,6 @@ async function UserBookInfoAdd(email,name,bookname,bookauthor) {
                     ${linksOfWebsite}
                 </h3>
             </div>
-            <hr>
-            <div style="font-size: 12px; padding: 0; margin: 0; font-weight:normal; margin-top:20px; margin-bottom: 10px; text-align: left;" >${belowMessage}</div>
         `,
         attachments: [
             {

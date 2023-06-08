@@ -53,31 +53,36 @@ router.post(
   }
 );
 
-router.post('/sendOtp', async (req, res) => {
+router.post('/sendOtp',jwtaccess, async (req, res) => {
   try {
-    let key = `${req.body.email}_OTP`;
+    var user = await User.findById(req.userid);
+    if (!user) {
+      return res.status(400).json({ status: -1 });
+    }
+    let key = `${user.email}_OTP`;
     let OTP = createOtp();
-    console.log(OTP);
     cache.set(key,OTP,420);
-    res.json({ status: 0 });
+    await sendOTP(user.email,OTP);
+    res.status(400).json({ status: 0 });
   } catch (error) {
     res.status(500).json({ status: -2 });
   }
 
 })
 
-router.post('/verify', async (req, res) => {
+router.post('/verify',jwtaccess, async (req, res) => {
 
   try {
-    let key = `${req.body.email}_OTP`;
+    var user = await User.findById(req.userid);
+    if (!user) {
+      return res.status(400).json({ status: -1 });
+    }
+    let key = `${user.email}_OTP`;
     if(cache.has(key)){
       const OTP = cache.get(key);
-      console.log(cache.get(key));
       if(OTP === req.body.otp){
-
         res.json({ status: 0, message : 'OTP matched' });
       }else{
-
         res.json({ status: -1, message : 'OTP mismatched' });
       }
     }else{
