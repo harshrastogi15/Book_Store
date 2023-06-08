@@ -1,0 +1,57 @@
+.verifyclass{
+    margin: 50px auto;
+    padding: 10px 5px;
+    display:flex;
+    width: 90%;
+    max-width: 500px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.verifyclass>div{
+    text-align: center;
+}
+
+.verifyclass h4{
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.verificationemail{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.otpbutton{
+    cursor: pointer;
+    text-align: center;
+    margin: 20px;
+    padding: 7px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
+}
+.otpbutton:hover{
+    color: white;
+    background-color: rgb(144, 140, 140);
+    border: 2px solid rgb(144, 140, 140);
+}
+
+.collectOTP{
+    display: none;
+}
+
+.inputOTP{
+    font-size: 16px;
+    padding: 7px;
+    border-radius: 10px;
+    margin: 20px;
+    outline: none;
+    border: 2px solid black;
+}

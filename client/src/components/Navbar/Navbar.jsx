@@ -17,6 +17,13 @@ function Navbar() {
   const login = useSelector((state) => state.user.login);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isEmailVerify = useSelector((state) => state.user.isEmail);
+
+  useEffect(()=>{
+    if (isEmailVerify === false) {
+      navigate('/email/verify');
+    }
+  }, [isEmailVerify]);
 
   async function fetchdata() {
     let userdata = {};

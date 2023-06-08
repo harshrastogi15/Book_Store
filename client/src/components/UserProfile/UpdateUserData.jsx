@@ -13,7 +13,6 @@ function UpdateUserData() {
   const navigate = useNavigate();
   const name = useSelector((state) => state.user.name);
   const phone = useSelector((state) => state.user.phone);
-  const pincode = useSelector((state) => state.user.pincode);
   const address = useSelector((state) => state.user.address);
   const login = useSelector((state) => state.user.login);
   const dispatch = useDispatch();
@@ -43,7 +42,6 @@ function UpdateUserData() {
         name: userdata.name,
         address: userdata.address,
         phone: userdata.phone,
-        pincode: userdata.pincode,
       }),
     })
         .then((res) => res.json())
@@ -89,13 +87,12 @@ function UpdateUserData() {
       name: name,
       phone: phone,
       address: address,
-      pincode: pincode,
     });
-  }, [name, phone, address, pincode, login, navigate]);
+  }, [name, phone, address, login, navigate]);
 
   useEffect(()=>{
     const button = document.getElementById('Updatebutton');
-    if (userdata.name!==name || userdata.phone!==phone || userdata.address!==address || userdata.pincode!==pincode) {
+    if (userdata.name!==name || userdata.phone!==phone || userdata.address!==address) {
       button.disabled=false;
       button.style.cursor='pointer';
     } else {
@@ -115,10 +112,6 @@ function UpdateUserData() {
       <div className={style.inputField}>
         <label htmlFor='phone'>Ph.No.</label>
         <input type='text' id='phone' name='phone' value={userdata['phone']} onChange={updateFunction} />
-      </div>
-      <div className={style.inputField}>
-        <label htmlFor='pincode'>Pincode</label>
-        <input type='text' id='pincode' name='pincode' value={userdata['pincode']} onChange={updateFunction} />
       </div>
       <div className={style.inputField}>
         <label htmlFor='address'>Address</label>

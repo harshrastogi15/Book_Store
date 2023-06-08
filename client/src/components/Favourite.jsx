@@ -14,7 +14,14 @@ function Favourite() {
     data: [],
   });
   const login = useSelector((state) => state.user.login);
+  const isEmailVerify = useSelector((state) => state.user.isEmail);
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    if (isEmailVerify === false) {
+      navigate('/email/verify');
+    }
+  }, [isEmailVerify]);
   useEffect(()=>{
     if (!login) {
       navigate('/login');

@@ -6,9 +6,9 @@ const { body, validationResult } = require("express-validator");
 const User = require("../Models/User");
 const jwtaccess = require("../middleware/authaccess");
 const router = express.Router();
-const createotp = require('../middleware/otpgenerate');
+const createOtp = require('../middleware/generateOTP');
 const {sendOTP} = require('../middleware/mail');
-
+const cache = require('../cache/cache')
 
 router.post(
   "/signup",
@@ -36,7 +36,6 @@ router.post(
           address: req.body.address,
           password: hash,
           phone: req.body.phone,
-          pincode: req.body.pincode
         })
           .then((user) => {
             data = {
@@ -53,17 +52,46 @@ router.post(
   }
 );
 
-router.post('/sendOtp', [body("email").isEmail()], async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.json({ status: -1 });
-  }
-  // console.log(req.body)
-  // await sendOTP(req.body.email,"123445")
+router.post('/sendOtp',jwtaccess, async (req, res) => {
   try {
-    res.json({ status: 0 });
+    var user = await User.findById(req.userid);
+    if (!user) {
+      return res.status(400).json({ status: -1 });
+    }
+    let key = `${user.email}_OTP`;
+    let OTP = createOtp();
+    cache.set(key,OTP,420);
+    await sendOTP(user.email,OTP);
+    res.status(200).json({ status: 0 });
   } catch (error) {
     res.status(500).json({ status: -2 });
+  }
+
+})
+
+router.post('/verify',jwtaccess, async (req, res) => {
+
+  try {
+    var user = await User.findById(req.userid);
+    if (!user) {
+      return res.status(400).json({ status: -1 });
+    }
+    let key = `${user.email}_OTP`;
+    if(cache.has(key)){
+      const OTP = cache.get(key);
+      if(OTP === req.body.otp){
+        user = await User.findOneAndUpdate({ _id: req.userid }, {
+          isEmail : true,
+        });
+        res.status(200).json({ status: 0, message : 'OTP matched' });
+      }else{
+        res.status(400).json({ status: -1, message : 'OTP mismatched' });
+      }
+    }else{
+      res.status(400).json({ status: -1, message : 'OTP mismatched' });
+    }
+  } catch (error) {
+    res.status(500).json({ status: -2, error });
   }
 
 })
@@ -111,7 +139,7 @@ router.post('/access', jwtaccess, async (req, res) => {
       email: user.email,
       address: user.address,
       phone: user.phone,
-      pincode: user.pincode
+      isEmail: user.isEmail
     }
     res.json({ status: 0, data });
   } catch (error) {
@@ -125,11 +153,10 @@ router.post('/update', [body("phone").isLength({ min: 10 })], jwtaccess, async (
     if (!errors.isEmpty()) {
       return res.json({ status: -1 });
     }
-    var user = await User.findOneAndUpdate({ _id: req.userid }, {
+    let user = await User.findOneAndUpdate({ _id: req.userid }, {
       name: req.body.name,
       address: req.body.address,
       phone: req.body.phone,
-      pincode: req.body.pincode
     });
     res.json({ status: 0 });
   } catch (error) {
