@@ -77,7 +77,6 @@ function DetailBook() {
     })
         .then((res)=>res.json())
         .then((res)=>{
-          console.log(res);
           if (res.status===0) {
             callMessage('Successful', 'Book has been added to your favorite list');
           } else if (res.status===1) {

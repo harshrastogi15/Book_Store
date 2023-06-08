@@ -1,18 +1,23 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import style from './Verification.module.css';
 import Timer from '../../specialFunction/Timer';
 import {useSelector} from 'react-redux';
 import {authToken, urlauth} from '../../Appurl';
 import {callMessage} from '../Alert/CallMessage';
 import LoaderCorousel from '../../loader/LoaderCorousel';
+import {useNavigate} from 'react-router-dom';
 
 function Verification() {
   const [startTimer, setTimer] = useState(false);
   const [loading, setLoading] = useState(false);
   const [otp, setOtp] = useState('');
   const email = useSelector((state) => state.user.email);
+  const login = useSelector((state) => state.user.login);
+  const isEmailVerify = useSelector((state) => state.user.isEmail);
   const collectOTP = useRef();
   const buttonOTP = useRef();
+  const navigation = useNavigate();
+
   const sendOTP = async () => {
     setLoading(true);
     fetch(`${urlauth}/sendotp`, {
@@ -56,6 +61,7 @@ function Verification() {
         .then((res) => {
           if ( res.status===0 ) {
             callMessage('Successful', 'Your address is verified');
+            window.location.reload();
           } else if ( res.status===-1 ) {
             callMessage('Unsuccessful', 'OTP mismatched');
           } else {
@@ -68,6 +74,17 @@ function Verification() {
           setLoading(false);
         });
   };
+
+  useEffect(()=>{
+    if (!login) {
+      navigation('/');
+    }
+  }, [login]);
+  useEffect(()=>{
+    if (isEmailVerify) {
+      navigation('/');
+    }
+  }, [isEmailVerify]);
 
   return (
     <div className={style.verifyclass}>

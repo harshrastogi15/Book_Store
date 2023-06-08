@@ -3,7 +3,7 @@ const userstate = {
   name: 'user',
   login: false,
   email: '',
-  isEmail: '',
+  isEmail: true,
   phone: '',
   address: '',
 };
@@ -25,7 +25,7 @@ const userreducer = (state = userstate, action) => {
       login: false,
       name: 'user',
       email: '',
-      isEmail: '',
+      isEmail: true,
       address: '',
       phone: '',
     };

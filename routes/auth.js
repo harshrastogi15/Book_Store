@@ -62,7 +62,7 @@ router.post('/sendOtp',jwtaccess, async (req, res) => {
     let OTP = createOtp();
     cache.set(key,OTP,420);
     await sendOTP(user.email,OTP);
-    res.status(400).json({ status: 0 });
+    res.status(200).json({ status: 0 });
   } catch (error) {
     res.status(500).json({ status: -2 });
   }
@@ -80,12 +80,15 @@ router.post('/verify',jwtaccess, async (req, res) => {
     if(cache.has(key)){
       const OTP = cache.get(key);
       if(OTP === req.body.otp){
-        res.json({ status: 0, message : 'OTP matched' });
+        user = await User.findOneAndUpdate({ _id: req.userid }, {
+          isEmail : true,
+        });
+        res.status(200).json({ status: 0, message : 'OTP matched' });
       }else{
-        res.json({ status: -1, message : 'OTP mismatched' });
+        res.status(400).json({ status: -1, message : 'OTP mismatched' });
       }
     }else{
-      res.json({ status: -1, message : 'OTP mismatched' });
+      res.status(400).json({ status: -1, message : 'OTP mismatched' });
     }
   } catch (error) {
     res.status(500).json({ status: -2, error });
@@ -136,6 +139,7 @@ router.post('/access', jwtaccess, async (req, res) => {
       email: user.email,
       address: user.address,
       phone: user.phone,
+      isEmail: user.isEmail
     }
     res.json({ status: 0, data });
   } catch (error) {
@@ -149,7 +153,7 @@ router.post('/update', [body("phone").isLength({ min: 10 })], jwtaccess, async (
     if (!errors.isEmpty()) {
       return res.json({ status: -1 });
     }
-    var user = await User.findOneAndUpdate({ _id: req.userid }, {
+    let user = await User.findOneAndUpdate({ _id: req.userid }, {
       name: req.body.name,
       address: req.body.address,
       phone: req.body.phone,

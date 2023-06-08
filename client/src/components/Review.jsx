@@ -12,8 +12,9 @@ import {callMessage} from './Alert/CallMessage';
 function Review(props) {
   const location = useLocation();
   const {bookid, bookname} = props;
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
   const IsLogin = useSelector((state) => state.user.login);
+  const isEmailVerify = useSelector((state) => state.user.isEmail);
   const [cntStar, updateStar] = useState(0);
   const [reviewdata, updatereview] = useState('');
   const [message, updatemessage] = useState('');
@@ -38,7 +39,10 @@ function Review(props) {
 
   const sendResponseReview = () => {
     if (!IsLogin) {
-      naviagte('/login');
+      navigate('/login');
+    }
+    if (isEmailVerify === false) {
+      navigate('/email/verify');
     }
 
     if (reviewdata.length < 4) {
