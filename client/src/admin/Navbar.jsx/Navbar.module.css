@@ -1,0 +1,25 @@
+
+.adminNavbar{
+    width: 200px;
+    border-right: 2px solid black;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.adminNavbarLink{
+    background: white;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.adminNavbarLink:hover{
+    background-color: rgb(170, 169, 169);
+    border: 2px solid rgb(170, 169, 169);
+    color: white;
+}
