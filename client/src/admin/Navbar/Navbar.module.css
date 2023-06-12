@@ -2,8 +2,9 @@
 .adminNavbar{
     width: 200px;
     border-right: 2px solid black;
-    height: 80vh;
+    height: calc(100vh - 55px);
     display: flex;
+    position: fixed;
     flex-direction: column;
     align-items: center;
 }
