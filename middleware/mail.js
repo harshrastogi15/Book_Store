@@ -107,7 +107,7 @@ async function sendOTP(Useremail,otp) {
         attachments: [
             {
                 filename: "logo.png",
-                path: "Logocomp.png",
+                path: __dirname + "/Logocomp.png",
                 cid: "logo",
             },
         ]
