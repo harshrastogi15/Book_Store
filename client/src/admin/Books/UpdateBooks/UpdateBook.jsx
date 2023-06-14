@@ -87,6 +87,28 @@ function UpdateBook() {
     });
   };
 
+  const sendUpdateDataBook = ()=>{
+    fetch(`${urlbook}/update/data`, {
+      method: 'POST',
+      headers: {
+        'content-Type': 'application/json',
+        'id': bookid,
+      },
+      body: JSON.stringify(bookInfo),
+    })
+        .then((res)=>res.json())
+        .then((res)=>{
+          if (res.status===0) {
+            callMessage('Success', 'Data Updated');
+          } else {
+            callMessage('Oops', 'upable to update');
+          }
+        })
+        .catch((err)=>{
+          callMessage('Oops', 'upable to update');
+        });
+  };
+
   useEffect(() => {
     return () => {
       fetchBookDetail();
@@ -134,7 +156,7 @@ function UpdateBook() {
             Publication : <input type="text" name="publication" id="" value={bookInfo.publication} onChange={(e) => updateDataBook(e)}/>
         </div>
         <div>
-          <button>Update</button>
+          <button onClick={sendUpdateDataBook}>Update</button>
         </div>
       </div>
     </div>

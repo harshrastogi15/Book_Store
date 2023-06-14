@@ -23,7 +23,8 @@ app.use(bodyParser.urlencoded({limit: "10000kb", extended: true }));
 app.use(express.json());
 app.use(cors())
 
-
+// To update
+app.use(`/${apikey}/api/book`, require('./routes/admin/bookUpdate'));
 
 app.use(`/${apikey}/api/auth`, require('./routes/auth'));
 app.use(`/${apikey}/api/book`, require('./routes/booksdetail'));
