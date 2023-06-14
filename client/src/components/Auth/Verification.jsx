@@ -28,7 +28,6 @@ function Verification() {
     })
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
           if ( res.status===0 ) {
             buttonOTP.current.style.display = 'none';
             collectOTP.current.style.display = 'block';
