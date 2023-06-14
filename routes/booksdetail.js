@@ -97,4 +97,18 @@ router.post('/image', async (req, res) => {
 
 })
 
+router.post('/update/image',upload.single('img'),async (req,res)=>{
+    try {
+        await BooksImage.findOneAndUpdate({bookId:req.headers.id},{
+            img: {
+                data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+                contentType: 'image/png'
+            }
+        });
+        fs.unlinkSync(path.join(__dirname + "/uploads/" + req.file.filename));
+        res.status(200).json({status:0});
+    } catch (error) {
+        res.status(500).json({status:-1});
+    }
+})
 module.exports = router;

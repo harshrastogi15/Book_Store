@@ -38,7 +38,6 @@ function UpdateBook() {
     })
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
           if (res.status === 0) {
             updateBookInfo({
               ...bookInfo,
@@ -55,16 +54,38 @@ function UpdateBook() {
         });
   };
 
+  const updateBookImage = (event)=>{
+    event.preventDefault();
+    fetch(event.target.action, {
+      method: 'POST',
+      headers: {
+        id: bookid,
+        title: booktitle,
+      },
+      body: new FormData(event.target),
+    })
+        .then((resp) => {
+          return resp.json();
+        })
+        .then((body) => {
+          if (body.status===0) {
+            callMessage('Success', 'Book Update successfully');
+            window.location.reload();
+          } else {
+            callMessage('Oops', 'upable to update book');
+          }
+        })
+        .catch((error) => {
+          callMessage('Oops', 'upable to update book');
+        });
+  };
+
   const updateDataBook = (e)=>{
     updateBookInfo({
       ...bookInfo,
       [e.target.name]: e.target.value,
     });
   };
-
-  useEffect(()=>{
-    console.log(bookInfo);
-  }, [bookInfo]);
 
   useEffect(() => {
     return () => {
@@ -79,7 +100,9 @@ function UpdateBook() {
           <FetchImage title={booktitle} id={bookid} />
         </div>
         <div>
-          <form action="" method="post">
+          <form action={`${urlbook}/update/image`}method="post"
+            onSubmit={(e) => updateBookImage(e)}
+            encType="multipart/form-data">
             <div>
               <label htmlFor="img">Image</label>
               <input type="file" id="img" name="img" />

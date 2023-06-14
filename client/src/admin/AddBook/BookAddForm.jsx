@@ -1,6 +1,7 @@
 import React from 'react';
 import {urlbook} from '../../Appurl';
 import style from './BookAddForm.module.css';
+import {callMessage} from '../../components/Alert/CallMessage';
 
 function BookAddForm() {
   const submitbook = (event) => {
@@ -13,10 +14,14 @@ function BookAddForm() {
           return resp.json();
         })
         .then((body) => {
-          console.log(body);
+          if (body.status===0) {
+            callMessage('Success', 'Book Add successfully');
+          } else {
+            callMessage('Oops', 'upable to add book');
+          }
         })
         .catch((error) => {
-          console.log(error);
+          callMessage('Oops', 'upable to add book');
         });
   };
 
