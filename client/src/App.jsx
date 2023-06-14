@@ -22,7 +22,7 @@ import BookInfo from './components/Information/BookInfo';
 import UpdateUserData from './components/UserProfile/UpdateUserData';
 import About from './components/About/About';
 import Verification from './components/Auth/Verification';
-import Admin from './admin/admin';
+import Admin from './admin/Admin';
 
 function App() {
   return <Provider store={store}>
