@@ -64,7 +64,7 @@ router.post('/sendOtp',jwtaccess, async (req, res) => {
     await sendOTP(user.email,OTP);
     res.status(200).json({ status: 0 });
   } catch (error) {
-    res.status(500).json({ status: -2 });
+    res.status(500).json({ status: -2 ,error});
   }
 
 })
