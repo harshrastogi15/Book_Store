@@ -24,3 +24,10 @@
     border: 2px solid rgb(170, 169, 169);
     color: white;
 }
+
+@media (max-width:530px) {
+    .adminNavbar{
+        width: 0px;
+        overflow: hidden;
+    }
+}

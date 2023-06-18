@@ -4,16 +4,15 @@ import {Route, Routes} from 'react-router-dom';
 import BookAddForm from './AddBook/BookAddForm';
 import Books from './Books/Books';
 import UpdateBook from './Books/UpdateBooks/UpdateBook';
+import AdminLogin from './AdminLogin/AdminLogin';
+import style from './Admin.module.css';
 
 function admin() {
-  const mystyle = {
-    display: 'flex',
-  };
-
   return (
-    <div style={mystyle}>
+    <div className={style.mainAdmin}>
+      <AdminLogin/>
       <Navbar />
-      <div style={{width: 'calc(100% - 200px)', marginLeft: '200px'}}>
+      <div className={style.adminside} >
         <Routes>
           <Route exact path='/' element={<div>ADD</div>}/>
           <Route exact path='/addbook' element={<BookAddForm/>}/>
