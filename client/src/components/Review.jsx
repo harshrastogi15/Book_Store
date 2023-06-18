@@ -30,7 +30,7 @@ function Review(props) {
       }
       updateStar(e);
     } else {
-      for (i = 4; i >= e - 1; i--) {
+      for (let i = 4; i >= e - 1; i--) {
         star[i].className = style.nostar;
       }
       updateStar(e - 1);
