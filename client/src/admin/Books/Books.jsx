@@ -49,7 +49,7 @@ function Books() {
 
   return (
     <div>
-      <h3 style={{textAlign: 'center'}}>Books</h3>
+      <h3 style={{textAlign: 'center', margin: '0px 20px 20px 20px'}}>Books</h3>
       <div style={{'width': '91%', 'margin': 'auto'}}>
         <select id="category" name="category" style={{'width': '99%', 'margin': 'auto', 'height': '30px', 'fontSize': '15px'}} onChange={(e)=>updateType(e.target.value)}>
           <option value="All">All</option>

@@ -8,6 +8,7 @@ function BookAddForm() {
     event.preventDefault();
     fetch(event.target.action, {
       method: 'POST',
+      headers: {'auth_token': `${localStorage.getItem('adminToken')}`},
       body: new FormData(event.target),
     })
         .then((resp) => {
@@ -16,6 +17,9 @@ function BookAddForm() {
         .then((body) => {
           if (body.status===0) {
             callMessage('Success', 'Book Add successfully');
+          } else if (res.status === -10) {
+            localStorage.removeItem('adminToken');
+            window.location.reload();
           } else {
             callMessage('Oops', 'upable to add book');
           }
@@ -62,7 +66,7 @@ function BookAddForm() {
           </div>
           <div>
             <label htmlFor="img">Image</label>
-            <input type="file" id="img" name="img" />
+            <input type="file" id="img" name="img" required/>
           </div>
           <div>
             <input type="submit" value="submit" />

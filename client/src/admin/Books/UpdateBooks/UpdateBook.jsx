@@ -61,6 +61,7 @@ function UpdateBook() {
       headers: {
         id: bookid,
         title: booktitle,
+        auth_token: `${localStorage.getItem('adminToken')}`,
       },
       body: new FormData(event.target),
     })
@@ -70,6 +71,9 @@ function UpdateBook() {
         .then((body) => {
           if (body.status===0) {
             callMessage('Success', 'Book Update successfully');
+            window.location.reload();
+          } else if (res.status === -10) {
+            localStorage.removeItem('adminToken');
             window.location.reload();
           } else {
             callMessage('Oops', 'upable to update book');
@@ -93,6 +97,7 @@ function UpdateBook() {
       headers: {
         'content-Type': 'application/json',
         'id': bookid,
+        'auth_token': `${localStorage.getItem('adminToken')}`,
       },
       body: JSON.stringify(bookInfo),
     })
@@ -100,6 +105,9 @@ function UpdateBook() {
         .then((res)=>{
           if (res.status===0) {
             callMessage('Success', 'Data Updated');
+          } else if (res.status === -10) {
+            localStorage.removeItem('adminToken');
+            window.location.reload();
           } else {
             callMessage('Oops', 'upable to update');
           }
@@ -143,7 +151,7 @@ function UpdateBook() {
             Author : <span>{bookauthor}</span>
         </div>
         <div>
-            Language : <input type="text" name="language" id="" value={bookInfo.language} onChange={(e) => updateDataBook(e)}/>
+            Language : <input type="text" name="language" value={bookInfo.language} onChange={(e) => updateDataBook(e)}/>
         </div>
         <div>
             Category : <select id="category" name="category" onChange={(e) => updateDataBook(e)}>
@@ -153,7 +161,7 @@ function UpdateBook() {
           </select>
         </div>
         <div>
-            Publication : <input type="text" name="publication" id="" value={bookInfo.publication} onChange={(e) => updateDataBook(e)}/>
+            Publication : <input type="text" name="publication" value={bookInfo.publication} onChange={(e) => updateDataBook(e)}/>
         </div>
         <div>
           <button onClick={sendUpdateDataBook}>Update</button>

@@ -5,12 +5,17 @@ const Books = require('../../Models/Books');
 const BooksImage = require('../../Models/BooksImage');
 const path = require('path');
 const fs = require('fs');
+const jwtaccess = require('../../middleware/authaccess');
+const { authenticate } = require('../../middleware/authenticateAdmin');
 
 const router = express.Router();
 
 
-router.post('/addbook', upload.single('img'), async (req, res) => {
+router.post('/addbook',jwtaccess, upload.single('img'), async (req, res) => {
     try {
+        if(!authenticate(req.userid)){
+            return res.status(400).json({status : -10});
+        }
         let book = await new Books({
             title: req.body.title,
             author: req.body.author,
@@ -47,8 +52,11 @@ router.post('/addbook', upload.single('img'), async (req, res) => {
     }
 });
 
-router.post('/update/image',upload.single('img'),async (req,res)=>{
+router.post('/update/image',jwtaccess,upload.single('img'),async (req,res)=>{
     try {
+        if(!authenticate(req.userid)){
+            return res.status(400).json({status : -10});
+        }
         await BooksImage.findOneAndUpdate({bookId:req.headers.id},{
             img: {
                 data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
@@ -62,8 +70,11 @@ router.post('/update/image',upload.single('img'),async (req,res)=>{
     }
 })
 
-router.post('/update/data',async(req,res)=>{
+router.post('/update/data',jwtaccess,async(req,res)=>{
     try {
+        if(!authenticate(req.userid)){
+            return res.status(400).json({status : -10});
+        }
         await Books.findByIdAndUpdate({_id:req.headers.id},{
             language: req.body.language,
             publication: req.body.publication,

@@ -14,7 +14,7 @@ function admin() {
       <Navbar />
       <div className={style.adminside} >
         <Routes>
-          <Route exact path='/' element={<div>ADD</div>}/>
+          <Route exact path='/' element={<div></div>}/>
           <Route exact path='/addbook' element={<BookAddForm/>}/>
           <Route exact path='/books' element={<Books/>}/>
           <Route exact path='/update/:id/:title/:author' element={<UpdateBook/>}/>

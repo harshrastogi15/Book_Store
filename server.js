@@ -24,6 +24,7 @@ app.use(express.json());
 app.use(cors())
 
 // To update
+app.use(`/${apikey}/api/admin`, require('./routes/admin/adminLogin'));
 app.use(`/${apikey}/api/book`, require('./routes/admin/bookUpdate'));
 
 app.use(`/${apikey}/api/auth`, require('./routes/auth'));

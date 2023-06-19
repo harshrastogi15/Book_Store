@@ -3,10 +3,17 @@
     width: 200px;
     border-right: 2px solid black;
     height: calc(100vh - 55px);
+    background-color: white;
     display: flex;
     position: fixed;
     flex-direction: column;
     align-items: center;
+    padding: 20px 0px;
+}
+
+.adminNavbar h3{
+    font-size: 18px;
+    margin-top: 40px;
 }
 
 .adminNavbarLink{
@@ -25,9 +32,24 @@
     color: white;
 }
 
+.adminNavToggler{
+    margin: 3px 10px;
+    font-size: 24px;
+    position: fixed;
+    left: 10px;
+    top: 60px;
+    z-index: 20;
+    display: none;
+    align-items: center;
+    cursor: pointer;
+}
+
 @media (max-width:530px) {
     .adminNavbar{
         width: 0px;
         overflow: hidden;
+    }
+    .adminNavToggler{
+        display: block;
     }
 }
