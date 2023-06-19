@@ -1,0 +1,32 @@
+.admincard{
+    width: 170px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.admincardImage{
+    width: 150px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.admincard p{
+    /* text-align: center; */
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.admincard p span{
+    font-weight: 500;
+}
+
+.admincard a{
+    color: rgb(96, 96, 96);
+    text-decoration: none;
+}

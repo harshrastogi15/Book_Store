@@ -1,0 +1,41 @@
+.UpdateBook{
+    display: flex;
+    padding: 20px;
+}
+
+.ImageUpdate{
+    width: 40%;
+}
+
+.UpdatebookImage{
+    width: 90%;
+    max-width: 250px;
+    margin: auto;
+}
+
+.DataUpdate{
+    width: 60%;
+    padding: 10px;
+}
+
+.DataUpdate>div{
+    font-size: 18px;
+    margin: 20px 0px;
+}
+.DataUpdate>div span{
+    font-weight: 500;
+}
+
+.DataUpdate>div input,.DataUpdate>div select{
+    font-weight: 500;
+    width: 90%;
+    padding: 4px;
+    font-size: 18px;
+}
+
+.DataUpdate>div button{
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
