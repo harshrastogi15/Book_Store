@@ -77,17 +77,17 @@ async function sendOTP(Useremail,otp) {
     const result = await transporter.sendMail({
         from: process.env.EMAIL,
         to: email,
-        subject: 'Varification_HR_BookStore ',
+        subject: 'Varification | HR Book Store ',
         html: `
             <div style="width: 80%; margin: auto;">
                 <div style="width: 100%; max-width: 300px; height: 120px; margin: auto;">
                     <img src='cid:logo' height="100%" width="100%">
                 </div>
                 <h1 style="font-size: 24px; text-align: center;">HR BOOK STORE</h1>
-                <h6 style="font-size: 14px; padding: 0; margin: 0; margin-top: 50px; text-align: left;">
+                <p style="font-size: 14px; padding: 0; margin: 0; margin-top: 50px; text-align: left;">
                     ${heading}
-                </h6>
-                <p>${message}</p>
+                </p>
+                <h6 style="font-size: 14px; padding: 0; margin: 0; margin-top: 50px; text-align: left;">${message}</h6>
                 <p>${footerMessage}</p>
                 <p style="font-size: 14px; padding: 0; margin: 0; margin-top: 50px; text-align: left;">
                     Regards

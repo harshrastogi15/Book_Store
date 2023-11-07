@@ -4,6 +4,7 @@ import LoaderCorousel from '../loader/LoaderCorousel';
 import styles from '../Private/css/Search.module.css';
 import Bookcard from './Bookcard';
 import Footer from './Footer/Footer';
+import {DebounceInput} from 'react-debounce-input';
 
 function Search() {
   const [searchdata, updateSearchData] = useState({
@@ -72,8 +73,8 @@ function Search() {
               <option value="Story">Story</option>
             </select>
           </div>
-          <input placeholder='Book Name' name='title' onChange={(e) => changeData(e)} value={searchdata['title']} />
-          <input placeholder='Author Name' name='author' onChange={(e) => changeData(e)} value={searchdata['author']} />
+          <DebounceInput placeholder='Book Name' name='title' debounceTimeout={500} onChange={(e) => changeData(e)} value={searchdata['title']} />
+          <DebounceInput placeholder='Author Name' name='author' debounceTimeout={500} onChange={(e) => changeData(e)} value={searchdata['author']} />
           <button type='button' onClick={fetchSearch}>Search</button>
         </div>
       </div>

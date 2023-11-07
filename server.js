@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const connect = require('./db');
 const cors  = require('cors');
+const morgan = require('morgan');
 require('dotenv').config();
 
 
@@ -15,7 +16,7 @@ const apikey = process.env.API_KEY;
 const port = process.env.PORT || 3001;
 const app = express();
 
-
+app.use(morgan('dev'))
 app.use(express.static(__dirname+'/'));
 app.use(express.static(path.resolve(__dirname, 'client/build')));
 // app.use(bodyParser.urlencoded({ extended: true }));
